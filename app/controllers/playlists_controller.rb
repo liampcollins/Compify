@@ -4,6 +4,13 @@ class PlaylistsController < ApplicationController
   def index
     @playlists = Playlist.all
 
+    if current_user
+      token = current_user.session_token
+      auth = "Bearer " + token
+      request = HTTParty.get("https://api.spotify.com/v1/users/#{current_user.uid}/playlists", :headers => { "Authorization" => auth})
+      response_hash = JSON(request)
+    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @playlists }

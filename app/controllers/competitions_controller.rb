@@ -3,17 +3,7 @@ class CompetitionsController < ApplicationController
   # GET /competitions.json
   def index
     @competitions = Competition.all
-    if current_user
-      # url_name = name.downcase.gsub(" ", "+")
-      # url = "https://api.spotify.com/v1/users/#{current_user.uid}/playlists"
-
-      request = HTTParty.get "https://api.spotify.com/v1/users/#{current_user.uid}/playlists", :headers=>{"Authorization"=>"Bearer \"#{current_user.session_token}\""}
-
-      # request = HTTParty.get(url)
-      response_hash = JSON(request)
-      binding.pry
-    end
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @competitions }
