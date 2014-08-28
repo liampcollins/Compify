@@ -104,13 +104,17 @@ class PlaylistsController < ApplicationController
   # POST /playlists
   # POST /playlists.json
   def create
-    @playlist = Playlist.new(params[:playlist])
 
+    @playlist = Playlist.new
 
+    @playlist.spotify_id = params["playlist"]["id"]
+    @playlist.name = params["playlist"]["name"]
+    @playlist.competition_id = params["playlist"]["competition_id"]
+    @playlist.user_id = current_user.id
 
     respond_to do |format|
       if @playlist.save
-        format.html { redirect_to @playlist, notice: 'Playlist was successfully created.' }
+        format.html { redirect_to @playlist, notice: 'Playlist was successfully added.' }
         format.json { render json: @playlist, status: :created, location: @playlist }
       else
         format.html { render action: "new" }
@@ -122,6 +126,7 @@ class PlaylistsController < ApplicationController
   # PUT /playlists/1
   # PUT /playlists/1.json
   def update
+    binding.pry
     @playlist = Playlist.find(params[:id])
 
     respond_to do |format|

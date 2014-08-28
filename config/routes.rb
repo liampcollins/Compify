@@ -1,6 +1,7 @@
 Compify::Application.routes.draw do
-  devise_for :users
 
+  devise_for :users, controllers: {omniauth_callbacks: 'omniauth_callbacks'}
+  
   resources :votes
 
 
@@ -9,7 +10,8 @@ Compify::Application.routes.draw do
 
   resources :competitions
 
- root :to => 'competitions#index'
+
+  root :to => 'competitions#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

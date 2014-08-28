@@ -18,7 +18,7 @@
 
             <li class="active"><%= link_to 'sign in', new_user_session_path %></li>
             <li><%= link_to 'sign up', new_user_registration_path %></li>
-            <li><%#= link_to "Spotify", user_omniauth_authorize_path(:spotify)%></li>
+            <li><%= link_to "Sign in with Spotify", user_omniauth_authorize_path(:spotify) %></li>
 
       </ul>
 

@@ -13,11 +13,11 @@
     <% end %>
     <% @playlists["items"].each do |playlist| %>
         <%= playlist["name"]%>
+        <%= f.hidden_field :name, :value => "#{playlist["name"]}"%>
+        <%= f.hidden_field :id, :value => "#{playlist["id"]}"%>
         <%=f.collection_select :competition_id, Competition.all, :id, :name  %>
-    <br>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+      <%= f.submit 'Enter competition'%>
+      <br>
     <% end %>
 <br />
 <% end %>
