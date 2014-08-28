@@ -5,10 +5,29 @@
   <%= @competition.name %>
 </p>
 
-<p>
-  <b>Winner:</b>
-  <%= @competition.winner %>
-</p>
+
+
+<%= form_for(@vote) do |f| %>
+    <% if @vote.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@vote.errors.count, "error") %> prohibited this post from being saved:</h2>
+        <ul>
+        <% @vote.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <% @competition.playlists.each do |playlist| %>
+        <%= playlist["name"]%>
+        <%= (User.find(playlist.user_id)).email %>
+        <%= f.hidden_field :playlist_id, :value => "#{playlist["id"]}"%>
+        <%= f.hidden_field :competition_id, :value => "#{@competition.id}"%>
+      <%= f.submit 'Vote'%>
+      <br>
+    <% end %>
+<br />
+<% end %>
 
 <p>
   <b>Submission end date:</b>

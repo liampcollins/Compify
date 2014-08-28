@@ -12,9 +12,15 @@
   </tr>
 
 <% @competitions.each do |competition| %>
+<% num_votes =[] %>
+  <% competition.playlists.each do |playlist| %>
+    num_votes.push(playlist.votes.length)
+  <% end %>
+  <% max_index = num_votes.index(num_votes.max) %>
+
   <tr>
     <td><%= competition.name %></td>
-    <td><%= competition.winner %></td>
+    <td><%= competition.playlist[max_index].name %></td>
     <td><%= competition.submission_end_date %></td>
     <td><%= competition.vote_end_date %></td>
     <td><%= link_to 'Show', competition %></td>

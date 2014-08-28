@@ -40,7 +40,9 @@ class VotesController < ApplicationController
   # POST /votes
   # POST /votes.json
   def create
-    @vote = Vote.new(params[:vote])
+    @vote = Vote.new
+    @vote.playlist_id = params[:vote][:playlist_id].to_i
+    @vote.user_id = current_user.id
 
     respond_to do |format|
       if @vote.save
