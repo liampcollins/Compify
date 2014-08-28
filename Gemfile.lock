@@ -65,6 +65,9 @@ GEM
     hashie (3.3.1)
     high_voltage (2.2.1)
     hike (1.2.3)
+    httparty (0.13.1)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.11)
     journey (1.0.4)
     jquery-rails (3.1.1)
@@ -173,6 +176,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   high_voltage
+  httparty
   jquery-rails
   jquery-ui-rails
   oauth (~> 0.4.7)

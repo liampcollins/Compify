@@ -15,6 +15,7 @@ gem 'jquery-ui-rails'
 gem 'rmagick', :require => 'RMagick'
 gem 'cancan'
 gem 'high_voltage'
+gem 'httparty'
 
 
 group :development, :test do
