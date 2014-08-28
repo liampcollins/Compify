@@ -12,12 +12,10 @@ class User < ActiveRecord::Base
   has_many :votes
 
   def self.from_omniauth(auth, signed_in_user=nil)
-
-    user = signed_in_user || User.find_by_email(auth.info.email)
-
-    if user 
+    if user = signed_in_user || User.find_by_email(auth.info.email) 
       user.provider = auth.provider
       user.uid = auth.uid
+      user.session_token = auth.credentials.token
       user.name = auth.info.name if user.name.blank?
       user.image = auth.info.image if user.image.blank?
       user.save
@@ -26,7 +24,7 @@ class User < ActiveRecord::Base
       where(auth.slice(:provider, :uid)).first_or_create do |user|
         user.provider = auth.provider
         user.uid = auth.uid
-        user.name = auth.info.name
+        user.name = auth.info.name  
         user.email = auth.info.email
         user.image = auth.info.image
         user.password = Devise.friendly_token[0,20]
