@@ -6,7 +6,23 @@ gem 'rails', '3.2.17'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem 'devise'
+gem 'oauth', '~> 0.4.7'
+gem 'pg'
+gem 'carrierwave'
+gem 'omniauth-spotify'
+gem 'jquery-ui-rails'
+gem 'rmagick', :require => 'RMagick'
+gem 'cancan'
+gem 'high_voltage'
 
+
+group :development, :test do
+  gem 'pry-rails'
+  gem 'pry-stack_explorer'
+  gem 'binding_of_caller'
+  gem 'better_errors'  
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
