@@ -5,6 +5,18 @@
   <%= @competition.name %>
 </p>
 
+<p><ul>Playlists:
+    <% @competition.playlists.each do |playlist| %>
+    <li>
+      <div><%playlist.name%></div>
+      <div>Playlist creator</div>
+      <div>Vote button</div>
+    </li>
+    <% end %>
+</p></ul>
+
+
+
 <p>
   <b>Winner:</b>
   <%= @competition.winner %>

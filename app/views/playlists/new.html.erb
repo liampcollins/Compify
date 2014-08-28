@@ -1,5 +1,15 @@
 <h1>New playlist</h1>
 
+
+<% @playlists["items"].each do |playlist| %>
+<%= playlist["name"]%>
+<% select %>
+<button>Add To Competition</button>
+<br>
+<% end %>
+
+
+
 <%= render 'form' %>
 
 <%= link_to 'Back', playlists_path %>

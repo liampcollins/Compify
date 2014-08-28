@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>Compify</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
+
+  <% if current_user %>
+    <%= render "layouts/user_menu"%>
+  <% else %>
+    <%= render "layouts/classic_menu"%>
+  <% end %>
+
 <%= yield %>
 
 </body>

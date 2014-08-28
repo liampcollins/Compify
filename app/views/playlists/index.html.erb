@@ -1,31 +1,24 @@
 <h1>Listing playlists</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>User</th>
-    <th>Spotify</th>
-    <th>Competition</th>
-    <th>Image</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @playlists.each do |playlist| %>
-  <tr>
-    <td><%= playlist.name %></td>
-    <td><%= playlist.user_id %></td>
-    <td><%= playlist.spotify_id %></td>
-    <td><%= playlist.competition_id %></td>
-    <td><%= playlist.image %></td>
-    <td><%= link_to 'Show', playlist %></td>
-    <td><%= link_to 'Edit', edit_playlist_path(playlist) %></td>
-    <td><%= link_to 'Destroy', playlist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
+    
+<%= form_for(@playlist) do |f| %>
+    <% if @playlist.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@playlist.errors.count, "error") %> prohibited this post from being saved:</h2>
+        <ul>
+        <% @playlist.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <% @playlists["items"].each do |playlist| %>
+        <%= playlist["name"]%>
+        <%=f.collection_select :competition_id, Competition.all, :id, :name  %>
+    <br>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+    <% end %>
 <br />
-
+<% end %>
 <%= link_to 'New Playlist', new_playlist_path %>
