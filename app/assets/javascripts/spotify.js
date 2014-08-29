@@ -1,5 +1,12 @@
 
-
+function request(method, url, data){
+  return $.ajax({
+    method: method,
+    url: url,
+    dataType: "json",
+    data: data
+  })
+}
 
 
 
@@ -25,3 +32,14 @@ function showInfo(accessToken) {
         }
     });
 }
+
+
+
+$(function(){
+  $('.like').on('click', toggleLike);
+})
+
+
+
+
+

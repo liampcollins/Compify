@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<% competition_participants = []%>
+<% @competition.playlists.each do |playlist| %>
+  <% competition_participants.push(playlist.user_id)%>
+<% end %>
+
 <p>
   <b>Name:</b>
   <%= @competition.name %>
@@ -28,11 +33,19 @@
         </ul>
       </div>
     <% end %>
-    <%= playlist["name"]%><br>
+    <%= link_to playlist["name"], playlist_path %><br>
     <%= (User.find(playlist.user_id)).email %><br>
     <%= f.hidden_field :playlist_id, :value => "#{playlist["id"]}"%>
     <%= f.hidden_field :competition_id, :value => "#{@competition.id}"%>
-    <%= f.submit 'Vote for this playlist'%>
+
+
+  <% if competition_participants.include?(current_user.id)%>
+    <% if playlist.user_id != current_user.id%>
+      <%= f.submit 'Vote for this playlist'%>
+    <% end %>
+  <% end %>
+
+
   <% end %>
   <iframe src="https://embed.spotify.com/?uri=spotify:user:<%=playlist.user.uid%>:playlist:<%=playlist.spotify_id %>" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
 <% end %>

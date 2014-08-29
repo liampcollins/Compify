@@ -1,7 +1,7 @@
 
 <div class="playlist_list">
   <h1>Enter One of your Playlists in a Competition</h1>
-  <% @playlists["items"].each do |pl| %>
+  <% @playlists["items"].each do |playlist| %>
     <%= form_for(@playlist) do |f| %>
       <% if @playlist.errors.any? %>
         <div id="error_explanation">
@@ -13,9 +13,9 @@
           </ul>
         </div>
       <% end %>
-          <div class="listing_name"><%= pl["name"]%></div>
-          <%= f.hidden_field :name, :value => "#{pl["name"]}"%>
-          <%= f.hidden_field :id, :value => "#{pl["id"]}"%>
+          <div class="listing_name"><%= playlist["name"]%><%#= link_to playlist["name"], playlist_path%></div>
+          <%= f.hidden_field :name, :value => "#{playlist["name"]}"%>
+          <%= f.hidden_field :id, :value => "#{playlist["id"]}"%>
           <%=f.collection_select :competition_id, Competition.all, :id, :name  %>
         <%= f.submit 'Enter competition'%>
         <br>

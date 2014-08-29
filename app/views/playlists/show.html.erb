@@ -1,30 +1,16 @@
 <p id="notice"><%= notice %></p>
+<div class="playlist_show">
+  <p>
+    <b>Name:</b>
+    <%= @playlist.name %>
+  </p>
+  <p>
+    <b>User:</b>
+    <%= (User.find(@playlist.user_id)).name %>
+  </p>
+  <p>
+    <iframe src="https://embed.spotify.com/?uri=spotify:user:<%=@playlist.user.uid%>:playlist:<%=@playlist.spotify_id %>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
 
-<p>
-  <b>Name:</b>
-  <%= @playlist.name %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @playlist.user_id %>
-</p>
-
-<p>
-  <b>Spotify:</b>
-  <%= @playlist.spotify_id %>
-</p>
-
-<p>
-  <b>Competition:</b>
-  <%= @playlist.competition_id %>
-</p>
-
-<p>
-  <b>Image:</b>
-  <%= @playlist.image %>
-</p>
-
-
-<%= link_to 'Edit', edit_playlist_path(@playlist) %> |
-<%= link_to 'Back', playlists_path %>
+  </p>
+  <%= link_to 'Back', playlists_path %>
+</div>
