@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20140828151614) do
   create_table "playlists", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
-    t.integer  "spotify_id"
+    t.text     "spotify_id"
     t.integer  "competition_id"
     t.text     "image"
     t.datetime "created_at",     :null => false

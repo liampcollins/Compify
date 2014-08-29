@@ -1,0 +1,65 @@
+
+.competition_index{
+  text-align: center;
+  padding: 10%;
+  margin: 0 10%;
+  background: url("https://img0.etsystatic.com/000/0/5506487/il_570xN.211498654.jpg");
+  background-repeat: none;
+  background-size: 100%;
+  min-height: 500px;
+  font-size: 20px;
+ }
+
+
+ .competition_index h1{
+  margin: 10%;
+}
+
+table{
+  text-align: center;
+  width: 100%;
+}
+
+tr {
+  height: 80px;
+}
+
+tr th{
+  text-align: center;
+}
+
+.competitions_footer{
+  margin: 10%;
+}
+
+
+
+
+.playlist_list{
+  text-align: center;
+  padding: 5% 10%;
+  margin: 0 10%;
+  background: url("https://img0.etsystatic.com/000/0/5506487/il_570xN.211498654.jpg");
+  background-size: 100%;
+  min-height: 500px;
+  font-size: 20px;
+}
+
+.playlist_voter{
+  border: 2px dashed green;
+  height: 100px;
+}
+
+
+.playlist_voter iframe{
+  display: inline-block;
+  margin: 10px;
+}
+
+.playlist_voter form{
+  display: inline-block;
+  vertical-align: top;
+  margin: 10px;
+
+}
+

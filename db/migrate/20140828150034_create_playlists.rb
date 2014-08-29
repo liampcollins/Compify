@@ -3,7 +3,7 @@ class CreatePlaylists < ActiveRecord::Migration
     create_table :playlists do |t|
       t.string :name
       t.integer :user_id
-      t.integer :spotify_id
+      t.text :spotify_id
       t.integer :competition_id
       t.text :image
 

@@ -4,10 +4,20 @@
   <b>Name:</b>
   <%= @competition.name %>
 </p>
+<p>
+  <b>Submission end date:</b>
+  <%= @competition.submission_end_date %>
+</p>
+<p>
+  <b>Vote end date:</b>
+  <%= @competition.vote_end_date %>
+</p>
 
 
 
-<%= form_for(@vote) do |f| %>
+<div class="playlist_voter">
+<% @competition.playlists.each do |playlist| %>
+  <%= form_for(@vote) do |f| %>
     <% if @vote.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@vote.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -18,26 +28,18 @@
         </ul>
       </div>
     <% end %>
-    <% @competition.playlists.each do |playlist| %>
-        <%= playlist["name"]%>
-        <%= (User.find(playlist.user_id)).email %>
-        <%= f.hidden_field :playlist_id, :value => "#{playlist["id"]}"%>
-        <%= f.hidden_field :competition_id, :value => "#{@competition.id}"%>
-      <%= f.submit 'Vote'%>
-      <br>
-    <% end %>
-<br />
+    <%= playlist["name"]%><br>
+    <%= (User.find(playlist.user_id)).email %><br>
+    <%= f.hidden_field :playlist_id, :value => "#{playlist["id"]}"%>
+    <%= f.hidden_field :competition_id, :value => "#{@competition.id}"%>
+    <%= f.submit 'Vote for this playlist'%>
+  <% end %>
+  <iframe src="https://embed.spotify.com/?uri=spotify:user:<%=playlist.user.uid%>:playlist:<%=playlist.spotify_id %>" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
 <% end %>
+</div>
 
-<p>
-  <b>Submission end date:</b>
-  <%= @competition.submission_end_date %>
-</p>
 
-<p>
-  <b>Vote end date:</b>
-  <%= @competition.vote_end_date %>
-</p>
+
 
 
 <%= link_to 'Edit', edit_competition_path(@competition) %> |

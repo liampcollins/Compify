@@ -56,7 +56,6 @@ class PlaylistsController < ApplicationController
     @playlist.name = params["playlist"]["name"]
     @playlist.competition_id = params["playlist"]["competition_id"]
     @playlist.user_id = current_user.id
-
     respond_to do |format|
       if @playlist.save
         format.html { redirect_to @playlist, notice: 'Playlist was successfully added.' }

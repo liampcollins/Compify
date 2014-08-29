@@ -1,24 +1,31 @@
-<h1>Listing playlists</h1>
-    
-<%= form_for(@playlist) do |f| %>
-    <% if @playlist.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@playlist.errors.count, "error") %> prohibited this post from being saved:</h2>
-        <ul>
-        <% @playlist.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
+
+<div class="playlist_list">
+  <h1>Enter One of your Playlists in a Competition</h1>
+  <% @playlists["items"].each do |pl| %>
+    <%= form_for(@playlist) do |f| %>
+      <% if @playlist.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@playlist.errors.count, "error") %> prohibited this post from being saved:</h2>
+          <ul>
+          <% @playlist.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+          <div class="listing_name"><%= pl["name"]%></div>
+          <%= f.hidden_field :name, :value => "#{pl["name"]}"%>
+          <%= f.hidden_field :id, :value => "#{pl["id"]}"%>
+          <%=f.collection_select :competition_id, Competition.all, :id, :name  %>
+        <%= f.submit 'Enter competition'%>
+        <br>
     <% end %>
-    <% @playlists["items"].each do |playlist| %>
-        <%= playlist["name"]%>
-        <%= f.hidden_field :name, :value => "#{playlist["name"]}"%>
-        <%= f.hidden_field :id, :value => "#{playlist["id"]}"%>
-        <%=f.collection_select :competition_id, Competition.all, :id, :name  %>
-      <%= f.submit 'Enter competition'%>
-      <br>
-    <% end %>
-<br />
-<% end %>
+    <br />
+  <% end %>
+</div>
 <%= link_to 'New Playlist', new_playlist_path %>
+
+
+
+
+

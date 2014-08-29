@@ -1,35 +1,44 @@
-<h1>Listing competitions</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Winner</th>
-    <th>Submission end date</th>
-    <th>Vote end date</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="competition_index">
+  <h1>Competitions</h1>
 
-<% @competitions.each do |competition| %>
-<% num_votes =[] %>
-  <% competition.playlists.each do |playlist| %>
-    num_votes.push(playlist.votes.length)
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Winner</th>
+      <th>Submission end date</th>
+      <th>Vote end date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+  <% @competitions.each do |competition| %>
+  <% num_votes =[] %>
+    <% competition.playlists.each do |playlist| %>
+     <% num_votes.push(playlist.votes.length) %>
+    <% end %>
+    <% max_index = num_votes.index(num_votes.max) %>
+
+    <tr>
+      <td><%= competition.name %></td>
+      <% if max_index != nil %>
+        <td><%= competition.playlists[max_index].name %></td>
+      <% else %>
+        <td></td>
+      <% end %>
+      <td><%= competition.submission_end_date %></td>
+      <td><%= competition.vote_end_date %></td>
+      <td><%= link_to 'Show', competition %></td>
+      <td><%= link_to 'Edit', edit_competition_path(competition) %></td>
+      <td><%= link_to 'Destroy', competition, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
   <% end %>
-  <% max_index = num_votes.index(num_votes.max) %>
-
-  <tr>
-    <td><%= competition.name %></td>
-    <td><%= competition.playlist[max_index].name %></td>
-    <td><%= competition.submission_end_date %></td>
-    <td><%= competition.vote_end_date %></td>
-    <td><%= link_to 'Show', competition %></td>
-    <td><%= link_to 'Edit', edit_competition_path(competition) %></td>
-    <td><%= link_to 'Destroy', competition, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+  </table>
+  <div class="competitions_footer">
+    <%= link_to 'New Competition', new_competition_path %>
+  </div>
+</div>
 
 <br />
 
-<%= link_to 'New Competition', new_competition_path %>
