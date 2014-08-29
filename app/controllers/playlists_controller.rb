@@ -13,10 +13,14 @@ class PlaylistsController < ApplicationController
 
     @playlist = Playlist.new
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @playlists }
-    end
+    # if @playlists == true
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @playlists }
+      end
+    # else
+    #   redirect_to destroy_user_session_path, method: :delete
+    # end
   end
 
   # GET /playlists/1

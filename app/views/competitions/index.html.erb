@@ -1,4 +1,3 @@
-
 <div class="competition_index">
   <h1>Competitions</h1>
 
@@ -29,9 +28,7 @@
       <% end %>
       <td><%= competition.submission_end_date %></td>
       <td><%= competition.vote_end_date %></td>
-      <td><%= link_to 'Show', competition %></td>
-      <td><%= link_to 'Edit', edit_competition_path(competition) %></td>
-      <td><%= link_to 'Destroy', competition, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td class="show_competition"><%= link_to 'Show', competition %></td>
     </tr>
   <% end %>
   </table>

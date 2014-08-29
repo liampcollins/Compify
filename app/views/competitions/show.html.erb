@@ -1,59 +1,68 @@
-<p id="notice"><%= notice %></p>
+  
+<div class="competition_show">
+  <p id="notice"><%= notice %></p>
 
-<% competition_participants = []%>
-<% @competition.playlists.each do |playlist| %>
-  <% competition_participants.push(playlist.user_id)%>
-<% end %>
+  <% competition_participants = []%>
+  <% @competition.playlists.each do |playlist| %>
+    <% competition_participants.push(playlist.user_id)%>
+  <% end %>
 
-<p>
-  <b>Name:</b>
-  <%= @competition.name %>
-</p>
-<p>
-  <b>Submission end date:</b>
-  <%= @competition.submission_end_date %>
-</p>
-<p>
-  <b>Vote end date:</b>
-  <%= @competition.vote_end_date %>
-</p>
+  <p>
+    <b>Name:</b>
+    <%= @competition.name %>
+  </p>
+  <p>
+    <b>Submission end date:</b>
+    <%= @competition.submission_end_date %>
+  </p>
+  <p>
+    <b>Vote end date:</b>
+    <%= @competition.vote_end_date %>
+  </p>
 
 
 
-<div class="playlist_voter">
-<% @competition.playlists.each do |playlist| %>
-  <%= form_for(@vote) do |f| %>
-    <% if @vote.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@vote.errors.count, "error") %> prohibited this post from being saved:</h2>
-        <ul>
-        <% @vote.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+  <div class="playlist_voter">
+  <% @competition.playlists.each do |playlist| %>
+    <div class="playlist_in_comp">
+      <%= form_for(@vote) do |f| %>
+        <% if @vote.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@vote.errors.count, "error") %> prohibited this post from being saved:</h2>
+            <ul>
+            <% @vote.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
         <% end %>
-        </ul>
-      </div>
+        <%= link_to playlist["name"], playlist_path %><br>
+        <%= (User.find(playlist.user_id)).email %><br>
+        <div class="post_in_comp_id"><%= f.hidden_field :playlist_id, :value => "#{playlist["id"]}"%></div>
+        <%= f.hidden_field :competition_id, :value => "#{@competition.id}"%>
+  <!-- CALCULATING WHAT CLASS THE BUTTON HAS AND WHAT TEXT IT HAS WHEN PAGE IS RENDERED -->
+      <% playlist_voter_ids = []%>
+      <% playlist.votes.each do |playlist|%>
+        <% playlist_voter_ids.push(playlist.user_id)%>
+      <% end %>
+      <% if playlist_voter_ids.include?(current_user.id)%>
+        <% button_starting_class = "have_already_voted"%>
+        <% button_starting_text = "Your selected playlist"%>
+      <% else %>
+        <% button_starting_class = "have_not_already_voted" %>
+        <% button_starting_text = "Vote for this playlist"%>
+      <% end %>
+
+  <!-- ONLY SHOW VOTE BUTTON IF ITS NOT YOUR PLAYLIST AND YOU HAVE A PLAYLIST IN THE COMPETITION -->
+      <% if competition_participants.include?(current_user.id)%>
+        <% if playlist.user_id != current_user.id%>
+          <div class="submit_vote_button <%= button_starting_class %>" ><%= f.submit button_starting_text%></div>
+        <% end %>
+      <% end %>
     <% end %>
-    <%= link_to playlist["name"], playlist_path %><br>
-    <%= (User.find(playlist.user_id)).email %><br>
-    <%= f.hidden_field :playlist_id, :value => "#{playlist["id"]}"%>
-    <%= f.hidden_field :competition_id, :value => "#{@competition.id}"%>
-
-
-  <% if competition_participants.include?(current_user.id)%>
-    <% if playlist.user_id != current_user.id%>
-      <%= f.submit 'Vote for this playlist'%>
-    <% end %>
+      <iframe src="https://embed.spotify.com/?uri=spotify:user:<%=playlist.user.uid%>:playlist:<%=playlist.spotify_id %>" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+    </div>
   <% end %>
-
-
-  <% end %>
-  <iframe src="https://embed.spotify.com/?uri=spotify:user:<%=playlist.user.uid%>:playlist:<%=playlist.spotify_id %>" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
-<% end %>
-</div>
-
-
-
-
-
-<%= link_to 'Edit', edit_competition_path(@competition) %> |
+  </div>
 <%= link_to 'Back', competitions_path %>
+</div>

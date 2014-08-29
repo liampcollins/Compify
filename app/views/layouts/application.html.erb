@@ -10,17 +10,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-
-
   <% if current_user %>
     <%= render "layouts/user_menu"%>
   <% else %>
     <%= render "layouts/classic_menu"%>
   <% end %>
-
-<%= yield %>
-
+<div class="main">
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <%= yield %>
+</div>
 </body>
 </html>

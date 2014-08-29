@@ -1,20 +1,3 @@
-
-.competition_index{
-  text-align: center;
-  padding: 10%;
-  margin: 0 10%;
-  background: url("https://img0.etsystatic.com/000/0/5506487/il_570xN.211498654.jpg");
-  background-repeat: none;
-  background-size: 100%;
-  min-height: 500px;
-  font-size: 20px;
- }
-
-
- .competition_index h1{
-  margin: 10%;
-}
-
 table{
   text-align: center;
   width: 100%;
@@ -33,21 +16,9 @@ tr th{
 }
 
 
-
-
-.playlist_list{
-  text-align: center;
-  padding: 5% 10%;
-  margin: 0 10%;
-  background: url("https://img0.etsystatic.com/000/0/5506487/il_570xN.211498654.jpg");
-  background-size: 100%;
-  min-height: 500px;
-  font-size: 20px;
-}
-
-.playlist_voter{
+.playlist_in_comp{
   border: 2px dashed green;
-  height: 100px;
+  height: 110px;
 }
 
 
@@ -65,7 +36,7 @@ tr th{
 
 
 
-.playlist_show{
+.main{
   text-align: center;
   padding: 5% 10%;
   margin: 0 10%;
@@ -74,3 +45,40 @@ tr th{
   min-height: 500px;
   font-size: 20px;
 }
+
+
+
+
+h1{
+  width: 100%;
+  padding: 10px 0;
+  background: rgba(0,0,255, 0.1)
+}
+
+h2{
+  width: 100%;
+  margin: 20px 0;
+  background: rgba(0,0,255, 0.1)
+}
+
+.have_already_voted{
+  background: #4DA400;
+}
+
+.have_not_already_voted{
+  background: white;
+}
+
+
+.submit_vote_button input{
+  background: rgba(1, 1, 1, 0)
+}
+
+
+.show_competition a{
+  background: rgba(0,0,255, 0.1);
+  font-size: 15px;
+
+}
+
+
