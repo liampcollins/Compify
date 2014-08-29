@@ -5,9 +5,12 @@
 
   <title>Compify</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <script src="/assets/countdown.js"></script>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
+
 </head>
 <body>
   <p class="notice"><%= notice %></p>
@@ -20,6 +23,8 @@
     <%= render "layouts/classic_menu"%>
   <% end %>
 
+  <h1 id="countdown-holder"></h1>
+  
 <%= yield %>
 
 </body>
