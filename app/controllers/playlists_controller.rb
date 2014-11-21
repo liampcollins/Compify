@@ -8,7 +8,7 @@ class PlaylistsController < ApplicationController
       auth = "Bearer " + token
       @playlists = HTTParty.get("https://api.spotify.com/v1/users/#{current_user.uid}/playlists", :headers => { "Authorization" => auth})
       # response_hash = JSON(request)
-      # binding.pry
+      binding.pry
     end
 
     @playlist = Playlist.new
@@ -58,6 +58,7 @@ class PlaylistsController < ApplicationController
 
     @playlist.spotify_id = params["playlist"]["id"]
     @playlist.name = params["playlist"]["name"]
+    @playlist.image = params["playlist"]["images"][0]
     @playlist.competition_id = params["playlist"]["competition_id"]
     @playlist.user_id = current_user.id
     respond_to do |format|

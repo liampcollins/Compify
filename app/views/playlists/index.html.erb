@@ -1,5 +1,43 @@
 
-<div class="playlist_list">
+<main>
+
+  <section class="add-playlist">
+    <div class="playlist-select">
+      <div class="playlist-list">
+        <div class="playlist-search"></div>
+        <div class="playlist-scroll"></div>
+      </div>
+      <div class="playlist-viewer"></div>
+    </div>
+    <div class="competition-select">
+      <div class="competition-list">
+        <div class="competition-search"></div>
+        <div class="copmetition-scroll"></div>
+      </div>
+      <div class="competition-viewer"></div>
+    </div>
+  </section>
+
+  <section class="vote-on-comp">
+    
+
+  </section>
+
+  <section class="create-comp">
+
+  </section>
+
+</main>
+
+
+
+
+
+
+
+
+<!-- PLAYLIST LIST -->
+<!-- <div class="playlist_list">
   <h1>Enter One of your Playlists in a Competition</h1>
   <% @playlists["items"].each do |playlist| %>
     <%= form_for(@playlist) do |f| %>
@@ -13,7 +51,10 @@
           </ul>
         </div>
       <% end %>
-          <div class="listing_name"><%= playlist["name"]%><%#= link_to playlist["name"], playlist_path%></div>
+          <div class="listing_name">
+            <%= playlist["name"]%>
+          </div>
+          <%= f.hidden_field :image, :value => "#{playlist["images"][0]}"%>
           <%= f.hidden_field :name, :value => "#{playlist["name"]}"%>
           <%= f.hidden_field :id, :value => "#{playlist["id"]}"%>
           <%=f.collection_select :competition_id, Competition.all, :id, :name  %>
@@ -23,7 +64,7 @@
     <br />
   <% end %>
 </div>
-<%= link_to 'New Playlist', new_playlist_path %>
+<%= link_to 'New Playlist', new_playlist_path %> -->
 
 
 
