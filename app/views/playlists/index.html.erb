@@ -1,30 +1,118 @@
 
 <main>
+  <section class="dashboard-menu">
+    <div "dashboard-menu-left">
+      <h2>WHADDA YA WANNA DO?</h2>
+    </div>
+    <div class="dashboard-menu-left">
+      <ul>
+        <li>Compete</li>
+        <li>Listen And Vote</li>
+        <li>Start A Challenge</li>
+      </ul> 
+    </div>
+  </section>
 
   <section class="add-playlist">
+    <div class="add-playlist-selector">
+      <button>Select Competition</button>
+      <button>Select Playlist</button>
+    </div>
+    <div>Enter Your Playlist Into A Competition</div>
     <div class="playlist-select">
       <div class="playlist-list">
-        <div class="playlist-search"></div>
-        <div class="playlist-scroll"></div>
+        <div class="playlist-search">
+          <!-- SEARCH BOX -->
+        </div>
+        <div class="playlist-scroll">
+          <% @playlists["items"].each do |playlist| %>
+              <%#= form_for(@playlist) do |f| %>
+                <% if @playlist.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(@playlist.errors.count, "error") %> prohibited this post from being saved:</h2>
+                    <ul>
+                    <% @playlist.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                    <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+                <div class="playlist-list-element">
+                  <%= playlist["name"]%>
+                </div>
+                  <%#= f.hidden_field :name, :value => "#{playlist["name"]}"%>
+                  <%#= f.hidden_field :id, :value => "#{playlist["id"]}"%>
+                  <%#=f.collection_select :competition_id, Competition.all, :id, :name  %>
+                <%=# f.submit 'Enter competition'%>
+                <br>
+            <%# end %>
+            <br />
+          <% end %>
+        </div>
       </div>
-      <div class="playlist-viewer"></div>
+      <div class="playlist-viewer">
+<!--    NEED TO PASS PLAYLIST INFO TAKEN FROM LIST CLICK TO JS, INTO THE IFRAME BELOW     
+        <iframe src="https://embed.spotify.com/?uri=spotify:user:<%=@playlist.user.uid%>:playlist:<%=@playlist.spotify_id %>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe> -->
+      </div>
     </div>
     <div class="competition-select">
       <div class="competition-list">
-        <div class="competition-search"></div>
-        <div class="copmetition-scroll"></div>
+        <div class="competition-search">
+          <!-- SEARCH BOX -->
+        </div>
+        <div class="copmetition-scroll">
+<!--           NEED TO ACCESS @COMPETITIONS HERE (VIA PLAYLIST CONTROLLER) AND ITERATE THROUGH. TO ONLY SHOW RELEVANT COMPETITIONS EXPLORE OPTION TO ONLY SEND THROUGH SUBSET OR TO DO FILTERING IN HTML(ERB) -->
+        </div>
       </div>
-      <div class="competition-viewer"></div>
+      <div class="competition-viewer">
+        <h3><!-- COMPETITION NAME --></h3>
+        <p>CREATOR: <!-- COMPETITION CREATOR --></p>
+        <p>THEME: <!-- COMPETITION THEME --></p>
+        <p>SONG NUMBER: <!-- COMPETITION SONG NUMBER --></p>
+      </div>
     </div>
   </section>
 
   <section class="vote-on-comp">
-    
-
+    <div class="comp-select-vote">
+      <div class="comp-select-vote-search">
+        <!-- SEARCH BOX -->
+      </div>
+      <div class="comp-select-vote-scroll">
+        <!-- NEED TO ACCESS @COMPETITIONS HERE (VIA PLAYLIST CONTROLLER) AND ITERATE THROUGH. TO ONLY SHOW RELEVANT COMPETITIONS EXPLORE OPTION TO ONLY SEND THROUGH SUBSET OR TO DO FILTERING IN HTML(ERB) -->
+        <!-- EACH IS A LINK TO THE RELEVANT COMPETITIONS#SHOW PAGE -->
+      </div>
+    </div>
+    <div class="comp-select-vote-title">
+      <h2>Select A Competition To Listen And Vote </h2>
+    </div>
   </section>
 
   <section class="create-comp">
-
+    <div class="create-comp-title">
+      <h2>Create A Competition</h2>
+    </div>
+<!--     POTENTIALLY MOVE ALL OF THIS TO COMPETITIONS#NEW -->
+    <div class="competition-form-container">
+      <form class="competition-form">
+        <label>Name</label>
+        <input type="text">
+        <label>Theme</label>
+        <input>
+        Or select from
+        <select><!-- MAYBE AN ARRAY OF POTENTIAL THEMES DEFINED AND STORED LOCALLY --></select>
+        <label>Number Of Songs</label>
+        <input type="number">
+        <label>Closing Date For Entry</label>
+        <input type="date-time">
+        <label>Closing Date For Votes</label>
+        <input type="date-time"> <!--  MAYBE A CONDITION HERE THAT THIS HAS TO BE LATER THAN THE ONE ABOVE -->
+      </form>
+    </div>
+    <div class="comp-friends-invite">
+      <h3>Now Invite Some Friends To Compete</h3>
+      <!-- FACEBOOK API -->
+    </div>
   </section>
 
 </main>
