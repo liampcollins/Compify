@@ -1,58 +1,61 @@
 
-<main>
+<main class="main">
   <section class="dashboard-menu">
-    <div "dashboard-menu-left">
+    <div class="dashboard-menu-left">
       <h2>WHADDA YA WANNA DO?</h2>
     </div>
-    <div class="dashboard-menu-left">
+    <div class="dashboard-menu-right">
       <ul>
-        <li>Compete</li>
-        <li>Listen And Vote</li>
-        <li>Start A Challenge</li>
+        <li><a data-index="2" href="#2">Compete</a></li>
+        <li><a href="#3">Listen And Vote</a></li>
+        <li><a href="#4">Start A Challenge</a></li>
       </ul> 
     </div>
   </section>
 
   <section class="add-playlist">
     <div class="add-playlist-selector">
-      <button>Select Competition</button>
-      <button>Select Playlist</button>
+      <button class="select-competition-button">Select Competition</button>
+      <button class="select-playlist-button">Select Playlist</button>
     </div>
-    <div>Enter Your Playlist Into A Competition</div>
+    <div class="add-playlist-title">
+      <h2>Enter Your Playlist Into A Competition</h2>
+    </div>
     <div class="playlist-select">
       <div class="playlist-list">
         <div class="playlist-search">
-          <!-- SEARCH BOX -->
+          SEARCH BOX
         </div>
         <div class="playlist-scroll">
-          <% @playlists["items"].each do |playlist| %>
-              <%#= form_for(@playlist) do |f| %>
-                <% if @playlist.errors.any? %>
+          Playlist list
+          <%# @playlists["items"].each do |playlist| %>
+  <!--             <%#= form_for(@playlist) do |f| %>
+                <%# if @playlist.errors.any? %>
                   <div id="error_explanation">
-                    <h2><%= pluralize(@playlist.errors.count, "error") %> prohibited this post from being saved:</h2>
+                    <h2><%#= pluralize(@playlist.errors.count, "error") %> prohibited this post from being saved:</h2>
                     <ul>
-                    <% @playlist.errors.full_messages.each do |msg| %>
-                      <li><%= msg %></li>
-                    <% end %>
+                    <%# @playlist.errors.full_messages.each do |msg| %>
+                      <li><%#= msg %></li>
+                    <%# end %>
                     </ul>
                   </div>
-                <% end %>
+                <%# end %>
                 <div class="playlist-list-element">
-                  <%= playlist["name"]%>
-                </div>
+                  <%#= playlist["name"]%>
+                </div> -->
                   <%#= f.hidden_field :name, :value => "#{playlist["name"]}"%>
                   <%#= f.hidden_field :id, :value => "#{playlist["id"]}"%>
                   <%#=f.collection_select :competition_id, Competition.all, :id, :name  %>
-                <%=# f.submit 'Enter competition'%>
+                <%#= f.submit 'Enter competition'%>
                 <br>
             <%# end %>
             <br />
-          <% end %>
+          <%# end %>
         </div>
       </div>
       <div class="playlist-viewer">
 <!--    NEED TO PASS PLAYLIST INFO TAKEN FROM LIST CLICK TO JS, INTO THE IFRAME BELOW     
-        <iframe src="https://embed.spotify.com/?uri=spotify:user:<%=@playlist.user.uid%>:playlist:<%=@playlist.spotify_id %>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe> -->
+        <iframe src="https://embed.spotify.com/?uri=spotify:user:<%#=@playlist.user.uid%>:playlist:<%#=@playlist.spotify_id %>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe> -->
       </div>
     </div>
     <div class="competition-select">
@@ -116,45 +119,3 @@
   </section>
 
 </main>
-
-
-
-
-
-
-
-
-<!-- PLAYLIST LIST -->
-<!-- <div class="playlist_list">
-  <h1>Enter One of your Playlists in a Competition</h1>
-  <% @playlists["items"].each do |playlist| %>
-    <%= form_for(@playlist) do |f| %>
-      <% if @playlist.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@playlist.errors.count, "error") %> prohibited this post from being saved:</h2>
-          <ul>
-          <% @playlist.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
-          <div class="listing_name">
-            <%= playlist["name"]%>
-          </div>
-          <%= f.hidden_field :image, :value => "#{playlist["images"][0]}"%>
-          <%= f.hidden_field :name, :value => "#{playlist["name"]}"%>
-          <%= f.hidden_field :id, :value => "#{playlist["id"]}"%>
-          <%=f.collection_select :competition_id, Competition.all, :id, :name  %>
-        <%= f.submit 'Enter competition'%>
-        <br>
-    <% end %>
-    <br />
-  <% end %>
-</div>
-<%= link_to 'New Playlist', new_playlist_path %> -->
-
-
-
-
-

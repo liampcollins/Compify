@@ -1,3 +1,6 @@
+
+
+
 table{
   text-align: center;
   width: 100%;
@@ -33,23 +36,25 @@ tr th{
   margin: 10px;
 }
 
-
+section {
+  border: solid 1px gray;
+}
 
 
 .main{
   text-align: center;
-  padding: 5% 10%;
-  margin: 0 10%;
-  background: url("https://img0.etsystatic.com/000/0/5506487/il_570xN.211498654.jpg");
-  background-size: 100%;
-  min-height: 500px;
+/*  padding: 5% 10%;
+  margin: 0 10%;*/
+/*  background: url("https://img0.etsystatic.com/000/0/5506487/il_570xN.211498654.jpg");
+*/  background-size: 100%;
+  min-height: 100vh;
   font-size: 20px;
 }
 
 
 
 
-h1{
+/*h1{
   width: 100%;
   padding: 10px 0;
   background: rgba(0,0,255, 0.1)
@@ -79,6 +84,6 @@ h2{
   background: rgba(0,0,255, 0.1);
   font-size: 15px;
 
-}
+}*/
 
 

@@ -6,9 +6,9 @@ class PlaylistsController < ApplicationController
     if current_user
       token = current_user.session_token
       auth = "Bearer " + token
-      @playlists = HTTParty.get("https://api.spotify.com/v1/users/#{current_user.uid}/playlists", :headers => { "Authorization" => auth})
+      #@playlists = HTTParty.get("https://api.spotify.com/v1/users/#{current_user.uid}/playlists", :headers => { "Authorization" => auth})
       # response_hash = JSON(request)
-      binding.pry
+      #binding.pry
     end
 
     @playlist = Playlist.new

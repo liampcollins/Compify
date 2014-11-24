@@ -1,3 +1,110 @@
 // Place all the styles related to the Playlists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+*{
+	box-sizing: border-box;
+}
+
+$color1: #588C7E;
+$color2: #F2E394;
+$color3: #D96459;
+$font-family: 'Droid Sans', sans-serif;
+
+main{
+	width: 100%;
+	font-family: $font-family;
+}
+
+
+.alert{
+	// removes space between nav and first section
+	margin-bottom: 7px;
+}
+
+.navbar {
+	background: $color3;
+}
+
+#bs-example-navbar-collapse-1 ul li a{
+		color: $color2;
+}
+
+.navbar-brand{
+	color: $color1;
+}
+
+section{
+	height: 100%;
+	width: 100%;
+	padding: 5%;
+}
+
+.dashboard-menu{
+	background: $color1;
+	color: $color2;
+	.dashboard-menu-left{
+		float: left;
+		width: 50%;
+		h2 {
+			font-size: 60px;
+			padding: 0 30%;
+		}
+	}
+	.dashboard-menu-right{
+		float:right;
+		width: 50%;
+		padding-top: 5%;
+		ul {
+			list-style: none;
+			li {
+				font-size: 20px;
+				line-height: 50px;
+				a{
+					color: $color2;
+					text-decoration: none;
+				}
+			}
+		}
+	}
+
+}
+
+.add-playlist{
+	background: $color2;
+	color: $color1;
+	.add-playlist-selector{
+		float: left;
+		width: 35%;
+		button{
+			width: 30%;
+			margin: 20%;
+		}
+	}
+	.add-playlist-title{
+		float: right;
+		width: 65%;
+		h2{
+			font-size: 60px;
+			margin: 10% 20%;
+		}
+	}
+	.playlist-select, .competition-select{
+		float: right;
+	}
+
+}
+
+
+.vote-on-comp{
+	background: $color1;
+	color: $color2;
+}
+
+.create-comp{
+	background: $color2;
+	color: $color1;
+}
+
+
+
