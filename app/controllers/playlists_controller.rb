@@ -12,6 +12,8 @@ class PlaylistsController < ApplicationController
     end
 
     @playlist = Playlist.new
+    @competitions = Competition.all
+    @competition = Competition.new
 
     # if @playlists == true
       respond_to do |format|
