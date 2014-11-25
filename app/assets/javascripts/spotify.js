@@ -45,11 +45,19 @@ function showPlaylistSelector() {
   $('.playlist-select').show();
 }
 
+function newCompCreated (e) {
+  console.log('newCompCreated')
+  e.preventDefault();
+  $('.comp-form-container').hide();
+  $('.comp-friends-invite').show();
+}
+
 $(document).ready(function(){
 
 
   $('.playlist-select').hide();
   $('.competition-select').hide();
+  $('.comp-friends-invite').hide();
   $(".main").onepage_scroll({
     sectionContainer: "section",
     loop: true,
@@ -60,6 +68,7 @@ $(document).ready(function(){
 
 $(function(){
   $('.submit_vote_button').on('click', toggleVote);
+  $('.competition-form').on('submit', newCompCreated);
   $('.select-competition-button').on('click', showCompetitionSelector);
   $('.select-playlist-button').on('click', showPlaylistSelector);
 })

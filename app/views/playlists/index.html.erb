@@ -54,6 +54,7 @@
         </div>
       </div>
       <div class="playlist-viewer">
+        PLAYLIST VIEWER HERE
 <!--    NEED TO PASS PLAYLIST INFO TAKEN FROM LIST CLICK TO JS, INTO THE IFRAME BELOW     
         <iframe src="https://embed.spotify.com/?uri=spotify:user:<%#=@playlist.user.uid%>:playlist:<%#=@playlist.spotify_id %>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe> -->
       </div>
@@ -96,24 +97,40 @@
       <h2>Create A Competition</h2>
     </div>
 <!--     POTENTIALLY MOVE ALL OF THIS TO COMPETITIONS#NEW -->
-    <div class="competition-form-container">
+    <div class="comp-form-container">
       <form class="competition-form">
-        <label>Name</label>
+        <label>Name Your Competition</label>
         <input type="text">
-        <label>Theme</label>
+        <br>
+        <br>
+        <br>
+        <label>Create A Theme</label>
         <input>
-        Or select from
+        <br>
+        <div>Or Select An Existing One</div>
         <select><!-- MAYBE AN ARRAY OF POTENTIAL THEMES DEFINED AND STORED LOCALLY --></select>
-        <label>Number Of Songs</label>
+        <br>
+        <br>
+        <br>
+        <label>Number Of Songs Per Playlist</label>
         <input type="number">
+        <br>
+        <br>
+        <br>
         <label>Closing Date For Entry</label>
         <input type="date-time">
+        <br>
+        <br>
+        <br>
         <label>Closing Date For Votes</label>
         <input type="date-time"> <!--  MAYBE A CONDITION HERE THAT THIS HAS TO BE LATER THAN THE ONE ABOVE -->
+        <br>
+        <input class="comp-form-submit" type="submit" value="Create">
       </form>
     </div>
     <div class="comp-friends-invite">
-      <h3>Now Invite Some Friends To Compete</h3>
+      <h3>Competition Created!<br> 
+        Now Invite Some Friends To Compete</h3>
       <!-- FACEBOOK API -->
     </div>
   </section>

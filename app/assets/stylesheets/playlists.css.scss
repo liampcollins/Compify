@@ -84,13 +84,43 @@ section{
 	.add-playlist-title{
 		float: right;
 		width: 65%;
+		height: 100%;
 		h2{
 			font-size: 60px;
 			margin: 10% 20%;
 		}
 	}
-	.playlist-select, .competition-select{
+	.playlist-select {
 		float: right;
+		width: 65%;
+		height: 100%;
+		.playlist-list {
+			float:left;
+			width: 30%;
+			height: 100%;
+			border: solid 1px black;
+		}
+		.playlist-viewer{
+			width: 70%;
+			height: 100%;
+			float: right;
+		}
+	}
+	.competition-select{
+		float: right;
+		width: 65%;
+		height: 100%;
+		.competition-list{
+			float:left;
+			width: 30%;
+			height: 100%;
+			border: solid 1px black;
+		}
+		.competition-viewer{
+			float: right;
+			width: 70%;
+			height: 100%;
+		}
 	}
 
 }
@@ -99,11 +129,63 @@ section{
 .vote-on-comp{
 	background: $color1;
 	color: $color2;
+	.comp-select-vote{
+		float: right;
+		width: 50%;
+		height: 80%;
+		border: 1px solid $color3;
+	}
+	.comp-select-vote-title{
+		float: left;
+		width: 50%;
+		h2{
+			font-size: 60px;
+			width: 60%;
+			margin-top: 15%;
+			margin-left: 10%;
+		}
+	}
 }
 
 .create-comp{
 	background: $color2;
 	color: $color1;
+	.create-comp-title{
+		width: 50%;
+		height: 100%;
+		float: right;
+		h2{
+			font-size: 60px;
+		}
+	}
+	.comp-form-container{
+		width: 50%;
+		height: 100%;
+		float: left;
+		form{
+			width: 600px;
+			input{
+				float: right;
+			}
+			div{
+				margin-top: 7px;
+				width: 50%;
+				float: left;
+				margin-left: 5%;
+			}
+			select{
+				float: right;
+				width: 36%;
+			}
+			.comp-form-submit{
+				margin: 20px;
+			}
+		}
+	}
+	.comp-friends-invite{
+		width: 50%;
+		float: left;
+	}
 }
 
 
