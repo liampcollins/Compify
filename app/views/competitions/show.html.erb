@@ -1,15 +1,8 @@
-  
-
-
 <!-- Left column with  list of playlists
 Click on playlist brings up playlist with vote button next to it -->
 
-
-
-
 <div class="competition_show">
   <p id="notice"><%= notice %></p>
-
 
 <!-- Move to helper -->
   <% competition_participants = []%>
@@ -38,12 +31,13 @@ Click on playlist brings up playlist with vote button next to it -->
     <div class="voter-playlist-list">
       <% @competition.playlists.each do |playlist| %>
       <div class="voter-playlist-instance">
-        <div class="voter-playlist-owner"><%= playlist.user_id%></div>
+        <div class="voter-playlist-owner">
+          <%= playlist.user_id%></div>
         <div class="voter-playlist-name"><%= playlist.name%></div>
       </div>
     </div>
     <div class="playlist-player">
-      
+
     </div>
   </div>
 

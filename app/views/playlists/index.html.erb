@@ -64,8 +64,16 @@
         <div class="competition-search">
           <!-- SEARCH BOX -->
         </div>
+
         <div class="copmetition-scroll">
 <!--           NEED TO ACCESS @COMPETITIONS HERE (VIA PLAYLIST CONTROLLER) AND ITERATE THROUGH. TO ONLY SHOW RELEVANT COMPETITIONS EXPLORE OPTION TO ONLY SEND THROUGH SUBSET OR TO DO FILTERING IN HTML(ERB) -->
+        <% @competitions.each do |competition| %>
+          <% comp_json = competition.to_json %>
+          <div class="competition-in-list" data-competition="<%= comp_json %>">
+            <%= competition.name %>
+            <% competition.vote_end_date%>
+          </div>
+        <% end %>
         </div>
       </div>
       <div class="competition-viewer">
@@ -83,6 +91,10 @@
         <!-- SEARCH BOX -->
       </div>
       <div class="comp-select-vote-scroll">
+        <% @competitions.each do |competition| %>
+          <%= link_to competition.name, competition %>
+        <% end %>
+
         <!-- NEED TO ACCESS @COMPETITIONS HERE (VIA PLAYLIST CONTROLLER) AND ITERATE THROUGH. TO ONLY SHOW RELEVANT COMPETITIONS EXPLORE OPTION TO ONLY SEND THROUGH SUBSET OR TO DO FILTERING IN HTML(ERB) -->
         <!-- EACH IS A LINK TO THE RELEVANT COMPETITIONS#SHOW PAGE -->
       </div>
