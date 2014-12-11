@@ -10,10 +10,16 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="field">
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  </div>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :theme %><br />
+    <%= f.text_field :theme %>
   </div>
   <div class="field">
     <%= f.label :winner %><br />

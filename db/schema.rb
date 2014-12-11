@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140828151614) do
+ActiveRecord::Schema.define(:version => 20141211211316) do
 
   create_table "competitions", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(:version => 20140828151614) do
     t.datetime "vote_end_date"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.string   "user_id"
+    t.string   "theme"
+    t.string   "song_count"
   end
 
   create_table "playlists", :force => true do |t|

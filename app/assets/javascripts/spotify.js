@@ -1,6 +1,7 @@
 
 var playlist
 var selectedPlaylist
+var selectedCompetition
 var playlistSelected = false
 var competitionSelected = false
 var playlistSelector = false
@@ -84,10 +85,11 @@ function addPlaylistToComp (){
 
 
 function showCompDetails (){
-  $this = $(this)
-  var data = $this.data('competition')
-  console.log($this);
-  console.log(data['name'])
+  debugger
+  selectedCompetition= jQuery.parseJSON($(this)[0].dataset.competition);
+  var creatorId = competition.user_id
+   
+
 }
 
 
@@ -163,7 +165,7 @@ $(function(){
   $('.select-playlist-button').on('click', showPlaylistSelector);
   $('.competition-in-list').on('click', showCompDetails);
   $('.playlist-in-list').on('click', showPlaylistViewer);
-  $('.playlist-seleector-button').on('click', selectPlaylist);
+  $('.playlist-selector-button').on('click', selectPlaylist);
 })
 
 

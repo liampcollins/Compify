@@ -62,7 +62,7 @@
       </div>
       <div class="playlist-viewer">
         <iframe src="https://embed.spotify.com/?uri=spotify:user:liampcollins:playlist:7h14QNyinkdAMEPFWbQjqc" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-        <div class="playlist-seleector-button">Select this playlist</div>
+        <div class="playlist-selector-button">Select this playlist</div>
       </div>
     </div>
     <div class="competition-select">
@@ -71,20 +71,18 @@
           <!-- SEARCH BOX -->
         </div>
 
-        <div class="copmetition-scroll">
+        <div class="competition-scroll">
 <!--           NEED TO ACCESS @COMPETITIONS HERE (VIA PLAYLIST CONTROLLER) AND ITERATE THROUGH. TO ONLY SHOW RELEVANT COMPETITIONS EXPLORE OPTION TO ONLY SEND THROUGH SUBSET OR TO DO FILTERING IN HTML(ERB) -->
         <% @competitions.each do |competition| %>
-          <% comp_json = competition.to_json %>
           <%= content_tag :div, class: "competition-in-list", data: {competition: competition} do %>
               <%= competition.name %>
               <% competition.vote_end_date%>
           <% end %>
-          </div>
         <% end %>
         </div>
       </div>
       <div class="competition-viewer">
-        Need to plug in html here from data sent through to javascript 
+        <!-- Need to plug in html here from data sent through to javascript  -->
         <h3><!-- COMPETITION NAME --></h3>
         <p>CREATOR: <span class="comp-creator"></span></p>
         <p>THEME: <span class="comp-theme"></span> </p>
