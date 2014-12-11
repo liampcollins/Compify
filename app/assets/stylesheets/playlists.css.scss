@@ -116,7 +116,7 @@ section{
 			iframe{
 				border: 1px solid gray;
 			}
-			.playlist-seleector-button{
+			.playlist-selector-button{
 				margin: 0 auto;
 				width: 200px;
 				background: $color3;
@@ -141,6 +141,15 @@ section{
 			float: right;
 			width: 70%;
 			height: 100%;
+		}
+		.competition-selector-button{
+				margin: 0 auto;
+				width: 200px;
+				background: $color3;
+				color: $color2;
+				border-radius: 10px;
+				margin-top: 20px;
+				padding: 5px;
 		}
 	}
 

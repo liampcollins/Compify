@@ -85,10 +85,15 @@ function addPlaylistToComp (){
 
 
 function showCompDetails (){
-  debugger
   selectedCompetition= jQuery.parseJSON($(this)[0].dataset.competition);
-  var creatorId = competition.user_id
-   
+  var creator = $(this)[0].dataset.name
+  var theme = selectedCompetition.theme;
+  var songCount = selectedCompetition.song_count;
+  console.log(songCount)
+  $(".comp-creator").html(creator);
+  $(".comp-theme").html(theme);
+  $(".comp-song-count").html(songCount);
+  $('.competition-viewer').show();
 
 }
 

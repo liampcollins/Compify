@@ -74,7 +74,7 @@
         <div class="competition-scroll">
 <!--           NEED TO ACCESS @COMPETITIONS HERE (VIA PLAYLIST CONTROLLER) AND ITERATE THROUGH. TO ONLY SHOW RELEVANT COMPETITIONS EXPLORE OPTION TO ONLY SEND THROUGH SUBSET OR TO DO FILTERING IN HTML(ERB) -->
         <% @competitions.each do |competition| %>
-          <%= content_tag :div, class: "competition-in-list", data: {competition: competition} do %>
+          <%= content_tag :div, class: "competition-in-list", data: {competition: competition, name: competition.user.name} do %>
               <%= competition.name %>
               <% competition.vote_end_date%>
           <% end %>
@@ -86,9 +86,11 @@
         <h3><!-- COMPETITION NAME --></h3>
         <p>CREATOR: <span class="comp-creator"></span></p>
         <p>THEME: <span class="comp-theme"></span> </p>
-        <p>SONG NUMBER: <span class="comp-song"></span> </p>
+        <p>SONG COUNT: <span class="comp-song-count">x</span> </p>
+        <div class="competition-selector-button">Select this Competition</div>
+        </div>
       </div>
-    </div>
+
   </section>
 
   <section class="vote-on-comp">
