@@ -45,7 +45,7 @@ class CompetitionsController < ApplicationController
 
     respond_to do |format|
       if @competition.save
-        format.html { redirect_to @competition, notice: 'Competition was successfully created.' }
+        format.html { redirect_to playlists_path, notice: 'Competition was successfully created.' }
         format.json { render json: @competition, status: :created, location: @competition }
       else
         format.html { render action: "new" }

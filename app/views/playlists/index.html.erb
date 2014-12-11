@@ -75,18 +75,20 @@
 <!--           NEED TO ACCESS @COMPETITIONS HERE (VIA PLAYLIST CONTROLLER) AND ITERATE THROUGH. TO ONLY SHOW RELEVANT COMPETITIONS EXPLORE OPTION TO ONLY SEND THROUGH SUBSET OR TO DO FILTERING IN HTML(ERB) -->
         <% @competitions.each do |competition| %>
           <% comp_json = competition.to_json %>
-          <div class="competition-in-list" data-competition="<%= comp_json %>">
-            <%= competition.name %>
-            <% competition.vote_end_date%>
+          <%= content_tag :div, class: "competition-in-list", data: {competition: competition} do %>
+              <%= competition.name %>
+              <% competition.vote_end_date%>
+          <% end %>
           </div>
         <% end %>
         </div>
       </div>
       <div class="competition-viewer">
+        Need to plug in html here from data sent through to javascript 
         <h3><!-- COMPETITION NAME --></h3>
-        <p>CREATOR: <!-- COMPETITION CREATOR --></p>
-        <p>THEME: <!-- COMPETITION THEME --></p>
-        <p>SONG NUMBER: <!-- COMPETITION SONG NUMBER --></p>
+        <p>CREATOR: <span class="comp-creator"></span></p>
+        <p>THEME: <span class="comp-theme"></span> </p>
+        <p>SONG NUMBER: <span class="comp-song"></span> </p>
       </div>
     </div>
   </section>

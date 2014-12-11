@@ -3,6 +3,8 @@ var playlist
 var selectedPlaylist
 var playlistSelected = false
 var competitionSelected = false
+var playlistSelector = false
+var competitionSelector = false
 
 function request(method, url, data){
   return $.ajax({
@@ -34,17 +36,38 @@ function toggleVote(){
 
 function showCompetitionSelector(){
   console.log('showCompetitionSelector')
-  $('.add-playlist-title').hide();
-  $('.playlist-select').hide();
-  $('.competition-select').show();
+  if(competitionSelector==false){
+    $('.add-playlist-title').hide();
+    $('.playlist-select').hide();
+    $('.competition-select').show();
+    competitionSelector=true;
+    playlistSelector=false;
+  }else{
+    $('.competition-select').hide();
+    $('.playlist-select').hide();
+    $('.add-playlist-title').show();
+    competitionSelector=false;
+  }
+
+
 }
 
 
 function showPlaylistSelector() {
   console.log('showPlaylistSelector');
-  $('.add-playlist-title').hide();
-  $('.competition-select').hide();
-  $('.playlist-select').show();
+  if(playlistSelector==false){
+    $('.add-playlist-title').hide();
+    $('.competition-select').hide();
+    $('.playlist-select').show();
+    playlistSelector=true;
+    competitionSelector=false;
+  }else{
+    $('.competition-select').hide();
+    $('.playlist-select').hide();
+    $('.add-playlist-title').show();
+    playlistSelector=false;
+
+  }
 }
 
 function newCompCreated (e) {
@@ -72,11 +95,9 @@ function showCompDetails (){
 function showPlaylistViewer () {
   console.log($(this))
   playlist = jQuery.parseJSON($(this)[0].dataset.playlist)
-  var playlistUrl = playlist.url;
   var playlistId = playlist.id
   var playlistOwner = playlist.owner.id
   var iframe = $('iframe');
-  // debugger
   var playlistSrc="https://embed.spotify.com/?uri=spotify:user:" + playlistOwner + ":playlist:" + playlistId
   console.log(playlistSrc)
   iframe.attr("src", playlistSrc);
@@ -86,7 +107,38 @@ function showPlaylistViewer () {
 
 function selectPlaylist () {
   selectedPlaylist = playlist
+  // Toggling playlist, need to add code to toggle style on button too
+  if(playlistSelected = true){
+    playlistSelected = false
+  }else{
+    playlistSelected = true
+  }
+  addPlaylistToCompetition();
 }
+
+
+
+function addPlaylistToCompetition(e){
+  // WE NEED TO PASS IN THE COMP ID, THE PLAYLIST USER AND THE PLAYLIST ID
+  e.preventDefault()
+
+  if(competitionSelected==true){
+    if(playlistSelected==true){
+       playlistId = playlist.id
+        competitionId = competition.id
+        playlistOwner = playlist.owner.id
+        request("POST", "/playlists", {playlist:{spotify_id: playlistId, user_id: playlistOwner, competition_id: competitionId}} ).success(console.log("success"));
+    }else{
+      // Notify that they need to select a playlist
+    }
+  }else{
+    if(playlistSelected==true){
+      // Notify that they need to select a competition
+    }
+  }
+
+}
+
 
 
 $(document).ready(function(){
@@ -94,6 +146,8 @@ $(document).ready(function(){
   $('.playlist-select').hide();
   $('.competition-select').hide();
   $('.comp-friends-invite').hide();
+  $('.competition-viewer').hide();
+
   // $(".main").onepage_scroll({
   //   sectionContainer: "section",
   //   loop: true,
