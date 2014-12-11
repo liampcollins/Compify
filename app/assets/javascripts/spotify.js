@@ -1,6 +1,8 @@
 
-
-
+var playlist
+var selectedPlaylist
+var playlistSelected = false
+var competitionSelected = false
 
 function request(method, url, data){
   return $.ajax({
@@ -66,16 +68,37 @@ function showCompDetails (){
 }
 
 
+
+function showPlaylistViewer () {
+  console.log($(this))
+  playlist = jQuery.parseJSON($(this)[0].dataset.playlist)
+  var playlistUrl = playlist.url;
+  var playlistId = playlist.id
+  var playlistOwner = playlist.owner.id
+  var iframe = $('iframe');
+  // debugger
+  var playlistSrc="https://embed.spotify.com/?uri=spotify:user:" + playlistOwner + ":playlist:" + playlistId
+  console.log(playlistSrc)
+  iframe.attr("src", playlistSrc);
+
+
+}
+
+function selectPlaylist () {
+  selectedPlaylist = playlist
+}
+
+
 $(document).ready(function(){
 
   $('.playlist-select').hide();
   $('.competition-select').hide();
   $('.comp-friends-invite').hide();
-  $(".main").onepage_scroll({
-    sectionContainer: "section",
-    loop: true,
-    responsiveFallback: false
-  });
+  // $(".main").onepage_scroll({
+  //   sectionContainer: "section",
+  //   loop: true,
+  //   responsiveFallback: false
+  // });
 });
 
 
@@ -84,7 +107,9 @@ $(function(){
   $('.competition-form').on('submit', newCompCreated);
   $('.select-competition-button').on('click', showCompetitionSelector);
   $('.select-playlist-button').on('click', showPlaylistSelector);
-  $('.competition-in-list').on('click', showCompDetails)
+  $('.competition-in-list').on('click', showCompDetails);
+  $('.playlist-in-list').on('click', showPlaylistViewer);
+  $('.playlist-seleector-button').on('click', selectPlaylist);
 })
 
 

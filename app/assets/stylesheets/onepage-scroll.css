@@ -1,4 +1,4 @@
-body, html {
+/*body, html {
   margin: 0;
   overflow: hidden;
   -webkit-transition: opacity 400ms;
@@ -92,4 +92,4 @@ body, .onepage-wrapper, html {
 
 body.disabled-onepage-scroll, .disabled-onepage-scroll .onepage-wrapper, html {
   position: inherit;
-}
+}*/

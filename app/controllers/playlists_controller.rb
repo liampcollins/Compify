@@ -6,7 +6,8 @@ class PlaylistsController < ApplicationController
     if current_user
       token = current_user.session_token
       auth = "Bearer " + token
-      #@playlists = HTTParty.get("https://api.spotify.com/v1/users/#{current_user.uid}/playlists", :headers => { "Authorization" => auth})
+      @playlists = HTTParty.get("https://api.spotify.com/v1/users/#{current_user.uid}/playlists", :headers => { "Authorization" => auth})
+      # binding.pry
       # response_hash = JSON(request)
       #binding.pry
     end
@@ -39,8 +40,16 @@ class PlaylistsController < ApplicationController
   # GET /playlists/new
   # GET /playlists/new.json
   def new
+    if current_user
+      token = current_user.session_token
+      auth = "Bearer " + token
+      @playlists = HTTParty.get("https://api.spotify.com/v1/users/#{current_user.uid}/playlists", :headers => { "Authorization" => auth})
+      # binding.pry
+      # response_hash = JSON(request)
+      #binding.pry
+    end
+    @competitions = Competition.all
     @playlist = Playlist.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @playlist }
