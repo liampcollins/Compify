@@ -64,14 +64,14 @@ class PlaylistsController < ApplicationController
   # POST /playlists
   # POST /playlists.json
   def create
-
+# binding.pry
     @playlist = Playlist.new
-
-    @playlist.spotify_id = params["playlist"]["id"]
+    @playlist.spotify_id = params["playlist"]["spotify_id"]
     @playlist.name = params["playlist"]["name"]
-    @playlist.image = params["playlist"]["images"][0]
+    # @playlist.image = params["playlist"]["images"][0]
     @playlist.competition_id = params["playlist"]["competition_id"]
     @playlist.user_id = current_user.id
+    @playlist.spotify_user_name = params["playlist"]["user_id"]
     respond_to do |format|
       if @playlist.save
         format.html { redirect_to @playlist, notice: 'Playlist was successfully added.' }
