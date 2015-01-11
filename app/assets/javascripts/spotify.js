@@ -159,7 +159,7 @@ function addPlaylistToCompetition(e){
 function showPlaylistLists () {
   $('.playlist-in-vote-list').text('')
   $('.playlist-in-vote-list').html()
-  var playlistsInComp = jQuery.parseJSON($(this)[0].dataset.competition);
+  var playlistsInComp = jQuery.parseJSON($(this)[0].dataset.playlists);
   var numPlaylistsInComp = playlistsInComp.length;
   playlistsInComp.forEach(function(playlist){  
   $(".playlists-in-comp-header").append("<div class='playlist-in-vote-list' data-playlist='" + playlist.spotify_id + "' data-name='" + playlist.spotify_user_name + "' data-id='" + playlist.id + "'>" + playlist.name + "</div>");
@@ -171,12 +171,21 @@ function showPlaylistLists () {
 function showPlaylistToVote () {
   playlistSpotifyId = $(this).data().playlist
   playlistSpotifyUser = $(this).data().name
-  playlistSelectedToVote = $(this).data().name
+  playlistSelectedToVote = $(this).data().id
   var playlistSrc="https://embed.spotify.com/?uri=spotify:user:" + playlistSpotifyUser + ":playlist:" + playlistSpotifyId
   $(".playlist-viewer-to-vote").attr("src", playlistSrc);
   $('.playlist-viewer-vote-container').show();
   $('.comp-vote-button').show();
 };
+
+
+function voteOnPlaylist () {
+  console.log(playlistSelectedToVote)
+  request("POST", "/votes", {vote:{playlist: playlistSelectedToVote}} ).success(console.log("success")).success(function (){
+    $(".vote-notice").html("Thanks for voting!");
+  });
+
+}
 
 
 $(document).ready(function(){
@@ -214,6 +223,7 @@ $(document).ready(function(){
   });
   $('.competition-in-vote-list').on('click', showPlaylistLists);
   $(".playlist-in-vote-list").on('click', showPlaylistToVote);
+  $(".comp-vote-button").on('click', voteOnPlaylist)
 
 })
 

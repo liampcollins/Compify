@@ -75,12 +75,13 @@
   </section>
 
   <section class="vote-on-comp">
+    <div class="vote-notice"></div>
     <div class="comp-select-vote">
       <div class="comp-select-vote-search">
         <!-- SEARCH BOX -->
       </div> 
       <% @competitions.each do |competition| %>
-          <%= content_tag :div, class: "competition-in-vote-list", data: {competition: competition.playlists, name: competition.user.name} do %>
+          <%= content_tag :div, class: "competition-in-vote-list", data: {playlists: competition.playlists, name: competition.user.name, competition: competition.id} do %>
               <%= competition.name %>
               <% competition.vote_end_date%>
           <% end %>
@@ -158,5 +159,4 @@
       <!-- FACEBOOK API -->
     </div>
   </section>
-
 </main>

@@ -41,9 +41,9 @@ class VotesController < ApplicationController
   # POST /votes.json
   def create
     @vote = Vote.new
-    @vote.playlist_id = params[:vote][:playlist_id].to_i
-    @vote.user_id = current_user.id
-
+    @vote.playlist_id = params[:vote][:playlist].to_i
+    @vote.user_id = current_user.id.to_i
+    @vote.save
     respond_to do |format|
       if @vote.save
         format.html { redirect_to @vote, notice: 'Vote was successfully created.' }
