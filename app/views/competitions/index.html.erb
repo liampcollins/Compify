@@ -1,41 +1,10 @@
-<div class="competition_index">
-  <h1>Competitions</h1>
 
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Winner</th>
-      <th>Submission end date</th>
-      <th>Vote end date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
 
-  <% @competitions.each do |competition| %>
-  <% num_votes =[] %>
-    <% competition.playlists.each do |playlist| %>
-     <% num_votes.push(playlist.votes.length) %>
-    <% end %>
-    <% max_index = num_votes.index(num_votes.max) %>
 
-    <tr>
-      <td><%= competition.name %></td>
-      <% if max_index != nil %>
-        <td><%= competition.playlists[max_index].name %></td>
-      <% else %>
-        <td></td>
-      <% end %>
-      <td><%= competition.submission_end_date %></td>
-      <td><%= competition.vote_end_date %></td>
-      <td class="show_competition"><%= link_to 'Show', competition %></td>
-    </tr>
-  <% end %>
-  </table>
-  <div class="competitions_footer">
-    <%= link_to 'New Competition', new_competition_path %>
-  </div>
+<div class="homepage cf">
+  <div class="welcome">Welcome to Compify</div>
+  <div class="about-message">Challenge your friends to a playlist competition and vote for your favourite</div>
+
+  <div class="homepage-login">
+    <%= link_to "Login with Spotify to get started!", user_omniauth_authorize_path(:spotify) %></div>
 </div>
-
-<br />
-
