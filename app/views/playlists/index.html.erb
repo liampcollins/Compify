@@ -1,68 +1,73 @@
 
 <main class="main">
   <section class="dashboard-menu">
-    <div class="dashboard-menu-left">
-      <h2>WHADDA YA WANNA DO?</h2>
-    </div>
-    <div class="dashboard-menu-right">
-      <ul>
-        <li><a data-index="2" href="#2">Compete</a></li>
-        <li><a href="#3">Listen And Vote</a></li>
-        <li><a href="#4">Start A Challenge</a></li>
-      </ul> 
+    <div class="container first-cont">
+      <div class="dashboard-menu-left">
+        <h2>WHADDA YA WANNA DO?</h2>
+      </div>
+      <div class="dashboard-menu-right">
+        <ul>
+          <li><a data-index="2" href="#2">Compete</a></li>
+          <li><a href="#3">Listen And Vote</a></li>
+          <li><a href="#4">Start A Challenge</a></li>
+        </ul> 
+      </div>
     </div>
   </section>
 
+  <section class="break-1"></section>
+  
   <section class="add-playlist">
-    <div class="notice"></div>
-    <div class="add-playlist-selector">
-      <button class="select-competition-button">Select Competition</button>
-      <button class="select-playlist-button">Select Playlist</button>
-    </div>
-    <div class="add-playlist-title">
-      <h2>Enter Your Playlist Into A Competition</h2>
-    </div>
-    <div class="playlist-select">
-      <div class="playlist-list">
-        <div class="playlist-search">
-          <%= form_tag(playlists_path, :method => "get", class: "search", id: "search-form") do %>
-            <div class="input-append">
-             <%= text_field_tag :search, params[:search], class: "span2", placeholder: "Search Playlists" %>
-                 <button class="btn" type="submit"><i class="icon-search"></i></button>
-            </div>
-        <% end %>
-        </div>
-        <div class="playlist-scroll">
-          <div>Playlist list</div>
-            <% @playlists["items"].each do |playlist| %>
-              <%= content_tag :div, class: "playlist-in-list", data: {playlist: playlist} do %>
-                <%= playlist["name"]%>
-              <% end %>
-              <br>
+    <div class="container second-cont">
+      <div class="notice"></div>
+      <div class="add-playlist-selector">
+        <button class="select-competition-button">Select Competition</button>
+        <button class="select-playlist-button">Select Playlist</button>
+      </div>
+      <div class="add-playlist-title">
+        <h2>Enter Your Playlist Into A Competition</h2>
+      </div>
+      <div class="playlist-select">
+        <div class="playlist-list">
+          <div class="playlist-search">
+            <%= form_tag(playlists_path, :method => "get", class: "search", id: "search-form") do %>
+              <div class="input-append">
+               <%= text_field_tag :search, params[:search], class: "span2", placeholder: "Search Playlists" %>
+                   <button class="btn" type="submit"><i class="icon-search"></i></button>
+              </div>
             <% end %>
+          </div>
+          <div class="playlist-scroll">
+            <div>Playlist list</div>
+              <% @playlists["items"].each do |playlist| %>
+                <%= content_tag :div, class: "playlist-in-list", data: {playlist: playlist} do %>
+                  <%= playlist["name"]%>
+                <% end %>
+                <br>
+              <% end %>
+          </div>
+        </div>
+        <div class="playlist-viewer">
+          <iframe src="https://embed.spotify.com/?uri=spotify:user:liampcollins:playlist:7h14QNyinkdAMEPFWbQjqc" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+          <div class="playlist-selector-button">Select this playlist</div>
         </div>
       </div>
-      <div class="playlist-viewer">
-        <iframe src="https://embed.spotify.com/?uri=spotify:user:liampcollins:playlist:7h14QNyinkdAMEPFWbQjqc" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-        <div class="playlist-selector-button">Select this playlist</div>
-      </div>
-    </div>
-    <div class="competition-select">
-      <div class="competition-list">
-        <div class="competition-search">
-          <!-- SEARCH BOX -->
-        </div>
+      <div class="competition-select">
+        <div class="competition-list">
+          <div class="competition-search">
+            <!-- SEARCH BOX -->
+          </div>
 
-        <div class="competition-scroll">
-<!--           NEED TO ACCESS @COMPETITIONS HERE (VIA PLAYLIST CONTROLLER) AND ITERATE THROUGH. TO ONLY SHOW RELEVANT COMPETITIONS EXPLORE OPTION TO ONLY SEND THROUGH SUBSET OR TO DO FILTERING IN HTML(ERB) -->
-        <% @competitions.each do |competition| %>
-          <%= content_tag :div, class: "competition-in-list", data: {competition: competition, name: competition.user.name} do %>
-              <%= competition.name %>
-              <% competition.vote_end_date%>
-          <% end %>
-        <% end %>
+          <div class="competition-scroll">
+  <!--           NEED TO ACCESS @COMPETITIONS HERE (VIA PLAYLIST CONTROLLER) AND ITERATE THROUGH. TO ONLY SHOW RELEVANT COMPETITIONS EXPLORE OPTION TO ONLY SEND THROUGH SUBSET OR TO DO FILTERING IN HTML(ERB) -->
+            <% @competitions.each do |competition| %>
+              <%= content_tag :div, class: "competition-in-list", data: {competition: competition, name: competition.user.name} do %>
+                  <%= competition.name %>
+                  <% competition.vote_end_date%>
+              <% end %>
+            <% end %>
+          </div>
         </div>
-      </div>
       <div class="competition-viewer">
         <!-- Need to plug in html here from data sent through to javascript  -->
         <h3><!-- COMPETITION NAME --></h3>
@@ -72,91 +77,78 @@
         <div class="competition-selector-button">Select this Competition</div>
         </div>
       </div>
+     </div>
   </section>
+
+  <section class="break-2"></section>
 
   <section class="vote-on-comp">
-    <div class="vote-notice"></div>
-    <div class="comp-select-vote">
-      <div class="comp-select-vote-search">
-        <!-- SEARCH BOX -->
-      </div> 
-      <% @competitions.each do |competition| %>
-          <%= content_tag :div, class: "competition-in-vote-list", data: {playlists: competition.playlists, name: competition.user.name, competition: competition.id} do %>
-              <%= competition.name %>
-              <% competition.vote_end_date%>
+    <div class="container third-cont">
+      <div class="vote-notice"></div>
+      <div class="comp-select-vote">
+        <div class="comp-select-vote-search">
+          <!-- SEARCH BOX -->
+        </div> 
+        <% @competitions.each do |competition| %>
+            <%= content_tag :div, class: "competition-in-vote-list", data: {playlists: competition.playlists, name: competition.user.name, competition: competition.id} do %>
+                <%= competition.name %>
+                <% competition.vote_end_date%>
+            <% end %>
           <% end %>
-        <% end %>
+      </div>
+
+      <div class="playlist-vote-list">
+        <div class="playlists-in-comp-header">PLAYLISTS</div>
+
+      </div>
+      <div class='playlist-viewer-vote-container'>
+        <iframe class="playlist-viewer-to-vote" src="https://embed.spotify.com/?uri=spotify:user:liampcollins:playlist:7h14QNyinkdAMEPFWbQjqc" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+      </div>
+      <div class="comp-vote-button">VOTE</div>
+
+
+    <!--   <div>NEED TO PASS THE PLAYLIST FROM JAVASCRIPT TO HTML</div> -->
+
+      <div class="comp-reveal-button">Choose Competition</div>
+   
+      <div class="comp-select-vote-title">
+        <h2>Select A Competition To Listen And Vote </h2>
+      </div>
     </div>
-
-    <div class="playlist-vote-list">
-      <div class="playlists-in-comp-header">PLAYLISTS</div>
-
-    </div>
-    <div class='playlist-viewer-vote-container'>
-      <iframe class="playlist-viewer-to-vote" src="https://embed.spotify.com/?uri=spotify:user:liampcollins:playlist:7h14QNyinkdAMEPFWbQjqc" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-    </div>
-    <div class="comp-vote-button">VOTE</div>
-
-
-  <!--   <div>NEED TO PASS THE PLAYLIST FROM JAVASCRIPT TO HTML</div> -->
-
-    <div class="comp-reveal-button">Choose Competition</div>
- 
-    <div class="comp-select-vote-title">
-      <h2>Select A Competition To Listen And Vote </h2>
-    </div>
- 
-
-
   </section>
 
-
-
-
-
-
-
+  <section class="break-3"></section>
 
   <section class="create-comp">
-    <div class="create-comp-title">
-      <h2>Create A Competition</h2>
-    </div>
-<!--     POTENTIALLY MOVE ALL OF THIS TO COMPETITIONS#NEW -->
-    <div class="comp-form-container">
-      <form class="competition-form">
-        <label>Name Your Competition</label>
-        <input type="text">
-        <br>
-        <br>
-        <br>
-        <label>Create A Theme</label>
-        <input>
-        <br>
-        <div>Or Select An Existing One</div>
-        <select><!-- MAYBE AN ARRAY OF POTENTIAL THEMES DEFINED AND STORED LOCALLY --></select>
-        <br>
-        <br>
-        <br>
-        <label>Number Of Songs Per Playlist</label>
-        <input type="number">
-        <br>
-        <br>
-        <br>
-        <label>Closing Date For Entry</label>
-        <input type="date-time">
-        <br>
-        <br>
-        <br>
-        <label>Closing Date For Votes</label>
-        <input type="date-time"> <!--  MAYBE A CONDITION HERE THAT THIS HAS TO BE LATER THAN THE ONE ABOVE -->
-        <br>
-        <input class="comp-form-submit" type="submit" value="Create">
-      </form>
-    </div>
-    <div class="comp-friends-invite">
-      <h3>Competition Created!<br> 
-        Now Invite Some Friends To Compete</h3>
-      <!-- FACEBOOK API -->
+    <div class="container fourth-cont">
+      <div class="create-comp-title">
+        <h2>Create A Competition</h2>
+      </div>
+  <!--     POTENTIALLY MOVE ALL OF THIS TO COMPETITIONS#NEW -->
+      <div class="comp-form-container">
+        <form class="competition-form">
+          <input placeholder="Name Your Competition" type="text"> 
+          <br>
+          <div class="theme-form-options">
+            <input placeholder="Create A Theme">
+            <select class="theme-options">
+              <option class="default-theme" value="" default selected>Or Select An Existing One</option>
+            </select>
+          </div>
+<!--           <br>
+ -->          <input placeholder="Number Of Songs Per Playlist" type="number">
+          <br>
+          <input placeholder="Closing Date For Entry" type="datetime-local">
+          <input placeholder="Closing Date For Votes" type="datetime-local"> <!--  MAYBE A CONDITION HERE THAT THIS HAS TO BE LATER THAN THE ONE ABOVE -->
+          <br>
+          <input class="comp-form-submit" type="submit" value="Create">
+        </form>
+      </div>
+      <div class="comp-friends-invite">
+        <h3>Competition Created!<br> 
+          Now Invite Some Friends To Compete</h3>
+        <!-- FACEBOOK API -->
+      </div>
     </div>
   </section>
 </main>

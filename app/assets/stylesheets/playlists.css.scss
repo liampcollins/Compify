@@ -5,15 +5,38 @@
 *{
 	box-sizing: border-box;
 }
-
+// green
 $color1: #588C7E;
+// rgb(88,140,126)
+
+// yellow
 $color2: #F2E394;
+// rgb(242,227,148)
+
+// red
 $color3: #D96459;
+// rgb(217,100,89)
+
 $font-family: 'Droid Sans', sans-serif;
 
 main{
 	width: 100%;
 	font-family: $font-family;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: $color1;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: $color1;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:$color1;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color:$color1;
 }
 
 
@@ -37,213 +60,296 @@ main{
 section{
 	height: 100vh;
 	width: 100%;
+	padding-top: 5%;
+}
+
+.container{
+	// height: 100%;
+	// width: 100%;
 	padding: 5%;
+	background-color: rgba(50,50,50,0.5);
 }
 
 .dashboard-menu{
-	background: $color1;
+	background: url(/assets/dials.jpg);
+	background-repeat: none;
+	background-size: cover;
+	background-attachment:fixed;
+	// background: $color1;
 	color: $color2;
-	.dashboard-menu-left{
-		float: left;
-		width: 50%;
-		h2 {
-			font-size: 60px;
-			padding: 0 30%;
+	.container{
+		.dashboard-menu-left{
+			float: left;
+			width: 50%;
+			h2 {
+				font-size: 60px;
+				padding: 0 30%;
+			}
 		}
-	}
-	.dashboard-menu-right{
-		float:right;
-		width: 50%;
-		padding-top: 5%;
-		ul {
-			list-style: none;
-			li {
-				font-size: 20px;
-				line-height: 50px;
-				a{
-					color: $color2;
-					text-decoration: none;
+		.dashboard-menu-right{
+			float:right;
+			width: 50%;
+			padding-top: 5%;
+			ul {
+				list-style: none;
+				li {
+					font-size: 20px;
+					line-height: 50px;
+					a{
+						color: $color2;
+						text-decoration: none;
+					}
 				}
 			}
 		}
 	}
-
 }
 
+.break-1{
+	background: url(/assets/cd_shelf.jpg);
+	background-repeat: none;
+	background-size: cover;
+	background-attachment:fixed;
+	height: 70vh;
+}
 
 .add-playlist{
-	background: $color2;
+	// background: $color2;
+	background: url(/assets/headphones.jpg);
+	background-repeat: none;
+	background-size: cover;
+	background-attachment:fixed;
 	color: $color1;
-	.add-playlist-selector{
-		float: left;
-		width: 35%;
-		button{
-			width: 30%;
-			margin: 20%;
-		}
-	}
-	.add-playlist-title{
-		float: right;
-		width: 65%;
-		height: 100%;
-		h2{
-			font-size: 60px;
-			margin: 10% 20%;
-		}
-	}
-	.playlist-select {
-		float: right;
-		width: 65%;
-		height: 100%;
-		.playlist-list {
-			float:left;
-			width: 30%;
-			height: 80%;
-			border: solid 1px black;
-			.playlist-search{
-				height: 10%;
-				border: 1px solid $color3; 
-			}
-			.playlist-scroll{
-				height: 90%;
-				overflow: scroll;
+	.container{
+		// background-color: rgba(242,227,148,0.5);
+		.add-playlist-selector{
+			float: left;
+			width: 35%;
+			button{
+				width: 30%;
+				height: 80px;
+				font-size: 20px;
+				margin: 15%;
+				background: $color3; 
 			}
 		}
-		.playlist-viewer{
-			width: 70%;
-			height: 100%;
+		.add-playlist-title{
 			float: right;
-			iframe{
-				border: 1px solid gray;
-			}
-			.playlist-selector-button{
-				margin: 0 auto;
-				width: 200px;
-				background: $color3;
-				color: $color2;
-				border-radius: 10px;
-				margin-top: 20px;
-				padding: 5px;
-			}
-		}
-	}
-	.competition-select{
-		float: right;
-		width: 65%;
-		height: 100%;
-		.competition-list{
-			float:left;
-			width: 30%;
+			width: 65%;
 			height: 100%;
-			border: solid 1px black;
-		}
-		.competition-viewer{
-			float: right;
-			width: 70%;
-			height: 100%;
-		}
-		.competition-selector-button{
-				margin: 0 auto;
-				width: 200px;
-				background: $color3;
-				color: $color2;
-				border-radius: 10px;
-				margin-top: 20px;
-				padding: 5px;
-		}
-	}
+			h2{
+				font-size: 60px;
+				margin: 10% 20%;
+			}
 
+		}
+		.playlist-select {
+			float: right;
+			width: 65%;
+			height: 100%;
+			.playlist-list {
+				float:left;
+				width: 30%;
+				height: 80%;
+				border: solid 1px black;
+				.playlist-search{
+					height: 10%;
+					border: 1px solid $color3; 
+				}
+				.playlist-scroll{
+					height: 90%;
+					overflow: scroll;
+				}
+			}
+			.playlist-viewer{
+				width: 70%;
+				height: 100%;
+				float: right;
+				iframe{
+					border: 1px solid gray;
+				}
+				.playlist-selector-button{
+					margin: 0 auto;
+					width: 200px;
+					background: $color3;
+					color: $color2;
+					border-radius: 10px;
+					margin-top: 20px;
+					padding: 5px;
+				}
+			}
+		}
+		.competition-select{
+			float: right;
+			width: 65%;
+			height: 100%;
+			.competition-list{
+				float:left;
+				width: 30%;
+				height: 100%;
+				border: solid 1px black;
+			}
+			.competition-viewer{
+				float: right;
+				width: 70%;
+				height: 100%;
+			}
+			.competition-selector-button{
+					margin: 0 auto;
+					width: 200px;
+					background: $color3;
+					color: $color2;
+					border-radius: 10px;
+					margin-top: 20px;
+					padding: 5px;
+			}
+		}
+	}
+}
+
+.break-2{
+	background: url(/assets/vinyls1.jpg);
+	background-repeat: none;
+	background-size: cover;
+	background-attachment:fixed;
+	height: 70vh;
 }
 
 .vote-on-comp{
-	background: $color1;
+	// background: $color1;
+	background: url(/assets/earphones.jpg);
+	background-repeat: none;
+	background-size: cover;
+	background-attachment:fixed;
 	color: $color2;
-	.comp-select-vote{
-		float: left;
-		width: 25%;
-		height: 80%;
-		border: 1px solid $color3;
-	}
-	.playlist-vote-list{
-		float: left;
-		width: 25%;
-		height: 80%;
-		border: 1px solid $color3;
-	}
-	.playlist-viewer-vote-container{
-		float: left;
-		width: 35%;
-		height: 80%;
-		border: 1px solid $color3;
-	}
-	.comp-vote-button{
-		font-size: 20px;
-		background: $color3;
-		color: $color2;
-		border-radius: 10px;
-		padding: 20px;
-		float: right;
-	}
-	.comp-reveal-button{
-		font-size: 30px;
-		// width: 500px;
-		background: $color3;
-		color: $color2;
-		border-radius: 10px;
-		padding: 20px;
-		float: right;
-		margin: 150px 150px 0 0; 
-	}
-	.comp-select-vote-title{
-		float: left;
-		width: 50%;
-		h2{
-			font-size: 60px;
-			width: 60%;
-			margin-top: 15%;
-			margin-left: 10%;
+	.container{
+		// background-color: rgba(88,140,126,0.3);
+		.comp-select-vote{
+			float: left;
+			width: 25%;
+			height: 80%;
+			border: 1px solid $color3;
+		}
+		.playlist-vote-list{
+			float: left;
+			width: 25%;
+			height: 80%;
+			border: 1px solid $color3;
+		}
+		.playlist-viewer-vote-container{
+			float: left;
+			width: 35%;
+			height: 80%;
+			border: 1px solid $color3;
+		}
+		.comp-vote-button{
+			font-size: 20px;
+			background: $color3;
+			color: $color2;
+			border-radius: 10px;
+			padding: 20px;
+			float: right;
+		}
+		.comp-reveal-button{
+			font-size: 30px;
+			// width: 500px;
+			background: $color3;
+			color: $color2;
+			border-radius: 10px;
+			padding: 20px;
+			float: right;
+			margin: 150px 150px 0 0; 
+		}
+		.comp-select-vote-title{
+			float: left;
+			width: 50%;
+			h2{
+				font-size: 60px;
+				width: 60%;
+				margin-top: 15%;
+				margin-left: 10%;
+			}
 		}
 	}
 }
 
+.break-3{
+	background: url(/assets/vinyls2.jpg);
+	background-repeat: none;
+	background-size: cover;
+	background-attachment:fixed;
+	height: 70vh;
+}
+
 .create-comp{
-	background: $color2;
+	// background: $color2;
+	background: url(/assets/dials.jpg);
+	background-repeat: none;
+	background-size: cover;
+	background-attachment:fixed;
 	color: $color1;
-	.create-comp-title{
-		width: 50%;
-		height: 100%;
-		float: right;
-		h2{
-			font-size: 60px;
-		}
-	}
-	.comp-form-container{
-		width: 50%;
-		height: 100%;
-		float: left;
-		form{
-			width: 600px;
-			input{
-				float: right;
-			}
-			div{
-				margin-top: 7px;
-				width: 50%;
-				float: left;
-				margin-left: 5%;
-			}
-			select{
-				float: right;
-				width: 36%;
-			}
-			.comp-form-submit{
-				margin: 20px;
+	.container{
+		// background-color: rgba(242,227,148,0.3);
+		.create-comp-title{
+			width: 50%;
+			height: 100%;
+			float: right;
+			margin-top: 120px;
+			padding-left: 50px;
+			h2{
+				font-size: 60px;
 			}
 		}
-	}
-	.comp-friends-invite{
-		width: 50%;
-		float: left;
+		.comp-form-container{
+			width: 50%;
+			height: auto;
+			float: left;
+			margin-top: 100px;
+			background-color: rgba(50,50,50,0.5);
+			padding: 20px; 
+			form{
+				text-align: center;
+				width: 100%;
+				input{
+					color: $color1;
+					font-size: 20px;
+					width: 300px;
+					height: 34px;
+					margin-top: 15px;
+					padding-top: 5px;
+					text-align: center;
+				}
+				// input[placeholder]{
+				// 	color: $color1;
+				// }
+				.theme-form-options{
+					input{
+						width:160px; 
+					}
+					select{
+						vertical-align: top;
+						margin-top: 15px;
+						width: 215px;
+					    padding: 5px;
+					    font-size: 16px;
+					    border: 1px solid #ccc;
+					    height: 34px;
+					    color: $color1;
+						option{
+							font-size: 20px;
+							color: $color1;
+						}
+					}
+				}
+				.comp-form-submit{
+					margin: 20px;
+				}
+			}
+		}
+		.comp-friends-invite{
+			width: 50%;
+			float: left;
+		}
 	}
 }
 
