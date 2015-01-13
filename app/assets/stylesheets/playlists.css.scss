@@ -35,6 +35,7 @@ $font-family: 'Droid Sans', sans-serif;
 main{
 	width: 100%;
 	font-family: $font-family;
+	margin-top: -15px;
 }
 
 ::-webkit-input-placeholder { /* WebKit browsers */
@@ -55,7 +56,7 @@ main{
 
 .alert{
 	// removes space between nav and first section
-	margin-bottom: 7px;
+	// margin-bottom: 7px;
 }
 
 .navbar {
@@ -77,8 +78,6 @@ section{
 }
 
 .container{
-	// height: 100%;
-	// width: 100%;
 	padding: 5%;
 	background-color: rgba(50,50,50,0.5);
 }

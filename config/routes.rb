@@ -11,7 +11,7 @@ Compify::Application.routes.draw do
   resources :competitions, except: [:edit, :update, :delete]
 
 
-  root :to => 'competitions#index'
+  root :to => 'playlists#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
