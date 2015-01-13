@@ -12,8 +12,11 @@
   <script>
     <% if current_user%>
       window.currentUserVotes = <%= raw current_user.votes.to_json %>
+      window.currentUser = <%= raw current_user.to_json %>
+
     <% else %>
       window.currentUserVotes = <%= false %>
+      window.currentUser = <%= false %>
     <% end %>
   </script>
 </head>

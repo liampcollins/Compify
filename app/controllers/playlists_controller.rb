@@ -88,7 +88,6 @@ class PlaylistsController < ApplicationController
   # PUT /playlists/1
   # PUT /playlists/1.json
   def update
-    binding.pry
     @playlist = Playlist.find(params[:id])
 
     respond_to do |format|

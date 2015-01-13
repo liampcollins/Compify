@@ -1,4 +1,8 @@
 
+<% if @playlists["items"] != nil %>
+
+
+
 <main class="main">
   <section class="dashboard-menu">
     <div class="container first-cont">
@@ -127,19 +131,18 @@
   <!--     POTENTIALLY MOVE ALL OF THIS TO COMPETITIONS#NEW -->
       <div class="comp-form-container">
         <form class="competition-form">
-          <input placeholder="Name Your Competition" type="text"> 
+          <input name="competition-name" placeholder="Name Your Competition" type="text"> 
           <br>
           <div class="theme-form-options">
-            <input placeholder="Create A Theme">
-            <select class="theme-options">
+            <input name="theme" class="theme-freetext" placeholder="Create A Theme">
+            <select name="theme" class="theme-options">
               <option class="default-theme" value="" default selected>Or Select An Existing One</option>
             </select>
           </div>
-<!--           <br>
- -->          <input placeholder="Number Of Songs Per Playlist" type="number">
+          <input name="song-count" placeholder="Number Of Songs Per Playlist" type="number">
           <br>
-          <input placeholder="Closing Date For Entry" type="datetime-local">
-          <input placeholder="Closing Date For Votes" type="datetime-local"> <!--  MAYBE A CONDITION HERE THAT THIS HAS TO BE LATER THAN THE ONE ABOVE -->
+          <input name="entry-close" placeholder="Closing Date For Entry" type="datetime-local">
+          <input name="vote-close" placeholder="Closing Date For Votes" type="datetime-local"> <!--  MAYBE A CONDITION HERE THAT THIS HAS TO BE LATER THAN THE ONE ABOVE -->
           <br>
           <input class="comp-form-submit" type="submit" value="Create">
         </form>
@@ -152,3 +155,6 @@
     </div>
   </section>
 </main>
+<% else %>
+  <h1>Your Session Has Timed Out. Please Logout and Login Again</h1>
+<% end %>

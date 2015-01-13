@@ -40,8 +40,13 @@ class CompetitionsController < ApplicationController
   # POST /competitions
   # POST /competitions.json
   def create
-    @competition = Competition.new(params[:competition])
-
+    @competition = Competition.new
+    @competition.name = params["competition-name"]
+    @competition.theme = params["theme"]
+    @competition.song_count = params["song-count"]
+    @competition.submission_end_date = params["entry-close"]
+    @competition.vote_end_date = params["vote-close"]
+    @competition.user_id = current_user.id
     respond_to do |format|
       if @competition.save
         format.html { redirect_to playlists_path, notice: 'Competition was successfully created.' }
