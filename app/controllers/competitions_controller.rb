@@ -61,8 +61,17 @@ class CompetitionsController < ApplicationController
   # PUT /competitions/1
   # PUT /competitions/1.json
   def update
-    @competition = Competition.find(params[:id])
 
+    @competition = Competition.find(params["id"].to_i)
+    playlist_votes = []
+    playlist_owners = []
+    @competition.playlists.each do |playlist|
+      playlist_votes.push(playlist.votes.count)
+      playlist_owners.push(playlist.user_id)
+    end
+    winning_playlist_index = playlist_votes.index(playlist_votes.max)
+    @competition.winner = playlist_owners[winning_playlist_index]
+    
     respond_to do |format|
       if @competition.update_attributes(params[:competition])
         format.html { redirect_to @competition, notice: 'Competition was successfully updated.' }

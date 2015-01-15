@@ -279,28 +279,45 @@ var day
 var hour
 var minute
 var nowFinishedCompetitions = []
+var url
+var updateData
 
-// function checkForEntryClosed(){
+// Need to write code that looks at competitions without a winner and check if closing date has passed
 
-//   now = new Date()
-//   request("GET", "/competitions").success(function(data){
-//     data.forEach(function (competition){
-//       if(competition.winner == 0){
-//         date = new Date()
-//         dateArray = competition.submission_end_date.split(/[-T:Z]+/);
-//         date.setFullYear(parseInt(dateArray[0]));
-//         date.setMonth(parseInt(dateArray[1])-1);
-//         date.setDate(parseInt(dateArray[2]));
-//         date.setHours(parseInt(dateArray[3]));
-//         date.setMinutes(parseInt(dateArray[4]));
-//         if(now - date > 0){
-//           // no more entries
-//         }
-//       }
-// debugger
-//     })
-//   })
-// }
+function checkForEntryClosed(){
+
+  now = new Date()
+  request("GET", "/competitions").success(function(data){
+    
+    competition = data[0]
+    console.log(competition.name)
+    url = "/competitions/" + competition.id
+    updateData = {id: competition.id}
+    request("PUT", url, updateData).success(function(){
+      console.log("competition updated")
+    })
+
+
+  //   data.forEach(function (competition){
+  //     if(competition.winner == 0 || competition.winner == null){
+  //       date = new Date()
+  //       dateArray = competition.vote_end_date.split(/[-T:Z]+/);
+  //       date.setFullYear(parseInt(dateArray[0]));
+  //       date.setMonth(parseInt(dateArray[1])-1);
+  //       date.setDate(parseInt(dateArray[2]));
+  //       date.setHours(parseInt(dateArray[3]));
+  //       date.setMinutes(parseInt(dateArray[4]));
+  //       if(now - date > 0){
+  //         url = "competitions/" + competition.id
+  //         updateData = {competition:{id: competition.id}}
+  //         request("PUT", url, updateData).success(function(){
+  //           console.log("competition updated")
+  //         })
+  //       }
+  //     }
+  //   })
+  })
+}
 
 
 

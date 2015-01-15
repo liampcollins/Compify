@@ -8,7 +8,7 @@ Compify::Application.routes.draw do
   resources :playlists, except: [:delete]
 
 
-  resources :competitions, except: [:edit, :update, :delete]
+  resources :competitions, except: [:edit, :delete]
 
 
   root :to => 'playlists#index'
