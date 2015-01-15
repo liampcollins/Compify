@@ -230,9 +230,9 @@ console.log('creating competition')
     data[this[3].name] = this[3].value
     data[this[4].name] = this[4].value
     data[this[5].name] = this[5].value
+    debugger
     request("POST", "/competitions", data).success(function(){
       console.log("SUCCESS")
-      // $('.competition-in-vote-list').append('<div class="competition-in-list" data-competition="{&quot;created_at&quot;:&quot;2014-12-14T22:22:41Z&quot;,&quot;id&quot;:2,&quot;name&quot;:&quot;'+this[0].value+'2&quot;,&quot;&quot;:&quot;'+this[3].value+'&quot;,&quot;submission_end_date&quot;:&quot;'+this[4].value+'&quot;,&quot;theme&quot;:&quot;'+theme+'&quot;,&quot;updated_at&quot;:&quot;2014-12-14T22:22:41Z&quot;,&quot;'+currentUser.id+'&quot;:&quot;'++'&quot;,&quot;vote_end_date&quot;:&quot;'+this[5].value+'&quot;,&quot;winner&quot;:null}" data-name=currentUser.name>'+this[0].value+'</div>')
         $('.competition-in-vote-list').append('<div class="competition-in-list" data-competition="{&quot;created_at&quot;:&quot;2014-12-14T22:22:41Z&quot;,&quot;id&quot;:2,&quot;name&quot;:&quot;'+this[0].value+'2&quot;,&quot;&quot;:&quot;'+this[3].value+'&quot;,&quot;submission_end_date&quot;:&quot;'+this[4].value+'&quot;,&quot;theme&quot;:&quot;'+theme+'&quot;,&quot;updated_at&quot;:&quot;2014-12-14T22:22:41Z&quot;,&quot;user_id&quot;:&quot;'+currentUser.id+'&quot;,&quot;vote_end_date&quot;:&quot;'+this[5].value+'&quot;,&quot;winner&quot;:null}" data-name=currentUser.name>'+this[0].value+'</div>')
     })
 };
@@ -270,6 +270,40 @@ function toggleThemeFreetext(){
   }
 }
 
+var now
+var date
+var dateArray
+var year
+var month
+var day
+var hour
+var minute
+var nowFinishedCompetitions = []
+
+// function checkForEntryClosed(){
+
+//   now = new Date()
+//   request("GET", "/competitions").success(function(data){
+//     data.forEach(function (competition){
+//       if(competition.winner == 0){
+//         date = new Date()
+//         dateArray = competition.submission_end_date.split(/[-T:Z]+/);
+//         date.setFullYear(parseInt(dateArray[0]));
+//         date.setMonth(parseInt(dateArray[1])-1);
+//         date.setDate(parseInt(dateArray[2]));
+//         date.setHours(parseInt(dateArray[3]));
+//         date.setMinutes(parseInt(dateArray[4]));
+//         if(now - date > 0){
+//           // no more entries
+//         }
+//       }
+// debugger
+//     })
+//   })
+// }
+
+
+
 $(document).ready(function(){
 
   $('.playlist-select').hide();
@@ -298,6 +332,7 @@ $(document).ready(function(){
   $('.theme-freetext').change(toggleThemeSelect);
   $('.theme-options').change(toggleThemeFreetext);
   $('.competition-form').on('submit', createComp);
+checkForEntryClosed()
 
 
 

@@ -169,8 +169,20 @@ section{
 					border: 1px solid $color3; 
 				}
 				.playlist-scroll{
-					height: 90%;
+					height: 360px;
 					overflow: scroll;
+					background: $color3;
+					.playlist-list-title{
+						font-weight: bold;
+						border-bottom: 2px solid $color1;
+					}
+					.playlist-in-list{
+						cursor: pointer;
+					}
+					.playlist-in-list:hover{
+						font-weight: bold;
+						background: $color2;
+					}
 				}
 			}
 			.playlist-viewer{
@@ -200,11 +212,23 @@ section{
 				width: 30%;
 				height: 100%;
 				border: solid 1px black;
+				.competition-scroll{
+					background: $color3;
+					.competition-in-list{
+						cursor: pointer;
+					}
+					.competition-in-list:hover{
+						font-weight: bold;
+						background: $color2;
+					}
+
+				}
 			}
 			.competition-viewer{
 				float: right;
 				width: 70%;
 				height: 100%;
+				max-height: 350px;
 			}
 			.competition-selector-button{
 					margin: 0 auto;
