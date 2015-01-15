@@ -69,7 +69,7 @@
         </div>
         <div class="playlist-viewer">
           <iframe src="https://embed.spotify.com/?uri=spotify:user:liampcollins:playlist:7h14QNyinkdAMEPFWbQjqc" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-          <div class="playlist-selector-button">Select this playlist</div>
+          <div class="playlist-selector-button">Select this Playlist</div>
         </div>
       </div>
       <div class="competition-select">
@@ -93,6 +93,8 @@
           <p>CREATOR: <span class="comp-creator"></span></p>
           <p>THEME: <span class="comp-theme"></span> </p>
           <p>SONG COUNT: <span class="comp-song-count">x</span> </p>
+          <p>CLOSING DATE FOR SUBMISSIONS: <span class="comp-subm-close">x</span> </p>
+          <p>CLOSING DATE FOR VOTING: <span class="comp-vote-close">x</span> </p>
           <div class="competition-selector-button">Select this Competition</div>
         </div>
       </div>
@@ -108,13 +110,14 @@
           <!-- SEARCH BOX -->
         </div> 
         <% competitions_for_voting.each do |competition| %>
-            <%= content_tag :div, class: "competition-in-vote-list", data: {playlists: competition.playlists, name: competition.user.name, competition: competition.id} do %>
-                <%= competition.name %>
-                <% competition.vote_end_date%>
-            <% end %>
+          <%= content_tag :div, class: "competition-in-vote-list", data: {playlists: competition.playlists, name: competition.user.name, competition: competition.id} do %>
+              <%= competition.name %>
+              <% competition.vote_end_date%>
           <% end %>
-      </div>
+        <% end %>
 
+      </div>
+      <div class="close-vote-button">CLOSE</div>
       <div class="playlist-vote-list">
         <div class="playlists-in-comp-header">PLAYLISTS</div>
 

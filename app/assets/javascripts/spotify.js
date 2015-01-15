@@ -82,13 +82,11 @@ function showPlaylistSelector() {
 
 function showCompDetails (){
   competition= jQuery.parseJSON($(this)[0].dataset.competition);
-  var creator = $(this)[0].dataset.name
-  var theme = competition.theme;
-  var songCount = competition.song_count;
-  console.log(songCount)
-  $(".comp-creator").html(creator);
-  $(".comp-theme").html(theme);
-  $(".comp-song-count").html(songCount);
+  $(".comp-creator").html($(this)[0].dataset.name);
+  $(".comp-theme").html(competition.theme);
+  $(".comp-song-count").html(competition.song_count);
+  $('.comp-subm-close').html(competition.submission_end_date);
+  $('.comp-vote-close').html(competition.vote_end_date);
   $('.competition-viewer').show();
 
 }
@@ -111,8 +109,11 @@ function selectPlaylist () {
   // Toggling playlist, need to add code to toggle style on button too
   if(playlistSelected == true){
     playlistSelected = false
+    $('.playlist-selector-button').text("Select this Playlist")
   }else{
     playlistSelected = true
+    $('.competition-selector-button').text("Playlist Selected")
+
   }
   addPlaylistToCompetition();
 }
@@ -121,8 +122,10 @@ function selectCompetition () {
   selectCompetition = competition
   if(competitionSelected == true){
     competitionSelected = false
+    $('.competition-selector-button').text("Select this Competition")
   }else{
     competitionSelected = true
+    $('.competition-selector-button').text("Competition Selected")
   }
   addPlaylistToCompetition();
 }
@@ -166,20 +169,27 @@ function showPlaylistLists () {
   $(".vote-notice").html("");
   var competitionSelectedToVote = jQuery.parseJSON($(this)[0].dataset.competition) 
   var playlistsInComp = jQuery.parseJSON($(this)[0].dataset.playlists);
-  var numPlaylistsInComp = playlistsInComp.length;
-  playlistsInComp.forEach(function(playlist){  
-    $(".playlists-in-comp-header").append("<div class='playlist-in-vote-list' data-playlist='" + playlist.spotify_id + "' data-name='" + playlist.spotify_user_name + "' data-id='" + playlist.id + "'>" + playlist.name + "</div>");
-    $(".playlist-in-vote-list").on('click', showPlaylistToVote);
-    $('.playlist-vote-list').show();
-    var votesInPlaylist = playlist.votes;
-    currentUserVotes.forEach(function(vote){
-      if(vote.playlist_id == playlist.id){
-        $(".vote-notice").html("You've aready voted in this Competition");
-        haveVotedInThisComp = true
-        // $(".comp-vote-button").hide;
-      }    
+  if(playlistsInComp.length != 0){
+      var numPlaylistsInComp = playlistsInComp.length;
+      playlistsInComp.forEach(function(playlist){  
+      $(".playlists-in-comp-header").append("<div class='playlist-in-vote-list' data-playlist='" + playlist.spotify_id + "' data-name='" + playlist.spotify_user_name + "' data-id='" + playlist.id + "'>" + playlist.name + "</div>");
+      $(".playlist-in-vote-list").on('click', showPlaylistToVote);
+      $('.playlist-vote-list').show();
+      var votesInPlaylist = playlist.votes;
+      currentUserVotes.forEach(function(vote){
+        if(vote.playlist_id == playlist.id){
+          $(".vote-notice").html("You've aready voted in this Competition");
+          haveVotedInThisComp = true
+          // $(".comp-vote-button").hide;
+        }    
+      });
     });
-  });
+  }else{
+
+    $('.playlist-vote-list').show();
+    $('.playlists-in-comp-header').text("NO PLAYLISTS ADDED YET")
+  }
+  
 };
 
 function showPlaylistToVote () {
@@ -330,6 +340,7 @@ $(document).ready(function(){
   $('.comp-select-vote').hide();
   $('.playlist-viewer-vote-container').hide();
   $('.comp-vote-button').hide();
+  $('.close-vote-button').hide()
   $('.playlist-vote-list').hide();
   $('.select-competition-button').on('click', showCompetitionSelector);
   $('.select-playlist-button').on('click', showPlaylistSelector);
@@ -341,7 +352,14 @@ $(document).ready(function(){
       $('.comp-select-vote').show();
       $('.comp-select-vote-title').hide();
       $('.comp-reveal-button').hide();
+      $('.close-vote-button').show()
   });
+  $('.close-vote-button').on('click', function(){
+    $('.comp-select-vote').hide();
+    $('.comp-select-vote-title').show();
+    $('.comp-reveal-button').show();
+    $('.close-vote-button').hide()
+  })
   $('.competition-in-vote-list').on('click', showPlaylistLists);
   $(".playlist-in-vote-list").on('click', showPlaylistToVote);
   $(".comp-vote-button").on('click', voteOnPlaylist);
