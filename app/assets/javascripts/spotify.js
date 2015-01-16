@@ -13,7 +13,6 @@ var themes = ["One-hit wonders", "Covers", "Christmas", "Summer", "Halloween", "
 
 
 
-
 function request(method, url, data){
   return $.ajax({
     method: method,
@@ -367,21 +366,8 @@ $(document).ready(function(){
   $('.theme-freetext').change(toggleThemeSelect);
   $('.theme-options').change(toggleThemeFreetext);
   $('.competition-form').on('submit', createComp);
-checkForEntryClosed()
-
-
-
-  // $(".main").onepage_scroll({
-  //   sectionContainer: "section",
-  //   loop: true,
-  //   responsiveFallback: false
-  // });
-// });
-
-
-// $(function(){
-  // $('.submit_vote_button').on('click', toggleVote);
-
+  checkForEntryClosed()
+  $('a').smoothScroll({easing: 'swing',speed: 2000})
 
 })
 
