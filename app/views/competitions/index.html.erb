@@ -1,10 +1,24 @@
 
+<h1>Your past competitions</h1>
+<% relevant_competitions = []%>
+<% @competitions.each do |competition| %>
+	<% if competition.winner!=0 && competition.winner != nil%>
+		<% competition.playlists.each do |playlist| %>
+			<% if playlist.user_id == current_user.id %>
+				<% relevant_competitions.push(competition) %>
+			<% end%>				
+		<% end%>
+	<% end%>
+<% end%>
 
-
-<div class="homepage cf">
-  <div class="welcome">Welcome to Compify</div>
-  <div class="about-message">Challenge your friends to a playlist competition and vote for your favourite</div>
-
-  <div class="homepage-login">
-    <%= link_to "Login with Spotify to get started!", user_omniauth_authorize_path(:spotify) %></div>
-</div>
+<% relevant_competitions.each do |competition| %>
+	<div><%= competition.name%></div>
+	<%# user = User.find(competition.winner) %>
+	
+	<% if competition.winner != nil %>
+		<% u = User.find(competition.winner) %>
+		<div><%= u.name %></div>
+	<% else %>
+		<div> No winner on record </div>
+	<% end %>
+<% end %>
