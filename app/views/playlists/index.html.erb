@@ -35,7 +35,7 @@
     </div>
   </section>
 
-  <section class="break-1"></section>
+  <section class="break-1 break"></section>
   
   <section class="add-playlist" id="2">
     <div class="container second-cont">
@@ -100,7 +100,7 @@
       </div>
     </div>
   </section>
-  <section class="break-2"></section>
+  <section class="break-2 break"></section>
 
   <section class="vote-on-comp" id="3">
     <div class="container third-cont">
@@ -117,7 +117,6 @@
         <% end %>
 
       </div>
-      <div class="close-vote-button">CLOSE</div>
       <div class="playlist-vote-list">
         <div class="playlists-in-comp-header">PLAYLISTS</div>
 
@@ -130,15 +129,16 @@
 
     <!--   <div>NEED TO PASS THE PLAYLIST FROM JAVASCRIPT TO HTML</div> -->
 
-      <div class="comp-reveal-button">Choose Competition</div>
-   
       <div class="comp-select-vote-title">
         <h2>Select A Competition To Listen And Vote </h2>
       </div>
+
+      <div class="comp-reveal-button">Choose Competition</div>
+      <div class="close-vote-button">CLOSE</div>
     </div>
   </section>
 
-  <section class="break-3"></section>
+  <section class="break-3 break"></section>
 
   <section class="create-comp" id="4">
     <div class="container fourth-cont">
@@ -158,7 +158,9 @@
           </div>
           <input name="song-count" placeholder="Number Of Songs Per Playlist" type="number">
           <br>
+          <label class="entry-close-label">Closing date for entry</label>
           <input name="entry-close" placeholder="Closing Date For Entry" type="datetime-local">
+          <label class="vote-close-label">Closing date for votes</label>
           <input name="vote-close" placeholder="Closing Date For Votes" type="datetime-local"> <!--  MAYBE A CONDITION HERE THAT THIS HAS TO BE LATER THAN THE ONE ABOVE -->
           <br>
           <input class="comp-form-submit" type="submit" value="Create">
@@ -173,5 +175,5 @@
   </section>
 </main>
 <% else %>
-  <h1>Your Session Has Timed Out. Please Logout and Login Again</h1>
+  <h1 class="timed-out-message">Your Session Has Timed Out. Please Logout and Login Again</h1>
 <% end %>

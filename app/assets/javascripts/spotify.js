@@ -163,6 +163,7 @@ function addPlaylistToCompetition(e){
 
 
 function showPlaylistLists () {
+  $('.playlists-in-comp-header').text("")
   $('.playlist-in-vote-list').text('');
   $('.playlist-in-vote-list').html();
   $(".vote-notice").html("");
@@ -305,26 +306,6 @@ function checkForEntryClosed(){
     request("PUT", url, updateData).success(function(){
       console.log("competition updated")
     })
-
-
-  //   data.forEach(function (competition){
-  //     if(competition.winner == 0 || competition.winner == null){
-  //       date = new Date()
-  //       dateArray = competition.vote_end_date.split(/[-T:Z]+/);
-  //       date.setFullYear(parseInt(dateArray[0]));
-  //       date.setMonth(parseInt(dateArray[1])-1);
-  //       date.setDate(parseInt(dateArray[2]));
-  //       date.setHours(parseInt(dateArray[3]));
-  //       date.setMinutes(parseInt(dateArray[4]));
-  //       if(now - date > 0){
-  //         url = "competitions/" + competition.id
-  //         updateData = {competition:{id: competition.id}}
-  //         request("PUT", url, updateData).success(function(){
-  //           console.log("competition updated")
-  //         })
-  //       }
-  //     }
-  //   })
   })
 }
 
@@ -357,6 +338,8 @@ $(document).ready(function(){
     $('.comp-select-vote').hide();
     $('.comp-select-vote-title').show();
     $('.comp-reveal-button').show();
+    $('.playlist-vote-list').hide();
+    $('.playlist-viewer-vote-container').hide();
     $('.close-vote-button').hide()
   })
   $('.competition-in-vote-list').on('click', showPlaylistLists);
