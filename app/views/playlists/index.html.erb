@@ -23,7 +23,7 @@
   <section class="dashboard-menu" id="1">
     <div class="container first-cont">
       <div class="dashboard-menu-left">
-        <h2>WHADDA YA WANNA DO?</h2>
+        <h2>WELCOME TO COMPIFY</h2>
       </div>
       <div class="dashboard-menu-right">
         <ul class="menu">
@@ -68,7 +68,7 @@
           </div>
         </div>
         <div class="playlist-viewer">
-          <iframe src="https://embed.spotify.com/?uri=spotify:user:liampcollins:playlist:7h14QNyinkdAMEPFWbQjqc" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+          <iframe src="https://embed.spotify.com/?uri=spotify:user:liampcollins:playlist:7h14QNyinkdAMEPFWbQjqc" frameborder="0" allowtransparency="true"></iframe>
           <div class="playlist-selector-button">Select this Playlist</div>
         </div>
       </div>
@@ -79,10 +79,15 @@
           </div>
 
           <div class="competition-scroll">
-            <% competitions_for_entry.each do |competition| %>
-              <%= content_tag :div, class: "competition-in-list", data: {competition: competition, name: competition.user.name} do %>
-                  <%= competition.name %>
-                  <% competition.vote_end_date%>
+
+            <% if competitions_for_entry.length == 0%>
+              <div class="no-competitions">You are not curently entered in any competitions. Why not <a href="#4">create a new one</a>?</div>
+            <% else %>
+              <% competitions_for_entry.each do |competition| %>
+                <%= content_tag :div, class: "competition-in-list", data: {competition: competition, name: competition.user.name} do %>
+                    <%= competition.name %>
+                    <% competition.vote_end_date%>
+                <% end %>
               <% end %>
             <% end %>
           </div>

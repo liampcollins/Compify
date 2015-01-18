@@ -91,6 +91,7 @@ section{
 	padding-top: 5%;
 	@media screen and (max-width: $break-small) {
 		min-height: 200px;
+		padding-top: 0;
 	}
 }
 
@@ -118,11 +119,16 @@ section{
 		.dashboard-menu-left{
 			float: left;
 			width: 50%;
+			@media screen and (max-width: $break-small) {
+				width: 90vw;
+				float: left;
+			}
 			h2 {
 				font-size: 60px;
 				padding: 0 30%;
 				@media screen and (max-width: $break-large) {
 				    font-size: 40px;
+				    padding: 0 10%;
 				 }
 				@media screen and (max-width: $break-small) {
 					font-size: 20px;
@@ -133,6 +139,10 @@ section{
 			float:right;
 			width: 50%;
 			padding-top: 5%;
+			@media screen and (max-width: $break-small) {
+				width: 90vw;
+				float: left;
+			}
 			ul {
 				list-style: none;
 				li {
@@ -168,10 +178,19 @@ section{
 	color: $color1;
 	margin-top: -20px;
 	.container{
+		@media screen and (max-width: $break-small) {
+			padding-top: 50px;
+		}
 		// background-color: rgba(242,227,148,0.5);
 		.add-playlist-selector{
 			float: left;
 			width: 35%;
+			@media screen and (max-width: $break-large) {
+				width: 25%;
+			}
+			@media screen and (max-width: $break-small) {
+				width: 90vw;
+			}
 			button{
 				width: 150px;
 				height: 80px;
@@ -184,6 +203,9 @@ section{
 					height: 50px;
 				 }
 				@media screen and (max-width: $break-small) {
+					float: left;
+				}
+				@media screen and (max-width: $break-small) {
 					font-size: 10px;
 					width: 80px;
 					height: 50px;
@@ -195,6 +217,9 @@ section{
 			float: right;
 			width: 65%;
 			height: 100%;
+			@media screen and (max-width: $break-small) {
+				width: 90vw;
+			}
 			h2{
 				font-size: 60px;
 				margin: 10% 20%;
@@ -211,11 +236,20 @@ section{
 			float: right;
 			width: 65%;
 			height: 100%;
+			@media screen and (max-width: $break-small) {
+				width: 95vw;
+			}
 			.playlist-list {
 				float:left;
 				width: 30%;
 				height: 80%;
 				border: solid 1px black;
+				@media screen and (max-width: $break-small) {
+					width: 80vw;
+					height: 100px;
+					margin-left: 10vw;
+					overflow: hidden;
+				}
 				.playlist-search{
 					height: 10%;
 					border: 1px solid $color3; 
@@ -241,8 +275,21 @@ section{
 				width: 70%;
 				height: 100%;
 				float: right;
+				@media screen and (max-width: $break-small) {
+					margin-top: 20px;
+					width: 90vw;
+					height: 200px;
+				}
 				iframe{
 					border: 1px solid gray;
+					@media screen and (max-width: $break-large) {
+						width: 215px;
+						height: 380px;
+						border: none; 
+					}
+					@media screen and (max-width: $break-large) {
+						height: 100px;
+					}
 				}
 				.playlist-selector-button{
 					margin: 0 auto;
@@ -260,15 +307,27 @@ section{
 			float: right;
 			width: 65%;
 			height: 100%;
+			@media screen and (max-width: $break-small) {
+				width: 90vw;
+				float: left;
+			}
 			.competition-list{
 				float:left;
 				width: 30%;
 				height: 100%;
 				border: solid 1px black;
+				@media screen and (max-width: $break-small) {
+					width: 100%;
+				}
 				.competition-scroll{
 					background: $color3;
 					.competition-in-list{
 						cursor: pointer;
+					}
+					.no-competitions{
+						a:hover{
+							background: none;
+						}
 					}
 					.competition-in-list:hover{
 						font-weight: bold;
@@ -284,7 +343,9 @@ section{
 				max-height: 350px;
 				min-height: 300px;
 				background-color: rgba(50,50,50,0.5);
-
+				@media screen and (max-width: $break-small) {
+					width: 90vw;
+				}
 			}
 			.competition-selector-button{
 					margin: 0 auto;
@@ -300,6 +361,8 @@ section{
 	}
 }
 
+
+
 .break-2{
 	background: url(/assets/vinyls1.jpg);
 }
@@ -312,6 +375,9 @@ section{
 	background-attachment:fixed;
 	color: $color2;
 	.container{
+		@media screen and (max-width: $break-small) {
+			padding-top: 50px;
+		}
 		// background-color: rgba(88,140,126,0.3);
 		min-height: 300px;
 		.comp-select-vote{
@@ -319,6 +385,11 @@ section{
 			width: 25%;
 			height: 387px;
 			border: 1px solid $color3;
+			overflow: scroll;
+			@media screen and (max-width: $break-small) {
+				width: 45vw;
+				height: 30vw;
+			}
 			.competition-in-vote-list:hover{
 				font-weight: bold;
 				background: $color1;
@@ -344,12 +415,26 @@ section{
 			height: 80%;
 			border: 1px solid $color3;
 			cursor: pointer;
+			@media screen and (max-width: $break-small) {
+				width: 45vw
+			}
 		}
 		.playlist-viewer-vote-container{
 			float: left;
 			width: 35%;
 			height: 80%;
 			border: 1px solid $color3;
+			@media screen and (max-width: $break-small) {
+				clear: left;
+				width: 90vw;
+				border: none;
+				width: 100px;
+				iframe{
+					width: 90vw;
+					height: 100px;
+
+				}
+			}
 		}
 		.comp-vote-button{
 			font-size: 20px;
@@ -413,6 +498,9 @@ section{
 	color: $color1;
 	.container{
 		width: 90vw;
+		@media screen and (max-width: $break-small) {
+			width: 100vw;
+		}
 		// background-color: rgba(242,227,148,0.3);
 		.create-comp-title{
 			width: 50%;
@@ -524,7 +612,7 @@ section{
 	height: 50vh;
 	min-height: 100px;
 	@media screen and (max-width: $break-small) {
-	 height: 25vh; 
+	 height: 10vh; 
 	}
 }
 
@@ -571,6 +659,3 @@ section{
 		}
 	}
 }
-
-
-

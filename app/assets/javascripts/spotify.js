@@ -45,6 +45,8 @@ function request(method, url, data){
 //////////////////////////////////////////////////////////////////////////
 
 function showCompetitionSelector(){
+
+
   console.log('showCompetitionSelector')
   if(competitionSelector==false){
     $('.add-playlist-title').hide();
