@@ -85,7 +85,7 @@ main{
 }
 
 section{
-	height: 100vh;
+	height: 100vh-50px;
 	min-height: 700px;
 	width: 100%;
 	padding-top: 5%;
@@ -468,6 +468,9 @@ section{
 						font-size: 15px;
 					}
 				}
+				.vote-close, .entry-close{
+					margin-top: 0;
+				}
 				.theme-form-options{
 					input{
 						width:160px;
@@ -494,6 +497,10 @@ section{
 					width: 100%;
 					text-align: center;
 					font-size: 20px;
+					margin-top: 15px; 
+					@media screen and (max-width: $break-small) {
+						font-size: 15px;
+					}
 				}
 				.comp-form-submit{
 					margin: 20px;
@@ -516,6 +523,9 @@ section{
 	background-attachment:fixed;
 	height: 50vh;
 	min-height: 100px;
+	@media screen and (max-width: $break-small) {
+	 height: 25vh; 
+	}
 }
 
 .homepage{
