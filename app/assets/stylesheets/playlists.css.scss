@@ -777,7 +777,9 @@ section{
 			width: 90vw;
 		}
 		.old-comp-header{
-
+			@media screen and (max-width: $break-small) {
+				font-size: 26px;
+			}
 		}
 		.old-comp-name, .old-comp-winner, .old-comp-name-header, .old-comp-winner-header{
 			float: left;
