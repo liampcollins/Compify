@@ -5,7 +5,7 @@ gem 'rails', '3.2.17'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+# gem 'sqlite3'
 gem 'devise'
 gem 'oauth', '~> 0.4.7'
 gem 'pg'
