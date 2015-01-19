@@ -1,24 +1,30 @@
 
-<h1>Your past competitions</h1>
-<% relevant_competitions = []%>
-<% @competitions.each do |competition| %>
-	<% if competition.winner!=0 && competition.winner != nil%>
-		<% competition.playlists.each do |playlist| %>
-			<% if playlist.user_id == current_user.id %>
-				<% relevant_competitions.push(competition) %>
-			<% end%>				
+<div class="old-competitions-page">
+	<div class="old-competitions-container cf">
+		<h1 class="old-comp-header">Your past competitions</h1>
+		<% relevant_competitions = []%>
+		<% @competitions.each do |competition| %>
+			<% if competition.winner!=0 && competition.winner != nil%>
+				<% competition.playlists.each do |playlist| %>
+					<% if playlist.user_id == current_user.id %>
+						<% relevant_competitions.push(competition) %>
+					<% end%>				
+				<% end%>
+			<% end%>
 		<% end%>
-	<% end%>
-<% end%>
+		<div class="old-comp-name-header">NAME</div>
+		<div class="old-comp-winner-header">WINNER</div>
 
-<% relevant_competitions.each do |competition| %>
-	<div><%= competition.name%></div>
-	<%# user = User.find(competition.winner) %>
-	
-	<% if competition.winner != nil %>
-		<% u = User.find(competition.winner) %>
-		<div><%= u.name %></div>
-	<% else %>
-		<div> No winner on record </div>
-	<% end %>
-<% end %>
+		<% relevant_competitions.each do |competition| %>
+			<div class="old-comp-name"><%= competition.name%></div>
+			<%# user = User.find(competition.winner) %>
+			
+			<% if competition.winner != nil %>
+				<% u = User.find(competition.winner) %>
+				<div class="old-comp-winner"><%= u.name %></div>
+			<% else %>
+				<div> No winner on record </div>
+			<% end %>
+		<% end %>
+	</div>
+</div>

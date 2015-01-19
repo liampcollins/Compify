@@ -35,14 +35,14 @@ $font-family: 'Droid Sans', sans-serif;
 
 $break-small: 500px;
 $break-large: 900px;
-.wrapper{
-	margin-top: -50px;
-}
+// .wrapper{
+// 	margin-top: -50px;
+// }
 
 main{
 	width: 100%;
 	font-family: $font-family;
-	margin-top: -20px;
+	margin-top: -50px;
 }
 
 .timed-out-message{
@@ -79,7 +79,7 @@ main{
 }
 
 #bs-example-navbar-collapse-1 ul li a{
-		color: $color2;
+	color: $color2;
 }
 
 .navbar-brand{
@@ -93,7 +93,6 @@ section{
 	padding-top: 5%;
 	@media screen and (max-width: $break-large) {
 		min-height: 200px;
-		// max-height: 500px;
 		padding-top: 0;
 	}
 	@media screen and (max-width: $break-small) {
@@ -102,13 +101,6 @@ section{
 	}
 }
 
-// .break{
-// 	@media screen and (max-width: $break-large) {
-// 		height: 100px;
-// 	}
-// 	@media screen and (max-width: $break-small) {
-// 	}
-// }
 
 .container{
 	padding: 5%;
@@ -120,7 +112,6 @@ section{
 	background-repeat: none;
 	background-size: cover;
 	background-attachment:fixed;
-	// background: $color1;
 	color: $color2;
 	padding-top: 10vh; 
 	.container{
@@ -178,18 +169,15 @@ section{
 }
 
 .add-playlist{
-	// background: $color2;
 	background: url(/assets/headphones.jpg);
 	background-repeat: none;
 	background-size: cover;
 	background-attachment:fixed;
 	color: $color1;
-	margin-top: -20px;
 	.container{
 		@media screen and (max-width: $break-small) {
 			padding-top: 50px;
 		}
-		// background-color: rgba(242,227,148,0.5);
 		.add-playlist-selector{
 			float: left;
 			width: 35%;
@@ -368,14 +356,14 @@ section{
 				}
 			}
 			.competition-selector-button{
-					margin: 0 auto;
-					width: 200px;
-					background: $color3;
-					color: $color2;
-					border-radius: 10px;
-					margin-top: 20px;
-					padding: 5px;
-					cursor: pointer;
+				margin: 0 auto;
+				width: 200px;
+				background: $color3;
+				color: $color2;
+				border-radius: 10px;
+				margin-top: 20px;
+				padding: 5px;
+				cursor: pointer;
 			}
 		}
 	}
@@ -388,7 +376,6 @@ section{
 }
 
 .vote-on-comp{
-	// background: $color1;
 	background: url(/assets/earphones.jpg);
 	background-repeat: none;
 	background-size: cover;
@@ -398,7 +385,6 @@ section{
 		@media screen and (max-width: $break-small) {
 			padding-top: 50px;
 		}
-		// background-color: rgba(88,140,126,0.3);
 		min-height: 300px;
 		.vote-controller-container{
 			float: left;
@@ -484,7 +470,6 @@ section{
 					}
 				}
 			}
-			
 		}
 		.playlist-viewer-vote-container{
 			float: left;
@@ -554,7 +539,6 @@ section{
 }
 
 .create-comp{
-	// background: $color2;
 	background: url(/assets/dials.jpg);
 	background-repeat: none;
 	background-size: cover;
@@ -565,7 +549,6 @@ section{
 		@media screen and (max-width: $break-small) {
 			width: 100vw;
 		}
-		// background-color: rgba(242,227,148,0.3);
 		.create-comp-title{
 			width: 50%;
 			height: 100%;
@@ -683,12 +666,28 @@ section{
 	}
 }
 
+.notice{
+	color: $color2;
+	height: 20px;
+}
+
+
+
+
+
+
+
+
+
+
 .homepage{
-	margin-top: -50px;
+	margin-top: -100px;
 	background: url(/assets/headphones.jpg);
 	background-size: cover;
 	background-repeat: none;
 	height: 100vh;
+	line-height: normal;
+	text-align: center;
 	.welcome{
 		width: 100vw;
 		height: 200px;
@@ -697,6 +696,15 @@ section{
 		float: left;
 		text-align: center;
 		color: $color1;
+		@media screen and (max-width: $break-large) {
+			font-size: 60px;
+			height: 300px;
+
+		}
+		@media screen and (max-width: $break-small) {
+			font-size: 30px;
+			height: 200px;
+		}
 	}
 	.about-message{
 		font-size: 30px;
@@ -706,29 +714,92 @@ section{
 		text-align: center;
 		padding: 0 20vw;
 		line-height: 50px;
-		background: rgba(50,50,50,0.5);
-		color: $color1;
+		background: rgba(50,50,50,0.75);
+		color: $color2;
+		@media screen and (max-width: $break-small) {
+			font-size: 15px;
+			line-height: 25px;
+		}
 	}
-	.homepage-login{
-		font-size: 45px;
+	.login-container{
+		width: 100vw;
+		text-align: center;
 		float: left;
-		width: 30vw;
-		background: rgba(197,100,89,0.9);
-		border-radius: 5px;
-		line-height: 50px;
-		padding: 30px;
-		margin-top: 80px;
-		margin-left:35vw; 
-		color: $color1;
-		a:hover{
-			text-decoration: none;
-			background: none;
+		padding-left: 35vw;
+		.homepage-login{
+			font-size: 35px;
+			width: 30vw;			
+			background: rgba(197,100,89,0.9);
+			border-radius: 5px;
+			// line-height: 50px;
+			padding: 20px;
+			float: left;
+			margin-top: 10vh;
+			margin-bottom: 10vh;
+			color: $color2;
+			a:hover{
+				text-decoration: none;
+				background: none;
+			}
+			@media screen and (max-width: $break-large) {
+				font-size: 20px;
+			}
+			@media screen and (max-width: $break-small) {
+				font-size: 15px;
+				width: 60vw;
+				margin-left: -15vw;
+				padding:10px; 
+			}
 		}
 	}
 }
 
-.notice{
-	color: $color2;
-	height: 20px;
+
+
+
+.old-competitions-page{
+	width: 100vw;
+	height: 105vh;
+	background: url(/assets/vinyls2.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin-top: -100px;
+	padding-top: 20vh;
+	text-align: center;
+	.old-competitions-container{
+		width: auto;
+		background: rgba(50,50,50,0.85);
+		width: 50vw;
+		text-align: center;
+		margin: 0 auto;
+		color: $color2;
+		@media screen and (max-width: $break-small) {
+			width: 90vw;
+		}
+		.old-comp-header{
+
+		}
+		.old-comp-name, .old-comp-winner, .old-comp-name-header, .old-comp-winner-header{
+			float: left;
+			padding: 5%;
+			width: 50%;
+		}
+		.old-comp-name-header, .old-comp-winner-header{
+			border-bottom: 2px solid black;
+			padding-bottom: 0;
+			color: $color1;
+		}
+		
+	}
+
 }
+
+
+
+
+
+
+
+
+
 
