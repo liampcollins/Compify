@@ -35,12 +35,14 @@ $font-family: 'Droid Sans', sans-serif;
 
 $break-small: 500px;
 $break-large: 900px;
-
+.wrapper{
+	margin-top: -50px;
+}
 
 main{
 	width: 100%;
 	font-family: $font-family;
-	margin-top: -15px;
+	margin-top: -20px;
 }
 
 .timed-out-message{
@@ -73,7 +75,7 @@ main{
 }
 
 .navbar {
-	background: $color3;
+	background: rgba(50,50,50,0.99);
 }
 
 #bs-example-navbar-collapse-1 ul li a{
@@ -89,8 +91,13 @@ section{
 	min-height: 700px;
 	width: 100%;
 	padding-top: 5%;
-	@media screen and (max-width: $break-small) {
+	@media screen and (max-width: $break-large) {
 		min-height: 200px;
+		// max-height: 500px;
+		padding-top: 0;
+	}
+	@media screen and (max-width: $break-small) {
+		min-height: 300px;
 		padding-top: 0;
 	}
 }
@@ -115,6 +122,7 @@ section{
 	background-attachment:fixed;
 	// background: $color1;
 	color: $color2;
+	padding-top: 10vh; 
 	.container{
 		.dashboard-menu-left{
 			float: left;
@@ -196,7 +204,8 @@ section{
 				height: 80px;
 				font-size: 20px;
 				margin: 15%;
-				background: $color3; 
+				color: $color2;
+				background: $color1; 
 				@media screen and (max-width: $break-large) {
 				    font-size: 15px;
 					width: 100px;
@@ -236,6 +245,7 @@ section{
 			float: right;
 			width: 65%;
 			height: 100%;
+			text-align: center;
 			@media screen and (max-width: $break-small) {
 				width: 95vw;
 			}
@@ -252,22 +262,24 @@ section{
 				}
 				.playlist-search{
 					height: 10%;
-					border: 1px solid $color3; 
+					border: 1px solid $color2; 
 				}
 				.playlist-scroll{
 					height: 360px;
 					overflow: scroll;
-					background: $color3;
+					background: rgba(50,50,50,0.75);
 					.playlist-list-title{
 						font-weight: bold;
-						border-bottom: 2px solid $color1;
+						border-bottom: 5px solid $color2;
+						color: $color2;
+						font-size: 15px;
 					}
 					.playlist-in-list{
 						cursor: pointer;
+						color: $color2;
 					}
 					.playlist-in-list:hover{
-						font-weight: bold;
-						background: $color2;
+						background: $color1;
 					}
 				}
 			}
@@ -281,13 +293,12 @@ section{
 					height: 200px;
 				}
 				iframe{
-					border: 1px solid gray;
+					height: 300px;
 					@media screen and (max-width: $break-large) {
 						width: 215px;
-						height: 380px;
 						border: none; 
 					}
-					@media screen and (max-width: $break-large) {
+					@media screen and (max-width: $break-small) {
 						height: 100px;
 					}
 				}
@@ -320,7 +331,9 @@ section{
 					width: 100%;
 				}
 				.competition-scroll{
-					background: $color3;
+					text-align: center;
+					background: rgba(50,50,50,0.75);
+					color: $color2;
 					.competition-in-list{
 						cursor: pointer;
 					}
@@ -329,14 +342,21 @@ section{
 							background: none;
 						}
 					}
+					.competition-list-header{
+						font-size: 15px;
+						font-weight: bold;
+						border-bottom: 5px solid $color2;
+						color: $color2;
+					}
 					.competition-in-list:hover{
 						font-weight: bold;
-						background: $color2;
+						background: $color1;
 					}
 
 				}
 			}
 			.competition-viewer{
+				text-align: center;
 				float: right;
 				width: 70%;
 				height: 100%;
@@ -380,71 +400,110 @@ section{
 		}
 		// background-color: rgba(88,140,126,0.3);
 		min-height: 300px;
-		.comp-select-vote{
+		.vote-controller-container{
 			float: left;
-			width: 25%;
-			height: 387px;
-			border: 1px solid $color3;
-			overflow: scroll;
+			width: 50%;
 			@media screen and (max-width: $break-small) {
-				width: 45vw;
-				height: 30vw;
+				width: 90vw;
 			}
-			.competition-in-vote-list:hover{
-				font-weight: bold;
-				background: $color1;
+			.comp-select-vote{
+				background: rgba(50,50,50,0.5);
+				text-align: center;
+				float: left;
+				width: 50%;
+				height: auto;
+				border: 1px solid $color3;
+				overflow: scroll;
+				@media screen and (max-width: $break-small) {
+					width: 45vw;
+					height: 50vw;
+				}
+				.competition-vote-list-header{
+					font-size: 15px;
+					font-weight: bold;
+					border-bottom: 5px solid $color2;
+					color: $color2;				
+				}
+				.competition-in-vote-list:hover{
+					font-weight: bold;
+					background: $color1;
+					cursor: pointer;
+				}
+			}
+			.playlist-vote-list{
+				text-align: center;
+				vertical-align: top;
+				height: 387px;
+				float: left;
+				width: 50%;
+				height: 80%;
+				border: 1px solid $color3;
 				cursor: pointer;
+				@media screen and (max-width: $break-small) {
+					width: 45vw
+				}
+				.playlists-in-comp-header{
+					font-size: 15px;
+					font-weight: bold;
+					border-bottom: 5px solid $color2;
+					color: $color2;					
+				}
 			}
-		}
-		.close-vote-button{
-			font-size: 15px;
-			background: $color3;
-			color: $color2;
-			border-radius: 10px;
-			padding: 5px;
-			float: left;
-			cursor: pointer;
-			clear: left;
-			width: 25%;
-		}
-		.playlist-vote-list{
-			vertical-align: top;
-			height: 387px;
-			float: left;
-			width: 25%;
-			height: 80%;
-			border: 1px solid $color3;
-			cursor: pointer;
-			@media screen and (max-width: $break-small) {
-				width: 45vw
+			.vote-buttons{
+				.close-vote-button{
+					text-align: center;
+					font-size: 15px;
+					background: $color3;
+					color: $color2;
+					border-radius: 10px;
+					padding: 5px;
+					float: left;
+					cursor: pointer;
+					clear: left;
+					width: 100px;
+					margin-left: 8%;
+					@media screen and (max-width: $break-large) {
+						margin: 10px 0;
+						width: 60px;
+						font-size: 10px;
+					}
+				}
+				.comp-vote-button{
+					font-size: 15px;
+					background: $color3;
+					color: $color2;
+					border-radius: 10px;
+					padding: 5px;
+					float: left;
+					cursor: pointer;
+					width: auto;
+					margin-left: 10px;
+					@media screen and (max-width: $break-large) {
+						font-size: 10px;
+						margin: 10px 10px;
+					}
+				}
 			}
+			
 		}
 		.playlist-viewer-vote-container{
 			float: left;
 			width: 35%;
 			height: 80%;
-			border: 1px solid $color3;
 			@media screen and (max-width: $break-small) {
 				clear: left;
 				width: 90vw;
-				border: none;
-				width: 100px;
+				width: 275px;
 				iframe{
 					width: 90vw;
 					height: 100px;
-
+					@media screen and (max-width: $break-large) {
+						width: 100%;	
+					}
 				}
 			}
 		}
-		.comp-vote-button{
-			font-size: 20px;
-			background: $color3;
-			color: $color2;
-			border-radius: 10px;
-			padding: 20px;
-			float: right;
-			cursor: pointer;
-		}
+		
 		.comp-reveal-button{
 			font-size: 30px;
 			// width: 500px;
@@ -459,15 +518,20 @@ section{
 			    font-size: 20px;
 			 }
 			@media screen and (max-width: $break-small) {
+				width: 130px;
 				font-size: 12px;
 				padding: 10px;
-				margin: 10px;
+				margin-left: 21vw;
 			}
 
 		}
 		.comp-select-vote-title{
 			float: left;
 			width: 50%;
+			@media screen and (max-width: $break-small) {
+				width: 90vw;
+				text-align: center;
+			}
 			h2{
 				font-size: 60px;
 				width: 60%;
@@ -611,6 +675,9 @@ section{
 	background-attachment:fixed;
 	height: 50vh;
 	min-height: 100px;
+	@media screen and (max-width: $break-large) {
+	 height: 15vh; 
+	}
 	@media screen and (max-width: $break-small) {
 	 height: 10vh; 
 	}
@@ -659,3 +726,9 @@ section{
 		}
 	}
 }
+
+.notice{
+	color: $color2;
+	height: 20px;
+}
+

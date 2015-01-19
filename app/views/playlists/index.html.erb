@@ -83,6 +83,7 @@
             <% if competitions_for_entry.length == 0%>
               <div class="no-competitions">You are not curently entered in any competitions. Why not <a href="#4">create a new one</a>?</div>
             <% else %>
+              <div class="competition-list-header">COMPETITIONS</div>
               <% competitions_for_entry.each do |competition| %>
                 <%= content_tag :div, class: "competition-in-list", data: {competition: competition, name: competition.user.name} do %>
                     <%= competition.name %>
@@ -110,26 +111,35 @@
   <section class="vote-on-comp" id="3">
     <div class="container third-cont">
       <div class="vote-notice"></div>
-      <div class="comp-select-vote">
-        <div class="comp-select-vote-search">
-          <!-- SEARCH BOX -->
-        </div> 
-        <% competitions_for_voting.each do |competition| %>
-          <%= content_tag :div, class: "competition-in-vote-list", data: {playlists: competition.playlists, name: competition.user.name, competition: competition.id} do %>
-              <%= competition.name %>
-              <% competition.vote_end_date%>
+
+
+
+      <div class="vote-controller-container cf">
+        <div class="comp-select-vote">
+          <div class="comp-select-vote-search">
+            <!-- SEARCH BOX -->
+          </div> 
+          <div class="competition-vote-list-header">COMPETITIONS</div>
+          <% competitions_for_voting.each do |competition| %>
+            <%= content_tag :div, class: "competition-in-vote-list", data: {playlists: competition.playlists, name: competition.user.name, competition: competition.id} do %>
+                <%= competition.name %>
+                <% competition.vote_end_date%>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
 
+        <div class="playlist-vote-list">
+          <div class="playlists-in-comp-header">PLAYLISTS</div>
+        </div>
+        <div class="vote-buttons cf">
+          <div class="close-vote-button">CLOSE</div>
+          <div class="comp-vote-button">VOTE FOR THIS PLAYLIST</div>
+        </div>
       </div>
-      <div class="playlist-vote-list">
-        <div class="playlists-in-comp-header">PLAYLISTS</div>
 
-      </div>
       <div class='playlist-viewer-vote-container'>
         <iframe class="playlist-viewer-to-vote" src="https://embed.spotify.com/?uri=spotify:user:liampcollins:playlist:7h14QNyinkdAMEPFWbQjqc" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
       </div>
-      <div class="comp-vote-button">VOTE</div>
 
 
     <!--   <div>NEED TO PASS THE PLAYLIST FROM JAVASCRIPT TO HTML</div> -->
@@ -139,7 +149,7 @@
       </div>
 
       <div class="comp-reveal-button">Choose Competition</div>
-      <div class="close-vote-button">CLOSE</div>
+      
     </div>
   </section>
 
