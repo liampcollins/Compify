@@ -164,379 +164,379 @@ section{
 
 
 
-.break-1{
-	background: url(/assets/cd_shelf.jpg);
-}
+// .break-1{
+// 	background: url(/assets/cd_shelf.jpg);
+// }
 
-.add-playlist{
-	background: url(/assets/headphones.jpg);
-	background-repeat: none;
-	background-size: cover;
-	background-attachment:fixed;
-	color: $color1;
-	.container{
-		@media screen and (max-width: $break-small) {
-			padding-top: 50px;
-		}
-		.add-playlist-selector{
-			float: left;
-			width: 35%;
-			@media screen and (max-width: $break-large) {
-				width: 25%;
-			}
-			@media screen and (max-width: $break-small) {
-				width: 90vw;
-			}
-			button{
-				width: 150px;
-				height: 80px;
-				font-size: 20px;
-				margin: 15%;
-				color: $color2;
-				background: $color1; 
-				@media screen and (max-width: $break-large) {
-				    font-size: 15px;
-					width: 100px;
-					height: 50px;
-				 }
-				@media screen and (max-width: $break-small) {
-					float: left;
-				}
-				@media screen and (max-width: $break-small) {
-					font-size: 10px;
-					width: 80px;
-					height: 50px;
-					margin: 5%;
-				}
-			}
-		}
-		.add-playlist-title{
-			float: right;
-			width: 65%;
-			height: 100%;
-			@media screen and (max-width: $break-small) {
-				width: 90vw;
-			}
-			h2{
-				font-size: 60px;
-				margin: 10% 20%;
-				@media screen and (max-width: $break-large) {
-				    font-size: 40px;
-				 }
-				@media screen and (max-width: $break-small) {
-					font-size: 20px;
-				}
-			}
+// .add-playlist{
+// 	background: url(/assets/headphones.jpg);
+// 	background-repeat: none;
+// 	background-size: cover;
+// 	background-attachment:fixed;
+// 	color: $color1;
+// 	.container{
+// 		@media screen and (max-width: $break-small) {
+// 			padding-top: 50px;
+// 		}
+// 		.add-playlist-selector{
+// 			float: left;
+// 			width: 35%;
+// 			@media screen and (max-width: $break-large) {
+// 				width: 25%;
+// 			}
+// 			@media screen and (max-width: $break-small) {
+// 				width: 90vw;
+// 			}
+// 			button{
+// 				width: 150px;
+// 				height: 80px;
+// 				font-size: 20px;
+// 				margin: 15%;
+// 				color: $color2;
+// 				background: $color1; 
+// 				@media screen and (max-width: $break-large) {
+// 				    font-size: 15px;
+// 					width: 100px;
+// 					height: 50px;
+// 				 }
+// 				@media screen and (max-width: $break-small) {
+// 					float: left;
+// 				}
+// 				@media screen and (max-width: $break-small) {
+// 					font-size: 10px;
+// 					width: 80px;
+// 					height: 50px;
+// 					margin: 5%;
+// 				}
+// 			}
+// 		}
+// 		.add-playlist-title{
+// 			float: right;
+// 			width: 65%;
+// 			height: 100%;
+// 			@media screen and (max-width: $break-small) {
+// 				width: 90vw;
+// 			}
+// 			h2{
+// 				font-size: 60px;
+// 				margin: 10% 20%;
+// 				@media screen and (max-width: $break-large) {
+// 				    font-size: 40px;
+// 				 }
+// 				@media screen and (max-width: $break-small) {
+// 					font-size: 20px;
+// 				}
+// 			}
 
-		}
-		.playlist-select {
-			float: right;
-			width: 65%;
-			height: 100%;
-			text-align: center;
-			@media screen and (max-width: $break-small) {
-				width: 95vw;
-			}
-			.playlist-list {
-				float:left;
-				width: 30%;
-				height: 80%;
-				border: solid 1px black;
-				@media screen and (max-width: $break-small) {
-					width: 80vw;
-					height: 100px;
-					margin-left: 10vw;
-					overflow: hidden;
-				}
-				.playlist-search{
-					height: 10%;
-					border: 1px solid $color2; 
-				}
-				.playlist-scroll{
-					height: 360px;
-					overflow: scroll;
-					background: rgba(50,50,50,0.75);
-					.playlist-list-title{
-						font-weight: bold;
-						border-bottom: 5px solid $color2;
-						color: $color2;
-						font-size: 15px;
-					}
-					.playlist-in-list{
-						cursor: pointer;
-						color: $color2;
-					}
-					.playlist-in-list:hover{
-						background: $color1;
-					}
-				}
-			}
-			.playlist-viewer{
-				width: 70%;
-				height: 100%;
-				float: right;
-				@media screen and (max-width: $break-small) {
-					margin-top: 20px;
-					width: 90vw;
-					height: 200px;
-				}
-				iframe{
-					height: 300px;
-					@media screen and (max-width: $break-large) {
-						width: 215px;
-						border: none; 
-					}
-					@media screen and (max-width: $break-small) {
-						height: 100px;
-					}
-				}
-				.playlist-selector-button{
-					margin: 0 auto;
-					width: 200px;
-					background: $color3;
-					color: $color2;
-					border-radius: 10px;
-					margin-top: 20px;
-					padding: 5px;
-					cursor: pointer;
-				}
-			}
-		}
-		.competition-select{
-			float: right;
-			width: 65%;
-			height: 100%;
-			@media screen and (max-width: $break-small) {
-				width: 90vw;
-				float: left;
-			}
-			.competition-list{
-				float:left;
-				width: 30%;
-				height: 100%;
-				border: solid 1px black;
-				@media screen and (max-width: $break-small) {
-					width: 100%;
-				}
-				.competition-scroll{
-					text-align: center;
-					background: rgba(50,50,50,0.75);
-					color: $color2;
-					.competition-in-list{
-						cursor: pointer;
-					}
-					.no-competitions{
-						a:hover{
-							background: none;
-						}
-					}
-					.competition-list-header{
-						font-size: 15px;
-						font-weight: bold;
-						border-bottom: 5px solid $color2;
-						color: $color2;
-					}
-					.competition-in-list:hover{
-						font-weight: bold;
-						background: $color1;
-					}
+// 		}
+// 		.playlist-select {
+// 			float: right;
+// 			width: 65%;
+// 			height: 100%;
+// 			text-align: center;
+// 			@media screen and (max-width: $break-small) {
+// 				width: 95vw;
+// 			}
+// 			.playlist-list {
+// 				float:left;
+// 				width: 30%;
+// 				height: 80%;
+// 				border: solid 1px black;
+// 				@media screen and (max-width: $break-small) {
+// 					width: 80vw;
+// 					height: 100px;
+// 					margin-left: 10vw;
+// 					overflow: hidden;
+// 				}
+// 				.playlist-search{
+// 					height: 10%;
+// 					border: 1px solid $color2; 
+// 				}
+// 				.playlist-scroll{
+// 					height: 360px;
+// 					overflow: scroll;
+// 					background: rgba(50,50,50,0.75);
+// 					.playlist-list-title{
+// 						font-weight: bold;
+// 						border-bottom: 5px solid $color2;
+// 						color: $color2;
+// 						font-size: 15px;
+// 					}
+// 					.playlist-in-list{
+// 						cursor: pointer;
+// 						color: $color2;
+// 					}
+// 					.playlist-in-list:hover{
+// 						background: $color1;
+// 					}
+// 				}
+// 			}
+// 			.playlist-viewer{
+// 				width: 70%;
+// 				height: 100%;
+// 				float: right;
+// 				@media screen and (max-width: $break-small) {
+// 					margin-top: 20px;
+// 					width: 90vw;
+// 					height: 200px;
+// 				}
+// 				iframe{
+// 					height: 300px;
+// 					@media screen and (max-width: $break-large) {
+// 						width: 215px;
+// 						border: none; 
+// 					}
+// 					@media screen and (max-width: $break-small) {
+// 						height: 100px;
+// 					}
+// 				}
+// 				.playlist-selector-button{
+// 					margin: 0 auto;
+// 					width: 200px;
+// 					background: $color3;
+// 					color: $color2;
+// 					border-radius: 10px;
+// 					margin-top: 20px;
+// 					padding: 5px;
+// 					cursor: pointer;
+// 				}
+// 			}
+// 		}
+// 		.competition-select{
+// 			float: right;
+// 			width: 65%;
+// 			height: 100%;
+// 			@media screen and (max-width: $break-small) {
+// 				width: 90vw;
+// 				float: left;
+// 			}
+// 			.competition-list{
+// 				float:left;
+// 				width: 30%;
+// 				height: 100%;
+// 				border: solid 1px black;
+// 				@media screen and (max-width: $break-small) {
+// 					width: 100%;
+// 				}
+// 				.competition-scroll{
+// 					text-align: center;
+// 					background: rgba(50,50,50,0.75);
+// 					color: $color2;
+// 					.competition-in-list{
+// 						cursor: pointer;
+// 					}
+// 					.no-competitions{
+// 						a:hover{
+// 							background: none;
+// 						}
+// 					}
+// 					.competition-list-header{
+// 						font-size: 15px;
+// 						font-weight: bold;
+// 						border-bottom: 5px solid $color2;
+// 						color: $color2;
+// 					}
+// 					.competition-in-list:hover{
+// 						font-weight: bold;
+// 						background: $color1;
+// 					}
 
-				}
-			}
-			.competition-viewer{
-				text-align: center;
-				float: right;
-				width: 70%;
-				height: 100%;
-				max-height: 350px;
-				min-height: 300px;
-				background-color: rgba(50,50,50,0.5);
-				@media screen and (max-width: $break-small) {
-					width: 90vw;
-				}
-			}
-			.competition-selector-button{
-				margin: 0 auto;
-				width: 200px;
-				background: $color3;
-				color: $color2;
-				border-radius: 10px;
-				margin-top: 20px;
-				padding: 5px;
-				cursor: pointer;
-			}
-		}
-	}
-}
+// 				}
+// 			}
+// 			.competition-viewer{
+// 				text-align: center;
+// 				float: right;
+// 				width: 70%;
+// 				height: 100%;
+// 				max-height: 350px;
+// 				min-height: 300px;
+// 				background-color: rgba(50,50,50,0.5);
+// 				@media screen and (max-width: $break-small) {
+// 					width: 90vw;
+// 				}
+// 			}
+// 			.competition-selector-button{
+// 				margin: 0 auto;
+// 				width: 200px;
+// 				background: $color3;
+// 				color: $color2;
+// 				border-radius: 10px;
+// 				margin-top: 20px;
+// 				padding: 5px;
+// 				cursor: pointer;
+// 			}
+// 		}
+// 	}
+// }
 
 
 
-.break-2{
-	background: url(/assets/vinyls1.jpg);
-}
+// .break-2{
+// 	background: url(/assets/vinyls1.jpg);
+// }
 
-.vote-on-comp{
-	background: url(/assets/earphones.jpg);
-	background-repeat: none;
-	background-size: cover;
-	background-attachment:fixed;
-	color: $color2;
-	.container{
-		@media screen and (max-width: $break-small) {
-			padding-top: 50px;
-		}
-		min-height: 300px;
-		.vote-controller-container{
-			float: left;
-			width: 50%;
-			@media screen and (max-width: $break-small) {
-				width: 90vw;
-			}
-			.comp-select-vote{
-				background: rgba(50,50,50,0.5);
-				text-align: center;
-				float: left;
-				width: 50%;
-				height: auto;
-				border: 1px solid $color3;
-				overflow: scroll;
-				@media screen and (max-width: $break-small) {
-					width: 45vw;
-					height: 50vw;
-				}
-				.competition-vote-list-header{
-					font-size: 15px;
-					font-weight: bold;
-					border-bottom: 5px solid $color2;
-					color: $color2;				
-				}
-				.competition-in-vote-list:hover{
-					font-weight: bold;
-					background: $color1;
-					cursor: pointer;
-				}
-			}
-			.playlist-vote-list{
-				text-align: center;
-				vertical-align: top;
-				height: 387px;
-				float: left;
-				width: 50%;
-				height: 80%;
-				border: 1px solid $color3;
-				cursor: pointer;
-				@media screen and (max-width: $break-small) {
-					width: 45vw
-				}
-				.playlists-in-comp-header{
-					font-size: 15px;
-					font-weight: bold;
-					border-bottom: 5px solid $color2;
-					color: $color2;					
-				}
-			}
-			.vote-buttons{
-				.close-vote-button{
-					text-align: center;
-					font-size: 15px;
-					background: $color3;
-					color: $color2;
-					border-radius: 10px;
-					padding: 5px;
-					float: left;
-					cursor: pointer;
-					clear: left;
-					width: 100px;
-					margin-left: 8%;
-					@media screen and (max-width: $break-large) {
-						margin: 10px 0;
-						width: 60px;
-						font-size: 10px;
-					}
-				}
-				.comp-vote-button{
-					font-size: 15px;
-					background: $color3;
-					color: $color2;
-					border-radius: 10px;
-					padding: 5px;
-					float: left;
-					cursor: pointer;
-					width: auto;
-					margin-left: 10px;
-					@media screen and (max-width: $break-large) {
-						font-size: 10px;
-						margin: 10px 10px;
-					}
-				}
-			}
-		}
-		.playlist-viewer-vote-container{
-			float: left;
-			width: 35%;
-			height: 80%;
-			@media screen and (max-width: $break-small) {
-				clear: left;
-				width: 90vw;
-				width: 275px;
-				iframe{
-					width: 90vw;
-					height: 100px;
-					@media screen and (max-width: $break-large) {
-						width: 100%;	
-					}
-				}
-			}
-		}
+// .vote-on-comp{
+// 	background: url(/assets/earphones.jpg);
+// 	background-repeat: none;
+// 	background-size: cover;
+// 	background-attachment:fixed;
+// 	color: $color2;
+// 	.container{
+// 		@media screen and (max-width: $break-small) {
+// 			padding-top: 50px;
+// 		}
+// 		min-height: 300px;
+// 		.vote-controller-container{
+// 			float: left;
+// 			width: 50%;
+// 			@media screen and (max-width: $break-small) {
+// 				width: 90vw;
+// 			}
+// 			.comp-select-vote{
+// 				background: rgba(50,50,50,0.5);
+// 				text-align: center;
+// 				float: left;
+// 				width: 50%;
+// 				height: auto;
+// 				border: 1px solid $color3;
+// 				overflow: scroll;
+// 				@media screen and (max-width: $break-small) {
+// 					width: 45vw;
+// 					height: 50vw;
+// 				}
+// 				.competition-vote-list-header{
+// 					font-size: 15px;
+// 					font-weight: bold;
+// 					border-bottom: 5px solid $color2;
+// 					color: $color2;				
+// 				}
+// 				.competition-in-vote-list:hover{
+// 					font-weight: bold;
+// 					background: $color1;
+// 					cursor: pointer;
+// 				}
+// 			}
+// 			.playlist-vote-list{
+// 				text-align: center;
+// 				vertical-align: top;
+// 				height: 387px;
+// 				float: left;
+// 				width: 50%;
+// 				height: 80%;
+// 				border: 1px solid $color3;
+// 				cursor: pointer;
+// 				@media screen and (max-width: $break-small) {
+// 					width: 45vw
+// 				}
+// 				.playlists-in-comp-header{
+// 					font-size: 15px;
+// 					font-weight: bold;
+// 					border-bottom: 5px solid $color2;
+// 					color: $color2;					
+// 				}
+// 			}
+// 			.vote-buttons{
+// 				.close-vote-button{
+// 					text-align: center;
+// 					font-size: 15px;
+// 					background: $color3;
+// 					color: $color2;
+// 					border-radius: 10px;
+// 					padding: 5px;
+// 					float: left;
+// 					cursor: pointer;
+// 					clear: left;
+// 					width: 100px;
+// 					margin-left: 8%;
+// 					@media screen and (max-width: $break-large) {
+// 						margin: 10px 0;
+// 						width: 60px;
+// 						font-size: 10px;
+// 					}
+// 				}
+// 				.comp-vote-button{
+// 					font-size: 15px;
+// 					background: $color3;
+// 					color: $color2;
+// 					border-radius: 10px;
+// 					padding: 5px;
+// 					float: left;
+// 					cursor: pointer;
+// 					width: auto;
+// 					margin-left: 10px;
+// 					@media screen and (max-width: $break-large) {
+// 						font-size: 10px;
+// 						margin: 10px 10px;
+// 					}
+// 				}
+// 			}
+// 		}
+// 		.playlist-viewer-vote-container{
+// 			float: left;
+// 			width: 35%;
+// 			height: 80%;
+// 			@media screen and (max-width: $break-small) {
+// 				clear: left;
+// 				width: 90vw;
+// 				width: 275px;
+// 				iframe{
+// 					width: 90vw;
+// 					height: 100px;
+// 					@media screen and (max-width: $break-large) {
+// 						width: 100%;	
+// 					}
+// 				}
+// 			}
+// 		}
 		
-		.comp-reveal-button{
-			font-size: 30px;
-			// width: 500px;
-			background: $color3;
-			color: $color2;
-			border-radius: 10px;
-			padding: 20px;
-			float: left;
-			margin: 12vw 0 0 0; 
-			cursor: pointer;
-			@media screen and (max-width: $break-large) {
-			    font-size: 20px;
-			 }
-			@media screen and (max-width: $break-small) {
-				width: 130px;
-				font-size: 12px;
-				padding: 10px;
-				margin-left: 21vw;
-			}
+// 		.comp-reveal-button{
+// 			font-size: 30px;
+// 			// width: 500px;
+// 			background: $color3;
+// 			color: $color2;
+// 			border-radius: 10px;
+// 			padding: 20px;
+// 			float: left;
+// 			margin: 12vw 0 0 0; 
+// 			cursor: pointer;
+// 			@media screen and (max-width: $break-large) {
+// 			    font-size: 20px;
+// 			 }
+// 			@media screen and (max-width: $break-small) {
+// 				width: 130px;
+// 				font-size: 12px;
+// 				padding: 10px;
+// 				margin-left: 21vw;
+// 			}
 
-		}
-		.comp-select-vote-title{
-			float: left;
-			width: 50%;
-			@media screen and (max-width: $break-small) {
-				width: 90vw;
-				text-align: center;
-			}
-			h2{
-				font-size: 60px;
-				width: 60%;
-				margin-top: 15%;
-				margin-left: 10%;
-				@media screen and (max-width: $break-large) {
-				    font-size: 40px;
-				 }
-				@media screen and (max-width: $break-small) {
-					font-size: 20px;
-					margin: 0 auto;
-				}
-			}
-		}
-	}
-}
+// 		}
+// 		.comp-select-vote-title{
+// 			float: left;
+// 			width: 50%;
+// 			@media screen and (max-width: $break-small) {
+// 				width: 90vw;
+// 				text-align: center;
+// 			}
+// 			h2{
+// 				font-size: 60px;
+// 				width: 60%;
+// 				margin-top: 15%;
+// 				margin-left: 10%;
+// 				@media screen and (max-width: $break-large) {
+// 				    font-size: 40px;
+// 				 }
+// 				@media screen and (max-width: $break-small) {
+// 					font-size: 20px;
+// 					margin: 0 auto;
+// 				}
+// 			}
+// 		}
+// 	}
+// }
 
-.break-3{
-	background: url(/assets/vinyls2.jpg);
-}
+// .break-3{
+// 	background: url(/assets/vinyls2.jpg);
+// }
 
 .create-comp{
 	background: url(/assets/dials.jpg);
