@@ -35,132 +35,129 @@ $font-family: 'Droid Sans', sans-serif;
 
 $break-small: 500px;
 $break-large: 900px;
-// .wrapper{
-// 	margin-top: -50px;
-// }
 
-// main{
-// 	width: 100%;
-// 	font-family: $font-family;
-// 	margin-top: -50px;
-// }
+main{
+	width: 100%;
+	font-family: $font-family;
+	margin-top: -50px;
+}
 
-// .timed-out-message{
-// 	margin: 10%;
-// 	padding: 10%;
-// 	background-color: rgba(50,50,50,0.5);
-// 	text-align: center;
+.timed-out-message{
+	margin: 10%;
+	padding: 10%;
+	background-color: rgba(50,50,50,0.5);
+	text-align: center;
 
-// }
+}
 
-// ::-webkit-input-placeholder { /* WebKit browsers */
-//     color: $color1;
-// }
-// :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-//    color: $color1;
-//    opacity:  1;
-// }
-// ::-moz-placeholder { /* Mozilla Firefox 19+ */
-//    color:$color1;
-//    opacity:  1;
-// }
-// :-ms-input-placeholder { /* Internet Explorer 10+ */
-//    color:$color1;
-// }
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: $color1;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: $color1;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:$color1;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color:$color1;
+}
 
 
-// .alert{
-// 	// removes space between nav and first section
-// 	// margin-bottom: 7px;
-// }
+.alert{
+	// removes space between nav and first section
+	// margin-bottom: 7px;
+}
 
-// .navbar {
-// 	background: rgba(50,50,50,0.99);
-// }
+.navbar {
+	background: rgba(50,50,50,0.99);
+}
 
-// #bs-example-navbar-collapse-1 ul li a{
-// 	color: $color2;
-// }
+#bs-example-navbar-collapse-1 ul li a{
+	color: $color2;
+}
 
-// .navbar-brand{
-// 	color: $color1;
-// }
+.navbar-brand{
+	color: $color1;
+}
 
-// section{
-// 	height: 100vh-50px;
-// 	min-height: 700px;
-// 	width: 100%;
-// 	padding-top: 5%;
-// 	@media screen and (max-width: $break-large) {
-// 		min-height: 200px;
-// 		padding-top: 0;
-// 	}
-// 	@media screen and (max-width: $break-small) {
-// 		min-height: 300px;
-// 		padding-top: 0;
-// 	}
-// }
+section{
+	height: 100vh-50px;
+	min-height: 700px;
+	width: 100%;
+	padding-top: 5%;
+	@media screen and (max-width: $break-large) {
+		min-height: 200px;
+		padding-top: 0;
+	}
+	@media screen and (max-width: $break-small) {
+		min-height: 300px;
+		padding-top: 0;
+	}
+}
 
 
-// .container{
-// 	padding: 5%;
-// 	background-color: rgba(50,50,50,0.5);
-// }
+.container{
+	padding: 5%;
+	background-color: rgba(50,50,50,0.5);
+}
 
-// .dashboard-menu{
-// 	background: url(/assets/dials.jpg);
-// 	background-repeat: none;
-// 	background-size: cover;
-// 	background-attachment:fixed;
-// 	color: $color2;
-// 	padding-top: 10vh; 
-// 	.container{
-// 		.dashboard-menu-left{
-// 			float: left;
-// 			width: 50%;
-// 			@media screen and (max-width: $break-small) {
-// 				width: 90vw;
-// 				float: left;
-// 			}
-// 			h2 {
-// 				font-size: 60px;
-// 				padding: 0 30%;
-// 				@media screen and (max-width: $break-large) {
-// 				    font-size: 40px;
-// 				    padding: 0 10%;
-// 				 }
-// 				@media screen and (max-width: $break-small) {
-// 					font-size: 20px;
-// 				}
-// 			}
-// 		}
-// 		.dashboard-menu-right{
-// 			float:right;
-// 			width: 50%;
-// 			padding-top: 5%;
-// 			@media screen and (max-width: $break-small) {
-// 				width: 90vw;
-// 				float: left;
-// 			}
-// 			ul {
-// 				list-style: none;
-// 				li {
-// 					font-size: 20px;
-// 					line-height: 50px;
-// 					@media screen and (max-width: $break-small) {
-// 						font-size: 15px;
-// 						line-height: 35px;
-// 					}
+.dashboard-menu{
+	background: url(/assets/dials.jpg);
+	background-repeat: none;
+	background-size: cover;
+	background-attachment:fixed;
+	color: $color2;
+	padding-top: 10vh; 
+	.container{
+		.dashboard-menu-left{
+			float: left;
+			width: 50%;
+			@media screen and (max-width: $break-small) {
+				width: 90vw;
+				float: left;
+			}
+			h2 {
+				font-size: 60px;
+				padding: 0 30%;
+				@media screen and (max-width: $break-large) {
+				    font-size: 40px;
+				    padding: 0 10%;
+				 }
+				@media screen and (max-width: $break-small) {
+					font-size: 20px;
+				}
+			}
+		}
+		.dashboard-menu-right{
+			float:right;
+			width: 50%;
+			padding-top: 5%;
+			@media screen and (max-width: $break-small) {
+				width: 90vw;
+				float: left;
+			}
+			ul {
+				list-style: none;
+				li {
+					font-size: 20px;
+					line-height: 50px;
+					@media screen and (max-width: $break-small) {
+						font-size: 15px;
+						line-height: 35px;
+					}
 
-// 					a{
-// 						color: $color2;
-// 						text-decoration: none;
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
-// }
+					a{
+						color: $color2;
+						text-decoration: none;
+					}
+				}
+			}
+		}
+	}
+}
 
 
 
