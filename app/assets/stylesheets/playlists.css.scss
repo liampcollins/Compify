@@ -228,6 +228,7 @@ section{
 			height: 100%;
 			@media screen and (max-width: $break-small) {
 				width: 90vw;
+				margin-left: 10vw;
 			}
 			h2{
 				font-size: 60px;
