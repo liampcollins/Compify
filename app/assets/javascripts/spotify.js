@@ -13,6 +13,19 @@ var themes = ["One-hit wonders", "Covers", "Christmas", "Summer", "Halloween", "
 
 
 
+var now
+var date
+var dateArray
+var year
+var month
+var day
+var hour
+var minute
+var nowFinishedCompetitions = []
+var url
+var updateData
+
+
 function request(method, url, data){
   return $.ajax({
     method: method,
@@ -47,7 +60,6 @@ function request(method, url, data){
 function showCompetitionSelector(){
 
 
-  console.log('showCompetitionSelector')
   if(competitionSelector==false){
     $('.add-playlist-title').hide();
     $('.playlist-select').hide();
@@ -86,8 +98,12 @@ function showCompDetails (){
   $(".comp-creator").html($(this)[0].dataset.name);
   $(".comp-theme").html(competition.theme);
   $(".comp-song-count").html(competition.song_count);
-  $('.comp-subm-close').html(competition.submission_end_date);
-  $('.comp-vote-close').html(competition.vote_end_date);
+
+  // USER REGEX HERE TO FORMAT DATES
+  competition.submission_end_date = competition.submission_end_date.split(/([T-Z])/);
+  competition.vote_end_date = competition.vote_end_date.split(/([T-Z])/);
+  $('.comp-subm-close').html(competition.submission_end_date[0] +" Time: "+ competition.submission_end_date[2]);
+  $('.comp-vote-close').html(competition.vote_end_date[0]+ " Time: " + competition.vote_end_date[2]);
   $('.competition-viewer').show();
 
 }
@@ -233,24 +249,34 @@ function voted(){
 
 
 function createComp (e) {
+  
   e.preventDefault()
 console.log('creating competition')
   var data = new Object();
-    data[this[0].name] = this[0].value
     if(this[1].value == ""){
-      data[this[2].name] = this[2].value
-      var theme = this[2].value
+      data[this[2].name] = this[2].value;
+      var theme = this[2].value;
     }else{
-      data[this[1].name] = this[1].value
-      var theme = this[1].value
+      data[this[1].name] = this[1].value;
+      var theme = this[1].value;
     }
-    data[this[3].name] = this[3].value
-    data[this[4].name] = this[4].value
-    data[this[5].name] = this[5].value
-    request("POST", "/competitions", data).success(function(){
+
+    data[this[0].name] = this[0].value;;
+    data[this[3].name] = this[3].value;
+    data[this[4].name] = this[4].value;
+    data[this[5].name] = this[5].value;
+
+    request("POST", "/competitions", data).success(function(returnData){
       console.log("SUCCESS")
-        $('.competition-list-header').append('<div class="competition-in-list" data-competition="{&quot;created_at&quot;:&quot;2014-12-14T22:22:41Z&quot;,&quot;id&quot;:2,&quot;name&quot;:&quot;'+this[0].value+'2&quot;,&quot;&quot;:&quot;'+this[3].value+'&quot;,&quot;submission_end_date&quot;:&quot;'+this[4].value+'&quot;,&quot;theme&quot;:&quot;'+theme+'&quot;,&quot;updated_at&quot;:&quot;2014-12-14T22:22:41Z&quot;,&quot;user_id&quot;:&quot;'+currentUser.id+'&quot;,&quot;vote_end_date&quot;:&quot;'+this[5].value+'&quot;,&quot;winner&quot;:null}" data-name=currentUser.name>'+this[0].value+'</div>')
+      var userName = currentUser.name
+        $('.competition-scroll').append('<div class="competition-in-list" data-competition="{&quot;created_at&quot;:&quot;'+returnData.created_at+'&quot;,&quot;id&quot;:'+returnData.id+',&quot;name&quot;:&quot;'+returnData.name+'&quot;,&quot;song_count&quot;:&quot;'+returnData.song_count+'&quot;,&quot;submission_end_date&quot;:&quot;'+returnData.submission_end_date+'&quot;,&quot;theme&quot;:&quot;'+returnData.theme+'&quot;,&quot;updated_at&quot;:&quot;'+returnData.updated_at+'&quot;,&quot;user_id&quot;:&quot;'+currentUser.id+'&quot;,&quot;vote_end_date&quot;:&quot;'+returnData.vote_end_date+'&quot;,&quot;winner&quot;:null}" data-name='+userName+'>'+returnData.name+'</div>')
+        // $('.competition-scroll').append('<div class="competition-in-list"> TESTER3 </div>')
+    
     })
+  $('.competition-form')[0].reset();
+  $('.theme-freetext').show();
+  $('.theme-options').show();
+  $('.form-notice').text("Competition succesfully created");
 };
 
 
@@ -272,6 +298,7 @@ function toggleThemeSelect(){
    if($('.theme-freetext').val() ==""){
     $('.theme-options').show();
   }else{
+    debugger
     $('.theme-options').hide();
   }
 }
@@ -285,17 +312,7 @@ function toggleThemeFreetext(){
   }
 }
 
-var now
-var date
-var dateArray
-var year
-var month
-var day
-var hour
-var minute
-var nowFinishedCompetitions = []
-var url
-var updateData
+
 
 // Need to write code that looks at competitions without a winner and check if closing date has passed
 
@@ -330,6 +347,8 @@ $(document).ready(function(){
   $('.playlist-vote-list').hide();
   $('.select-competition-button').on('click', showCompetitionSelector);
   $('.select-playlist-button').on('click', showPlaylistSelector);
+
+  $(document).on('click', '.competition-in-list', showCompDetails);
   $('.competition-in-list').on('click', showCompDetails);
   $('.playlist-in-list').on('click', showPlaylistViewer);
   $('.playlist-selector-button').on('click', selectPlaylist);
