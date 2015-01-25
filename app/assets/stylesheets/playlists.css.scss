@@ -18,6 +18,16 @@
 }
 
 
+
+
+@font-face {
+ font-family: 'Mohave';
+ src: url('/assets/Mohave.otf');
+ font-weight: normal;
+ font-style: normal;
+}
+
+
 // green
 $color1: #588C7E;
 // rgb(88,140,126)
@@ -30,11 +40,16 @@ $color2: #F2E394;
 $color3: #D96459;
 // rgb(217,100,89)
 
-$font-family: 'Droid Sans', sans-serif;
+$font-family: 'Mohave', 'Droid Sans', sans-serif;
 
 
 $break-small: 500px;
 $break-large: 900px;
+
+body{
+		font-family: $font-family;
+
+}
 
 main{
 	width: 100%;
