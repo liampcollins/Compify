@@ -7,11 +7,13 @@
 }
 
 
+
 .cf:before,
 .cf:after {
-    content: " "; f* 1 */
+    content: " "; /* 1 */
     display: table; /* 2 */
 }
+
 
 .cf:after {
     clear: both;
@@ -802,9 +804,7 @@ section{
 			padding-bottom: 0;
 			color: $color1;
 		}
-		
 	}
-
 }
 
 

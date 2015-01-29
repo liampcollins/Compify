@@ -31,7 +31,7 @@ function request(method, url, data){
     method: method,
     url: url,
     dataType: "json",
-    data: data;
+    data: data
   });
 };
 
@@ -319,7 +319,6 @@ $(document).ready(function(){
   $('.theme-freetext').change(toggleThemeSelect);
   $('.theme-options').change(toggleThemeFreetext);
   $('.competition-form').on('submit', createComp);
-  checkForEntryClosed();
   $('a').smoothScroll({easing: 'swing',speed: 2000});
 });
 
