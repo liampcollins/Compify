@@ -70,6 +70,7 @@ function showPlaylistSelector() {
     $('.competition-select').hide();
     $('.playlist-select').hide();
     $('.add-playlist-title').show();
+    $('.playlist-selector-button').hide();
     playlistSelector=false;
   }
 }
@@ -94,6 +95,7 @@ function showCompDetails (){
 
 
 function showPlaylistViewer () {
+  $('.playlist-selector-button').show();
   playlist = jQuery.parseJSON($(this)[0].dataset.playlist);
   var playlistId = playlist.id;
   var playlistOwner = playlist.owner.id;
@@ -281,6 +283,7 @@ function toggleThemeFreetext(){
 $(document).ready(function(){
 
   $('.playlist-select').hide();
+  $('.playlist-selector-button').hide();
   $('.competition-select').hide();
   $('.comp-friends-invite').hide();
   $('.competition-viewer').hide();
