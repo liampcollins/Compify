@@ -9,7 +9,7 @@
 
 .cf:before,
 .cf:after {
-    content: " "; /* 1 */
+    content: " "; f* 1 */
     display: table; /* 2 */
 }
 
@@ -80,11 +80,6 @@ main{
    color:$color1;
 }
 
-
-.alert{
-	// removes space between nav and first section
-	// margin-bottom: 7px;
-}
 
 .navbar {
 	background: rgba(50,50,50,0.99);
