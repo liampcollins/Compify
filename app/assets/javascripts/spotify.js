@@ -70,7 +70,6 @@ function showPlaylistSelector() {
     $('.competition-select').hide();
     $('.playlist-select').hide();
     $('.add-playlist-title').show();
-    $('.playlist-selector-button').hide();
     playlistSelector=false;
   }
 }
