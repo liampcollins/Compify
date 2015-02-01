@@ -655,6 +655,7 @@ section{
 				}
 				.form-notice{
 					color: $color2;
+					background: $color3;
 				}
 			}
 		}
@@ -682,6 +683,10 @@ section{
 .notice{
 	color: $color2;
 	height: 20px;
+	background: $color3;
+	text-align: center;
+	display: inline-block;
+	padding: 0 15px;
 }
 
 

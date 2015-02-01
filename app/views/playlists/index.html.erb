@@ -73,7 +73,7 @@
             <% else %>
               <div class="competition-list-header">COMPETITIONS</div>
               <% competitions_for_entry.each do |competition| %>
-                <%= content_tag :div, class: "competition-in-list", data: {competition: competition, name: competition.user.name} do %>
+                <%= content_tag :div, class: "competition-in-list", data: {competition: competition, name: competition.user.name, playlists: competition.playlists} do %>
                     <%= competition.name %>
                     <% competition.vote_end_date%>
                 <% end %>
@@ -107,10 +107,14 @@
             <!-- SEARCH BOX -->
           </div> 
           <div class="competition-vote-list-header">COMPETITIONS</div>
-          <% competitions_for_voting.each do |competition| %>
-            <%= content_tag :div, class: "competition-in-vote-list", data: {playlists: competition.playlists, name: competition.user.name, competition: competition.id} do %>
-                <%= competition.name %>
-                <% competition.vote_end_date%>
+          <% if competitions_for_voting.length == 0%>
+            <div class="no-comps-for-voting-message">You have not entered any competitions that are currently opened for voting</div>
+          <% else %>
+            <% competitions_for_voting.each do |competition| %>
+              <%= content_tag :div, class: "competition-in-vote-list", data: {playlists: competition.playlists, name: competition.user.name, competition: competition.id} do %>
+                  <%= competition.name %>
+                  <% competition.vote_end_date%>
+              <% end %>
             <% end %>
           <% end %>
         </div>
@@ -173,5 +177,6 @@
   </section>
 </main>
 <% else %>
-  <h1 class="timed-out-message">Your Session Has Timed Out. Please Logout and Login Again</h1>
+  <h1 class="timed-out-message">Your Session Has Timed Out. <%= link_to 'Please Login Again', destroy_user_session_path, method: :delete %>
+</h1>
 <% end %>

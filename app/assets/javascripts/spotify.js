@@ -9,6 +9,7 @@ var competitionSelector = false;
 var playlistSelectedToVote;
 var competitionSelectedToVote = false;
 var haveVotedInThisComp = false;
+var playlistAlreadyEntered = false
 var themes = ["One-hit wonders", "Covers", "Christmas", "Summer", "Halloween", "Live performances", "Songs from movies", "Guilty pleasures"];
 
 
@@ -50,10 +51,12 @@ function showCompetitionSelector(){
     $('.competition-select').show();
     competitionSelector=true;
     playlistSelector=false;
+    $('.notice').hide();
   }else{
     $('.competition-select').hide();
     $('.playlist-select').hide();
     $('.add-playlist-title').show();
+    $('.notice').hide();
     competitionSelector=false;
   }
 }
@@ -77,18 +80,32 @@ function showPlaylistSelector() {
 
 
 function showCompDetails (){
+  $(".notice").hide();
   competition= jQuery.parseJSON($(this)[0].dataset.competition);
-  $(".comp-creator").html($(this)[0].dataset.name);
-  $(".comp-theme").html(competition.theme);
-  $(".comp-song-count").html(competition.song_count);
+  playlists= jQuery.parseJSON($(this)[0].dataset.playlists);
 
-  // USER REGEX HERE TO FORMAT DATES
-  competition.submission_end_date = competition.submission_end_date.split(/([T-Z])/);
-  competition.vote_end_date = competition.vote_end_date.split(/([T-Z])/);
-  $('.comp-subm-close').html(competition.submission_end_date[0] +" Time: "+ competition.submission_end_date[2]);
-  $('.comp-vote-close').html(competition.vote_end_date[0]+ " Time: " + competition.vote_end_date[2]);
-  $('.competition-viewer').show();
+  playlists.forEach(function(playlist){
+    if(playlists[0].user_id == currentUser.id){
+      playlistAlreadyEntered = true;
+    };
+  });
 
+  if(playlistAlreadyEntered==true){
+    $('.notice').html("Youve already entered a playlist in this competition");
+    $(".notice").show();
+    playlistAlreadyEntered = false;
+  }else{
+    $(".comp-creator").html($(this)[0].dataset.name);
+    $(".comp-theme").html(competition.theme);
+    $(".comp-song-count").html(competition.song_count);
+
+    // USER REGEX HERE TO FORMAT DATES
+    competition.submission_end_date = competition.submission_end_date.split(/([T-Z])/);
+    competition.vote_end_date = competition.vote_end_date.split(/([T-Z])/);
+    $('.comp-subm-close').html(competition.submission_end_date[0] +" Time: "+ competition.submission_end_date[2]);
+    $('.comp-vote-close').html(competition.vote_end_date[0]+ " Time: " + competition.vote_end_date[2]);
+    $('.competition-viewer').show();
+  }
 }
 
 
@@ -139,15 +156,18 @@ function addPlaylistToCompetition(e){
         var competitionId = competition.id;
         var playlistOwner = playlist.owner.id;
         request("POST", "/playlists", {playlist:{name: playlistName, spotify_id: playlistId, user_id: playlistOwner, competition_id: competitionId}} ).success(function (){
+          $(".notice").show();
           $(".notice").html("Playlist " + playlist.name + " successfully added to competition " + competition.name);
         });
     }else{
       // Notify that they need to select a playlist
+      $(".notice").show();
       $(".notice").html("Competition selected, now choose a playlist to add");
     };
   }else{
     if(playlistSelected==true){
       // Notify that they need to select a competition
+      $(".notice").show();
       $(".notice").html("Playlist selected, now choose a competition to enter");
     };
   };
@@ -221,6 +241,16 @@ function voted(){
 //////////////////////////////////////////////////////////////////////////
 
 
+
+
+function compVoteReveal(){
+  $('.comp-select-vote').show();
+  $('.comp-select-vote-title').hide();
+  $('.comp-reveal-button').hide();
+  $('.close-vote-button').show();
+}
+
+
 function createComp (e) {
   
   e.preventDefault();
@@ -279,10 +309,12 @@ function toggleThemeFreetext(){
 };
 
 
+
 $(document).ready(function(){
 
   $('.playlist-select').hide();
   $('.playlist-selector-button').hide();
+  $(".notice").hide();
   $('.competition-select').hide();
   $('.comp-friends-invite').hide();
   $('.competition-viewer').hide();
@@ -298,12 +330,7 @@ $(document).ready(function(){
   $('.playlist-in-list').on('click', showPlaylistViewer);
   $('.playlist-selector-button').on('click', selectPlaylist);
   $('.competition-selector-button').on('click', selectCompetition);
-  $('.comp-reveal-button').on('click', function (){
-      $('.comp-select-vote').show();
-      $('.comp-select-vote-title').hide();
-      $('.comp-reveal-button').hide();
-      $('.close-vote-button').show();
-  });
+  $('.comp-reveal-button').on('click', compVoteReveal);
   $('.close-vote-button').on('click', function(){
     $('.comp-select-vote').hide();
     $('.comp-select-vote-title').show();
