@@ -106,10 +106,10 @@
           <div class="comp-select-vote-search">
             <!-- SEARCH BOX -->
           </div> 
-          <div class="competition-vote-list-header">COMPETITIONS</div>
           <% if competitions_for_voting.length == 0%>
             <div class="no-comps-for-voting-message">You have not entered any competitions that are currently opened for voting</div>
           <% else %>
+          <div class="competition-vote-list-header">COMPETITIONS</div>
             <% competitions_for_voting.each do |competition| %>
               <%= content_tag :div, class: "competition-in-vote-list", data: {playlists: competition.playlists, name: competition.user.name, competition: competition.id} do %>
                   <%= competition.name %>
