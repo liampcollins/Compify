@@ -43,8 +43,6 @@ function request(method, url, data){
 //////////////////////////////////////////////////////////////////////////
 
 function showCompetitionSelector(){
-
-
   if(competitionSelector==false){
     $('.add-playlist-title').hide();
     $('.playlist-select').hide();
@@ -91,7 +89,7 @@ function showCompDetails (){
   });
 
   if(playlistAlreadyEntered==true){
-    $('.notice').html("Youve already entered a playlist in this competition");
+    $('.notice').html("You've already entered a playlist in this competition");
     $(".notice").show();
     playlistAlreadyEntered = false;
   }else{
@@ -127,7 +125,7 @@ function selectPlaylist () {
     $('.playlist-selector-button').text("Select this Playlist");
   }else{
     playlistSelected = true;
-    $('.competition-selector-button').text("Playlist Selected");
+    $('.playlist-selector-button').text("Playlist Selected");
 
   };
   addPlaylistToCompetition();
@@ -270,7 +268,9 @@ function createComp (e) {
 
     request("POST", "/competitions", data).success(function(returnData){
       var userName = currentUser.name;
-        $('.competition-scroll').append('<div class="competition-in-list" data-competition="{&quot;created_at&quot;:&quot;'+returnData.created_at+'&quot;,&quot;id&quot;:'+returnData.id+',&quot;name&quot;:&quot;'+returnData.name+'&quot;,&quot;song_count&quot;:&quot;'+returnData.song_count+'&quot;,&quot;submission_end_date&quot;:&quot;'+returnData.submission_end_date+'&quot;,&quot;theme&quot;:&quot;'+returnData.theme+'&quot;,&quot;updated_at&quot;:&quot;'+returnData.updated_at+'&quot;,&quot;user_id&quot;:&quot;'+currentUser.id+'&quot;,&quot;vote_end_date&quot;:&quot;'+returnData.vote_end_date+'&quot;,&quot;winner&quot;:null}" data-name='+userName+'>'+returnData.name+'</div>');
+        $('.competition-scroll').append('<div class="competition-in-list" data-competition="{&quot;created_at&quot;:&quot;'+returnData.created_at+'&quot;,&quot;id&quot;:'+returnData.id+',&quot;name&quot;:&quot;'+returnData.name+'&quot;,&quot;song_count&quot;:&quot;'+returnData.song_count+'&quot;,&quot;submission_end_date&quot;:&quot;'+returnData.submission_end_date+'&quot;,&quot;theme&quot;:&quot;'+returnData.theme+'&quot;,&quot;updated_at&quot;:&quot;'+returnData.updated_at+'&quot;,&quot;user_id&quot;:&quot;'+currentUser.id+'&quot;,&quot;vote_end_date&quot;:&quot;'+returnData.vote_end_date+'&quot;,&quot;winner&quot;:null}" data-playlists = [] data-name='+userName+ ' >'+returnData.name+'</div>');
+        $('.no-competitions').hide();
+        $('.competition-in-list').show();
     });
   $('.competition-form')[0].reset();
   $('.theme-freetext').show();
@@ -311,7 +311,6 @@ function toggleThemeFreetext(){
 
 
 $(document).ready(function(){
-
   $('.playlist-select').hide();
   $('.playlist-selector-button').hide();
   $(".notice").hide();
@@ -340,7 +339,7 @@ $(document).ready(function(){
     $('.comp-vote-button').hide();
     $('.close-vote-button').hide();
     $(".vote-notice").html("");
-  })
+  });
   $('.competition-in-vote-list').on('click', showPlaylistLists);
   $(".playlist-in-vote-list").on('click', showPlaylistToVote);
   $(".comp-vote-button").on('click', voteOnPlaylist);
