@@ -1,182 +1,189 @@
 
+
+
+<% if @playlists %>
 <% if @playlists["items"] != nil %>
 
-<% competitions_for_entry = [] %>
-<% @competitions.each do |competition| %>
-  <% if competition.submission_end_date > Time.now %>
-    <% competitions_for_entry.push(competition)%>
-  <% end %>
-<% end %>
-
-<% competitions_for_voting = [] %>
-<% @competitions.each do |competition| %>
-  <% if competition.vote_end_date > Time.now %>
-    <% if competition.submission_end_date < Time.now %>
-    <% competitions_for_voting.push(competition)%>
+  <% competitions_for_entry = [] %>
+  <% @competitions.each do |competition| %>
+    <% if competition.submission_end_date > Time.now %>
+      <% competitions_for_entry.push(competition)%>
     <% end %>
   <% end %>
-<% end %>
 
-<main class="main">
-  <section class="dashboard-menu" id="1">
-    <div class="container first-cont">
-      <div class="dashboard-menu-left">
-        <h2>WELCOME TO COMPIFY</h2>
-      </div>
-      <div class="dashboard-menu-right">
-        <ul class="menu">
-          <li><a data-index="2" href="#2">Compete</a></li>
-          <li><a href="#3">Listen And Vote</a></li>
-          <li><a class="link-to-4" href="#4">Start A Challenge</a></li>
-        </ul> 
-      </div>
-    </div>
-  </section>
+  <% competitions_for_voting = [] %>
+  <% @competitions.each do |competition| %>
+    <% if competition.vote_end_date > Time.now %>
+      <% if competition.submission_end_date < Time.now %>
+      <% competitions_for_voting.push(competition)%>
+      <% end %>
+    <% end %>
+  <% end %>
 
-  <section class="break-1 break"></section>
-  
-  <section class="add-playlist" id="2">
-    <div class="container second-cont">
-      <div class="notice"></div>
-      <div class="add-playlist-selector">
-        <button class="select-competition-button">Select Competition</button>
-        <button class="select-playlist-button">Select Playlist</button>
+  <main class="main">
+    <section class="dashboard-menu" id="1">
+      <div class="container first-cont">
+        <div class="dashboard-menu-left">
+          <h2>WELCOME TO COMPIFY</h2>
+        </div>
+        <div class="dashboard-menu-right">
+          <ul class="menu">
+            <li><a class="button" data-index="2" href="#2">Join Competition</a></li>
+            <li><a class="button" href="#3">Listen And Vote</a></li>
+            <li><a class="button" class="link-to-4" href="#4">Start A Challenge</a></li>
+          </ul> 
+        </div>
       </div>
-      <div class="add-playlist-title">
-        <h2>Enter Your Playlist Into A Competition</h2>
-      </div>
-      <div class="playlist-select">
-        <div class="playlist-list">
-          <div class="playlist-scroll">
-            <div class="playlist-list-title">PLAYLIST LIST</div>
-              <% @playlists["items"].each do |playlist| %>
-                <%= content_tag :div, class: "playlist-in-list", data: {playlist: playlist} do %>
-                  <%= playlist["name"]%>
+    </section>
+
+    <section class="break-1 break"></section>
+    
+    <section class="add-playlist" id="2">
+      <div class="container second-cont">
+        <div class="notice"></div>
+        <div class="add-playlist-selector">
+          <a class="select-competition-button button">Select Competition</a>
+          <a class="select-playlist-button button">Select Playlist</a>
+        </div>
+        <div class="add-playlist-title">
+          <h2>Enter Your Playlist Into A Competition</h2>
+        </div>
+        <div class="playlist-select">
+          <div class="playlist-list">
+            <div class="playlist-list-title">PLAYLISTS</div>
+            <div class="playlist-scroll">
+  <!--             <div class="playlist-list-title">PLAYLISTS</div>
+   -->              <% @playlists["items"].each do |playlist| %>
+                  <%= content_tag :div, class: "playlist-in-list", data: {playlist: playlist} do %>
+                    <%= playlist["name"]%>
+                  <% end %>
+                <% end %>
+            </div>
+          </div>
+          <div class="playlist-viewer">
+            <iframe src="" frameborder="0" allowtransparency="true"></iframe>
+            <div class="playlist-selector-button button">Select this Playlist</div>
+          </div>
+        </div>
+        <div class="competition-select">
+          <div class="competition-list">
+            <div class="competition-search">
+              <!-- SEARCH BOX -->
+            </div>
+
+            <div class="competition-scroll">
+              <% if competitions_for_entry.length == 0%>
+                <div class="no-competitions">You are not currently entered in any competitions. Why not <a href="#4" class="button">create a new one</a>?</div>
+              <% else %>
+                <div class="competition-list-header">COMPETITIONS</div>
+                <% competitions_for_entry.each do |competition| %>
+                  <%= content_tag :div, class: "competition-in-list", data: {competition: competition, name: competition.user.name, playlists: competition.playlists} do %>
+                      <%= competition.name %>
+                      <% competition.vote_end_date%>
+                  <% end %>
                 <% end %>
               <% end %>
+            </div>
           </div>
-        </div>
-        <div class="playlist-viewer">
-          <iframe src="" frameborder="0" allowtransparency="true"></iframe>
-          <div class="playlist-selector-button">Select this Playlist</div>
+          <div class="competition-viewer">
+            <h3><!-- COMPETITION NAME --></h3>
+            <p>CREATOR: <span class="comp-creator"></span></p>
+            <p>THEME: <span class="comp-theme"></span> </p>
+            <p>SONG COUNT: <span class="comp-song-count">x</span> </p>
+            <p>CLOSING DATE FOR SUBMISSIONS: <span class="comp-subm-close">x</span> </p>
+            <p>CLOSING DATE FOR VOTING: <span class="comp-vote-close">x</span> </p>
+            <div class="competition-selector-button">Select this Competition</div>
+          </div>
         </div>
       </div>
-      <div class="competition-select">
-        <div class="competition-list">
-          <div class="competition-search">
-            <!-- SEARCH BOX -->
-          </div>
+    </section>
+    <section class="break-2 break"></section>
 
-          <div class="competition-scroll">
-            <% if competitions_for_entry.length == 0%>
-              <div class="no-competitions">You are not currently entered in any competitions. Why not <a href="#4">create a new one</a>?</div>
+    <section class="vote-on-comp" id="3">
+      <div class="container third-cont">
+        <div class="vote-notice"></div>
+
+
+
+        <div class="vote-controller-container cf">
+          <div class="comp-select-vote">
+            <div class="comp-select-vote-search">
+              <!-- SEARCH BOX -->
+            </div> 
+            <% if competitions_for_voting.length == 0%>
+              <div class="no-comps-for-voting-message">You have not entered any competitions that are currently opened for voting</div>
             <% else %>
-              <div class="competition-list-header">COMPETITIONS</div>
-              <% competitions_for_entry.each do |competition| %>
-                <%= content_tag :div, class: "competition-in-list", data: {competition: competition, name: competition.user.name, playlists: competition.playlists} do %>
+            <div class="competition-vote-list-header">COMPETITIONS</div>
+              <% competitions_for_voting.each do |competition| %>
+                <%= content_tag :div, class: "competition-in-vote-list", data: {playlists: competition.playlists, name: competition.user.name, competition: competition.id} do %>
                     <%= competition.name %>
                     <% competition.vote_end_date%>
                 <% end %>
               <% end %>
             <% end %>
           </div>
-        </div>
-        <div class="competition-viewer">
-          <h3><!-- COMPETITION NAME --></h3>
-          <p>CREATOR: <span class="comp-creator"></span></p>
-          <p>THEME: <span class="comp-theme"></span> </p>
-          <p>SONG COUNT: <span class="comp-song-count">x</span> </p>
-          <p>CLOSING DATE FOR SUBMISSIONS: <span class="comp-subm-close">x</span> </p>
-          <p>CLOSING DATE FOR VOTING: <span class="comp-vote-close">x</span> </p>
-          <div class="competition-selector-button">Select this Competition</div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="break-2 break"></section>
 
-  <section class="vote-on-comp" id="3">
-    <div class="container third-cont">
-      <div class="vote-notice"></div>
-
-
-
-      <div class="vote-controller-container cf">
-        <div class="comp-select-vote">
-          <div class="comp-select-vote-search">
-            <!-- SEARCH BOX -->
-          </div> 
-          <% if competitions_for_voting.length == 0%>
-            <div class="no-comps-for-voting-message">You have not entered any competitions that are currently opened for voting</div>
-          <% else %>
-          <div class="competition-vote-list-header">COMPETITIONS</div>
-            <% competitions_for_voting.each do |competition| %>
-              <%= content_tag :div, class: "competition-in-vote-list", data: {playlists: competition.playlists, name: competition.user.name, competition: competition.id} do %>
-                  <%= competition.name %>
-                  <% competition.vote_end_date%>
-              <% end %>
-            <% end %>
-          <% end %>
-        </div>
-
-        <div class="playlist-vote-list">
-          <div class="playlists-in-comp-header">PLAYLISTS</div>
-        </div>
-        <div class="vote-buttons cf">
-          <div class="close-vote-button">CLOSE</div>
-          <div class="comp-vote-button">VOTE FOR THIS PLAYLIST</div>
-        </div>
-      </div>
-
-      <div class='playlist-viewer-vote-container'>
-        <iframe class="playlist-viewer-to-vote" src="3" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-      </div>
-
-      <div class="comp-select-vote-title">
-        <h2>Select A Competition To Listen And Vote </h2>
-      </div>
-      <div class="comp-reveal-button">Choose Competition</div>
-    </div>
-  </section>
-
-  <section class="break-3 break"></section>
-
-  <section class="create-comp" id="4">
-    <div class="container fourth-cont">
-      <div class="create-comp-title">
-        <h2>Create A Competition</h2>
-      </div>
-      <div class="comp-form-container">
-        <form class="competition-form">
-          <input name="competition-name" placeholder="Name Your Competition" type="text"> 
-          <br>
-          <div class="theme-form-options">
-            <input name="theme" class="theme-freetext" placeholder="Create A Theme">
-            <select name="theme" class="theme-options">
-              <option class="default-theme" value="" default selected>Or Select An Existing One</option>
-            </select>
+          <div class="playlist-vote-list">
+            <div class="playlists-in-comp-header">PLAYLISTS</div>
           </div>
-          <input name="song-count" placeholder="Number Of Songs Per Playlist" type="number">
-          <br>
-          <label class="entry-close-label">Closing date for entry</label>
-          <input class="entry-close" name="entry-close" placeholder="Closing Date For Entry" type="datetime-local">
-          <label class="vote-close-label">Closing date for votes</label>
-          <input class="vote-close" name="vote-close" placeholder="Closing Date For Votes" type="datetime-local"> <!--  NEED TO ADD A CONDITION HERE THAT THIS HAS TO BE LATER THAN THE ONE ABOVE -->
-          <br>
-          <input class="comp-form-submit" type="submit" value="Create">
-          <div class="form-notice"></div>
-        </form>
+          <div class="vote-buttons cf">
+            <div class="close-vote-button button">CLOSE</div>
+            <div class="comp-vote-button button">VOTE FOR THIS PLAYLIST</div>
+          </div>
+        </div>
+
+        <div class='playlist-viewer-vote-container'>
+          <iframe class="playlist-viewer-to-vote" src="3" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+        </div>
+
+        <div class="comp-select-vote-title">
+          <h2>Listen And Vote </h2>
+        </div>
+        <div class="comp-reveal-button button">Choose Competition</div>
       </div>
-<!--       TO BE COMPLETED -->
-      <div class="comp-friends-invite">
-        <h3>Competition Created!<br> 
-          Now Invite Some Friends To Compete</h3>
-        <!-- FACEBOOK API -->
+    </section>
+
+    <section class="break-3 break"></section>
+
+    <section class="create-comp" id="4">
+      <div class="container fourth-cont">
+        <div class="create-comp-title">
+          <h2>Create A Competition</h2>
+        </div>
+        <div class="comp-form-container">
+          <form class="competition-form">
+            <input name="competition-name" placeholder="Name Your Competition" type="text"> 
+            <br>
+            <div class="theme-form-options">
+              <input name="theme" class="theme-freetext" placeholder="Create A Theme">
+              <select name="theme" class="theme-options">
+                <option class="default-theme" value="" default selected>Or Select An Existing One</option>
+              </select>
+            </div>
+            <input name="song-count" placeholder="Number Of Songs Per Playlist" type="number">
+            <br>
+            <label class="entry-close-label">Closing date for entry</label>
+            <input class="entry-close" name="entry-close" placeholder="Closing Date For Entry" type="datetime-local">
+            <label class="vote-close-label">Closing date for votes</label>
+            <input class="vote-close" name="vote-close" placeholder="Closing Date For Votes" type="datetime-local"> <!--  NEED TO ADD A CONDITION HERE THAT THIS HAS TO BE LATER THAN THE ONE ABOVE -->
+            <br>
+            <input class="comp-form-submit button" type="submit" value="Create">
+            <div class="form-notice"></div>
+          </form>
+        </div>
+  <!--       TO BE COMPLETED -->
+        <div class="comp-friends-invite">
+          <h3>Competition Created!<br> 
+            Now Invite Some Friends To Compete</h3>
+          <!-- FACEBOOK API -->
+        </div>
       </div>
-    </div>
-  </section>
-</main>
+    </section>
+  </main>
 <% else %>
-  <h1 class="timed-out-message">Your Session Has Timed Out. <%= link_to 'Please Login Again', destroy_user_session_path, method: :delete %>
+  <h1 class="timed-out-message">You have been inactive for too long. <%= link_to 'Please Login Again', destroy_user_session_path, method: :delete %>
 </h1>
+<% end %>
+<% else %>
+  <h1 class="timed-out-message">Error connecting to Spotify.</h1>
 <% end %>

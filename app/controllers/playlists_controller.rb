@@ -8,7 +8,14 @@ class PlaylistsController < ApplicationController
     if current_user
       token = current_user.session_token
       auth = "Bearer " + token
+      begin
       @playlists = HTTParty.get("https://api.spotify.com/v1/users/#{current_user.uid}/playlists", :headers => { "Authorization" => auth})
+      
+      rescue SocketError => details    # or the Exception class name may be SocketError    
+         p "Failed to load the data: #{details}"
+      end
+
+
       # response_hash = JSON(request)
       #binding.pry
     end

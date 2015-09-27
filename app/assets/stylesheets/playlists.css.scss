@@ -29,18 +29,24 @@
  font-style: normal;
 }
 
-
 // green
 $color1: #588C7E;
 // rgb(88,140,126)
 
-// yellow
-$color2: #F2E394;
-// rgb(242,227,148)
+// white
+$color2: #FFFFFF;
+
 
 // red
 $color3: #D96459;
 // rgb(217,100,89)
+
+
+// pink
+$color4: #FC0079;
+
+// dark grey
+$color5: rgba(50, 50, 50, 0.9);
 
 $font-family: 'Mohave', 'Droid Sans', sans-serif;
 
@@ -49,8 +55,22 @@ $break-small: 500px;
 $break-large: 900px;
 
 body{
-		font-family: $font-family;
+	font-family: $font-family;
 
+}
+
+.button{
+	transition: background-color 0.5s;
+	color: $color4;
+	cursor: pointer;
+	text-decoration: none;
+	@media screen and (max-width: $break-small) {
+		background-color: rgb(350,350, 350);	
+	}
+}
+.button:hover{
+	background-color: rgb(350,350, 350);	
+	color: $color4;
 }
 
 main{
@@ -60,31 +80,43 @@ main{
 }
 
 .timed-out-message{
-	margin: 10%;
+	color: $color2;
+	height: 100vh;
 	padding: 10%;
-	background-color: rgba(50,50,50,0.5);
-	text-align: center;
+	margin-bottom: 0;
+	background: 
+	linear-gradient(
+      rgba(50,50,50,0.5), 
+      rgba(50,50,50,0.5)
 
+    ),
+    url(/assets/dials.jpg);
+    background-size: cover;
+	text-align: center;
+	a{
+		color: $color4;
+	}
 }
 
 ::-webkit-input-placeholder { /* WebKit browsers */
-    color: $color1;
+    color: $color5;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color: $color1;
+   color: $color5;
    opacity:  1;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:$color1;
+   color:$color5;
    opacity:  1;
 }
 :-ms-input-placeholder { /* Internet Explorer 10+ */
-   color:$color1;
+   color:$color5;
 }
 
 
 .navbar {
 	background: rgba(50,50,50,0.99);
+	font-size: 20px;
 }
 
 #bs-example-navbar-collapse-1 ul li a{
@@ -96,10 +128,10 @@ main{
 }
 
 section{
-	height: 100vh-50px;
+	height: 100vh;
 	min-height: 700px;
 	width: 100%;
-	padding-top: 5%;
+	padding-top: 10%;
 	@media screen and (max-width: $break-large) {
 		min-height: 200px;
 		padding-top: 0;
@@ -107,13 +139,14 @@ section{
 	@media screen and (max-width: $break-small) {
 		min-height: 300px;
 		padding-top: 0;
+		height: auto;
 	}
 }
 
 
 .container{
-	padding: 5%;
-	background-color: rgba(50,50,50,0.5);
+	padding: 5% 6%;
+	background-color: rgba(50,50,50,0.9);
 }
 
 .dashboard-menu{
@@ -122,18 +155,20 @@ section{
 	background-size: cover;
 	background-attachment:fixed;
 	color: $color2;
-	padding-top: 10vh; 
+	padding-top: 20vh; 
 	.container{
 		.dashboard-menu-left{
 			float: left;
-			width: 50%;
+			width: 100%;
+			margin: 50px 0; 
 			@media screen and (max-width: $break-small) {
 				width: 90vw;
 				float: left;
+				margin: 25px 0; 
 			}
 			h2 {
 				font-size: 60px;
-				padding: 0 30%;
+				text-align: center;
 				@media screen and (max-width: $break-large) {
 				    font-size: 40px;
 				    padding: 0 10%;
@@ -145,7 +180,7 @@ section{
 		}
 		.dashboard-menu-right{
 			float:right;
-			width: 50%;
+			width: 100%;
 			padding-top: 5%;
 			@media screen and (max-width: $break-small) {
 				width: 90vw;
@@ -153,18 +188,28 @@ section{
 			}
 			ul {
 				list-style: none;
+				margin: 0 auto;
+				padding-left: 0;
+				width: 75%;
 				li {
+					text-align: center;
+					width: 32%;
+					display: inline-block;
 					font-size: 20px;
 					line-height: 50px;
 					@media screen and (max-width: $break-small) {
 						font-size: 15px;
 						line-height: 35px;
+						width: 100%;
+						margin: 20px 0;
 					}
-
 					a{
-						color: $color2;
 						text-decoration: none;
-					}
+						padding: 30px 50px;
+						@media screen and (max-width: $break-small) {
+							padding: 15px 25px;
+						}
+					}		
 				}
 			}
 		}
@@ -174,35 +219,51 @@ section{
 
 
 .break-1{
-	background: url(/assets/cd_shelf.jpg);
+	background: 
+		linear-gradient(
+	      rgba(255, 255, 255, 0.45), 
+	      rgba(255, 255, 255, 0.45)
+
+	    ),
+	    url(/assets/cd_shelf.jpg);
 }
 
 .add-playlist{
-	background: url(/assets/headphones.jpg);
+	background:
+		linear-gradient(
+	      rgba(50, 50, 50, 0.85), 
+	      rgba(50, 50, 50, 0.85)
+
+	    ),
+		 url(/assets/headphones.jpg);
 	background-repeat: none;
 	background-size: cover;
 	background-attachment:fixed;
-	color: $color1;
+	color: $color2;
 	.container{
 		@media screen and (max-width: $break-small) {
-			padding-top: 50px;
+			padding-top: 25px;
 		}
 		.add-playlist-selector{
 			float: left;
 			width: 35%;
+			height: 300px;
 			@media screen and (max-width: $break-large) {
 				width: 25%;
+				height: 75px;
+
 			}
 			@media screen and (max-width: $break-small) {
 				width: 90vw;
 			}
-			button{
-				width: 150px;
-				height: 80px;
-				font-size: 20px;
-				margin: 15%;
-				color: $color2;
-				background: $color1; 
+			a{
+			    text-align: center;
+			    width: 100%;
+			    height: 50%;
+			    display: inline-block;
+			    padding-top: 17%;
+			    font-size: 25px;
+				text-decoration: none;
 				@media screen and (max-width: $break-large) {
 				    font-size: 15px;
 					width: 100px;
@@ -210,11 +271,10 @@ section{
 				 }
 				@media screen and (max-width: $break-small) {
 					float: left;
-				}
-				@media screen and (max-width: $break-small) {
-					font-size: 10px;
-					width: 80px;
-					height: 50px;
+				    padding-top: 3%;
+					font-size: 20px;
+					width: 105px;
+					height: 70px;
 					margin: 5%;
 				}
 			}
@@ -235,6 +295,7 @@ section{
 				 }
 				@media screen and (max-width: $break-small) {
 					font-size: 20px;
+					margin: 40% 20%;
 				}
 			}
 
@@ -254,30 +315,35 @@ section{
 				border: solid 1px black;
 				@media screen and (max-width: $break-small) {
 					width: 80vw;
-					height: 100px;
+					height: 175px;
 					margin-left: 10vw;
+					margin-top: 25px;
 					overflow: hidden;
 				}
 				.playlist-search{
 					height: 10%;
 					border: 1px solid $color2; 
 				}
+				.playlist-list-title{
+					font-weight: bold;
+					border-bottom: 5px solid $color4;
+					color: $color4;
+					font-size: 20px;
+				}
 				.playlist-scroll{
 					height: 360px;
 					overflow: scroll;
 					background: rgba(50,50,50,0.75);
-					.playlist-list-title{
-						font-weight: bold;
-						border-bottom: 5px solid $color2;
-						color: $color2;
-						font-size: 15px;
-					}
 					.playlist-in-list{
 						cursor: pointer;
 						color: $color2;
+						background: #181818;
+						border-bottom: 1px solid #282828;
+					    padding: 5px 0 5px 10px;
+					    text-align: left;
 					}
 					.playlist-in-list:hover{
-						background: $color1;
+						background: none;
 					}
 				}
 			}
@@ -301,14 +367,10 @@ section{
 					}
 				}
 				.playlist-selector-button{
-					margin: 0 auto;
-					width: 200px;
-					background: $color3;
-					color: $color2;
-					border-radius: 10px;
-					margin-top: 20px;
-					padding: 5px;
-					cursor: pointer;
+				    font-size: 20px;
+				    margin: 0 auto;
+				    width: 200px;
+				    padding: 14px;
 				}
 			}
 		}
@@ -319,6 +381,7 @@ section{
 			@media screen and (max-width: $break-small) {
 				width: 90vw;
 				float: left;
+				margin-top: 25px;
 			}
 			.competition-list{
 				float:left;
@@ -368,21 +431,21 @@ section{
 			.competition-selector-button{
 				margin: 0 auto;
 				width: 200px;
-				background: $color3;
-				color: $color2;
-				border-radius: 10px;
 				margin-top: 20px;
 				padding: 5px;
-				cursor: pointer;
 			}
 		}
 	}
 }
 
-
-
 .break-2{
-	background: url(/assets/vinyls1.jpg);
+	background: 
+		linear-gradient(
+	      rgba(255, 255, 255, 0.45), 
+	      rgba(255, 255, 255, 0.45)
+
+	    ),
+	    url(/assets/vinyls1.jpg);
 }
 
 .vote-on-comp{
@@ -411,8 +474,8 @@ section{
 				border: 1px solid $color3;
 				overflow: scroll;
 				@media screen and (max-width: $break-small) {
-					width: 45vw;
-					height: 50vw;
+					width: 90vw;
+					height: 25vw;
 				}
 				.competition-vote-list-header{
 					font-size: 15px;
@@ -449,29 +512,22 @@ section{
 				.close-vote-button{
 					text-align: center;
 					font-size: 15px;
-					background: $color3;
-					color: $color2;
-					border-radius: 10px;
 					padding: 5px;
 					float: left;
-					cursor: pointer;
 					clear: left;
 					width: 100px;
 					margin-left: 8%;
 					@media screen and (max-width: $break-large) {
-						margin: 10px 0;
-						width: 60px;
-						font-size: 10px;
+						width: 125px;
+						margin-top: 15px;
+						font-size: 20px;
+						margin-left: calc(45vw - 72px);
 					}
 				}
 				.comp-vote-button{
 					font-size: 15px;
-					background: $color3;
-					color: $color2;
-					border-radius: 10px;
 					padding: 5px;
 					float: left;
-					cursor: pointer;
 					width: auto;
 					margin-left: 10px;
 					@media screen and (max-width: $break-large) {
@@ -501,22 +557,18 @@ section{
 		
 		.comp-reveal-button{
 			font-size: 30px;
-			// width: 500px;
-			background: $color3;
-			color: $color2;
-			border-radius: 10px;
-			padding: 20px;
+			padding: 45px 20px;
 			float: left;
-			margin: 12vw 0 0 0; 
-			cursor: pointer;
+			margin: 5vw 0 10vw 0; 
 			@media screen and (max-width: $break-large) {
 			    font-size: 20px;
 			 }
 			@media screen and (max-width: $break-small) {
 				width: 130px;
-				font-size: 12px;
+				font-size: 20px;
+				text-align: center;
 				padding: 10px;
-				margin-left: 21vw;
+				margin-left: calc(45vw - 65px);
 			}
 
 		}
@@ -545,7 +597,13 @@ section{
 }
 
 .break-3{
-	background: url(/assets/vinyls2.jpg);
+	background: 
+		linear-gradient(
+	      rgba(255, 255, 255, 0.45), 
+	      rgba(255, 255, 255, 0.45)
+
+	    ),
+	    url(/assets/vinyls2.jpg);
 }
 
 .create-comp{
@@ -553,18 +611,19 @@ section{
 	background-repeat: none;
 	background-size: cover;
 	background-attachment:fixed;
-	color: $color1;
+	color: $color5;
+	padding-top: 5%;
 	.container{
 		width: 90vw;
 		@media screen and (max-width: $break-small) {
 			width: 100vw;
 		}
 		.create-comp-title{
+			color: $color2;
 			width: 50%;
 			height: 100%;
 			float: right;
 			margin-top: 120px;
-			padding-left: 5vw;
 			@media screen and (max-width: $break-large) {
 				float: left;
 				width: 100%;
@@ -601,7 +660,7 @@ section{
 				text-align: center;
 				width: 100%;
 				input{
-					color: $color1;
+					color: $color5;
 					font-size: 20px;
 					width: 300px;
 					height: 34px;
@@ -628,17 +687,18 @@ section{
 					    font-size: 16px;
 					    border: 1px solid #ccc;
 					    height: 34px;
-					    color: $color1;
+					    color: $color5;
 						@media screen and (max-width: $break-small) {
 							width: 180px;
 						}
 						option{
 							font-size: 20px;
-							color: $color1;
+							color: $color5;
 						}
 					}
 				}
 				.entry-close-label, .vote-close-label{
+					color: $color2;
 					width: 100%;
 					text-align: center;
 					font-size: 20px;
@@ -649,9 +709,16 @@ section{
 				}
 				.comp-form-submit{
 					margin: 20px;
+				    background: none;
+					border: none;
+					color: #FC0079;
 					@media screen and (max-width: $break-small) {
 						margin: 10px 0;
 					}
+				}
+				.comp-form-submit:hover{
+					background-color: white;
+				    color: #FC0079;					
 				}
 				.form-notice{
 					color: $color2;
@@ -681,9 +748,9 @@ section{
 }
 
 .notice{
-	color: $color2;
+	color: $color5;
 	height: 20px;
-	background: $color3;
+	background: $color2;
 	text-align: center;
 	display: inline-block;
 	padding: 0 15px;
@@ -692,34 +759,41 @@ section{
 
 
 
-
-
-
-
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 .homepage{
 	margin-top: -100px;
-	background: url(/assets/headphones.jpg);
+	background:
+ 		linear-gradient(
+		rgba(50, 50, 50, 0.85), 
+		rgba(50, 50, 50, 0.85)
+    	),
+ 		url(/assets/headphones.jpg);
 	background-size: cover;
 	background-repeat: none;
-	height: 100vh;
+	min-height: calc(100vh + 50px);
 	line-height: normal;
 	text-align: center;
 	.welcome{
 		width: 100vw;
 		height: 200px;
-		padding-top: 100px;
+		padding: 130px 0;
 		font-size: 80px;
 		float: left;
 		text-align: center;
-		color: $color1;
+		color: $color2;
+		span{
+			color: $color4;
+		}
 		@media screen and (max-width: $break-large) {
 			font-size: 60px;
 			height: 300px;
 
 		}
 		@media screen and (max-width: $break-small) {
+			padding: 100px 0;
 			font-size: 30px;
 			height: 200px;
 		}
@@ -730,7 +804,7 @@ section{
 		clear: left;
 		width: 100vw;
 		text-align: center;
-		padding: 0 20vw;
+		padding: 35px 20vw;
 		line-height: 50px;
 		background: rgba(50,50,50,0.75);
 		color: $color2;
@@ -747,17 +821,17 @@ section{
 		.homepage-login{
 			font-size: 35px;
 			width: 30vw;			
-			background: rgba(197,100,89,0.9);
-			border-radius: 5px;
-			// line-height: 50px;
-			padding: 20px;
-			float: left;
 			margin-top: 10vh;
-			margin-bottom: 10vh;
-			color: $color2;
-			a:hover{
+			border: 2px solid $color2;
+			a{
+				display: inline-block;
+				padding: 25px 50px;
+				color: $color4;
 				text-decoration: none;
-				background: none;
+				@media screen and (max-width: $break-small) {
+					padding: 10px 20px;
+					background-color: $color2;
+				}				
 			}
 			@media screen and (max-width: $break-large) {
 				font-size: 20px;
@@ -767,18 +841,25 @@ section{
 				width: 60vw;
 				margin-left: -15vw;
 				padding:10px; 
+				border: none;
 			}
 		}
 	}
 }
 
-
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 .old-competitions-page{
 	width: 100vw;
 	height: 105vh;
-	background: url(/assets/vinyls2.jpg);
+	background:
+ 		linear-gradient(
+			rgba(50, 50, 50, 0.85), 
+			rgba(50, 50, 50, 0.85)
+	    	),
+ 		url(/assets/vinyls2.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 	margin-top: -100px;
@@ -807,7 +888,7 @@ section{
 		.old-comp-name-header, .old-comp-winner-header{
 			border-bottom: 2px solid black;
 			padding-bottom: 0;
-			color: $color1;
+			color: $color4;
 		}
 	}
 }

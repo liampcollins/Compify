@@ -37,24 +37,22 @@ function request(method, url, data){
 };
 
 
-
-
 ///////ADDING PLAYLIST//////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
 function showCompetitionSelector(){
   if(competitionSelector==false){
-    $('.add-playlist-title').hide();
-    $('.playlist-select').hide();
-    $('.competition-select').show();
+    $('.add-playlist-title').hide("slow");
+    $('.playlist-select').hide("slow");
+    $('.competition-select').show("slow");
     competitionSelector=true;
     playlistSelector=false;
-    $('.notice').hide();
+    $('.notice').hide("slow");
   }else{
-    $('.competition-select').hide();
-    $('.playlist-select').hide();
-    $('.add-playlist-title').show();
-    $('.notice').hide();
+    $('.competition-select').hide("slow");
+    $('.playlist-select').hide("slow");
+    $('.add-playlist-title').show("slow");
+    $('.notice').hide("slow");
     competitionSelector=false;
   }
 }
@@ -62,15 +60,19 @@ function showCompetitionSelector(){
 
 function showPlaylistSelector() {
   if(playlistSelector==false){
-    $('.add-playlist-title').hide();
-    $('.competition-select').hide();
-    $('.playlist-select').show();
+    $('.add-playlist-title').hide("slow", function(){
+      $('.competition-select').hide("slow", function(){
+        $('.playlist-select').show("slow");
+      });
+    });
     playlistSelector=true;
     competitionSelector=false;
   }else{
-    $('.competition-select').hide();
-    $('.playlist-select').hide();
-    $('.add-playlist-title').show();
+    $('.competition-select').hide("slow", function(){
+      $('.playlist-select').hide("slow", function(){
+        $('.add-playlist-title').show("slow");
+      });
+    });
     playlistSelector=false;
   }
 }
@@ -102,7 +104,7 @@ function showCompDetails (){
     competition.vote_end_date = competition.vote_end_date.split(/([T-Z])/);
     $('.comp-subm-close').html(competition.submission_end_date[0] +" Time: "+ competition.submission_end_date[2]);
     $('.comp-vote-close').html(competition.vote_end_date[0]+ " Time: " + competition.vote_end_date[2]);
-    $('.competition-viewer').show();
+    $('.competition-viewer').show("slow");
   }
 }
 
@@ -201,10 +203,10 @@ function showPlaylistLists () {
       });
     });
   }else{
-    $('.playlist-viewer-vote-container').hide();
-    $('.playlist-vote-list').show();
+    $('.playlist-viewer-vote-container').hide("slow");
+    $('.playlist-vote-list').show("slow");
     $('.playlists-in-comp-header').text("NO PLAYLISTS ADDED YET");
-    $('.comp-vote-button').hide();
+    $('.comp-vote-button').hide("slow");
   };
 };
 
@@ -216,9 +218,9 @@ function showPlaylistToVote () {
   $(".playlist-viewer-to-vote").attr("src", playlistSrc);
   $('.playlist-viewer-vote-container').show();
   if(haveVotedInThisComp = false){
-    $('.comp-vote-button').show();
+    $('.comp-vote-button').show("slow");
   }else{
-    $('.comp-vote-button').hide();
+    $('.comp-vote-button').hide("slow");
   };
 };
 
@@ -228,7 +230,7 @@ function voteOnPlaylist () {
 };
 
 function voted(){
-  $(".comp-vote-button").hide;
+  $(".comp-vote-button").hide("slow");
   $(".vote-notice").html("Thanks for voting!");
 };
 
@@ -242,10 +244,13 @@ function voted(){
 
 
 function compVoteReveal(){
-  $('.comp-select-vote').show();
-  $('.comp-select-vote-title').hide();
-  $('.comp-reveal-button').hide();
-  $('.close-vote-button').show();
+  $('.comp-reveal-button').hide("slow", function(){
+   $('.comp-select-vote-title').hide("slow", function(){
+      $('.comp-select-vote').show("slow", function(){
+        $('.close-vote-button').show("slow");
+      });
+    });
+  });
 }
 
 
@@ -311,6 +316,7 @@ function toggleThemeFreetext(){
 
 
 $(document).ready(function(){
+  // Initial states
   $('.playlist-select').hide();
   $('.playlist-selector-button').hide();
   $(".notice").hide();
@@ -322,6 +328,8 @@ $(document).ready(function(){
   $('.comp-vote-button').hide();
   $('.close-vote-button').hide();
   $('.playlist-vote-list').hide();
+
+  // Event listeneners
   $('.select-competition-button').on('click', showCompetitionSelector);
   $('.select-playlist-button').on('click', showPlaylistSelector);
   $(document).on('click', '.competition-in-list', showCompDetails);
